@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" width="100%" height="100%" class="w-full h-auto select-none">
+  <defs>
+    <!-- Background Gradient -->
+    <radialGradient id="mapBgGrad" cx="60%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0e1d33"/>
+      <stop offset="60%" stop-color="#08101e"/>
+      <stop offset="100%" stop-color="#03060c"/>
+    </radialGradient>
+
+    <!-- Golden Glow Filter for Hernando Hub -->
+    <filter id="goldGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- Blue Glow Filter for Citrus & Pasco -->
+    <filter id="blueGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <!-- County Gradients -->
+    <linearGradient id="hernandoZone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD000" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#FF9500" stop-opacity="0.12" />
+    </linearGradient>
+
+    <linearGradient id="citrusZone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D62D9" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#00D2FF" stop-opacity="0.12" />
+    </linearGradient>
+
+    <linearGradient id="pascoZone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D62D9" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#00D2FF" stop-opacity="0.12" />
+    </linearGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="radarGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+      <circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.06)"/>
+    </pattern>
+
+    <style>
+      .county-path { transition: all 0.3s ease; cursor: pointer; }
+      .county-path:hover { filter: drop-shadow(0 0 16px rgba(255,208,0,0.6)); }
+      .radar-pulse { animation: radarWave 2.4s cubic-bezier(0.1, 0.7, 0.1, 1) infinite; transform-origin: 390px 480px; }
+      .radar-pulse-2 { animation: radarWave 2.4s cubic-bezier(0.1, 0.7, 0.1, 1) 0.8s infinite; transform-origin: 390px 480px; }
+      .dispatch-dash { stroke-dasharray: 8 8; animation: dashFlow 2s linear infinite; }
+      .dispatch-dash-rev { stroke-dasharray: 8 8; animation: dashFlowRev 2s linear infinite; }
+      @keyframes radarWave {
+        0% { transform: scale(0.1); opacity: 0.9; }
+        70% { opacity: 0.4; }
+        100% { transform: scale(3.5); opacity: 0; }
+      }
+      @keyframes dashFlow {
+        from { stroke-dashoffset: 64; }
+        to { stroke-dashoffset: 0; }
+      }
+      @keyframes dashFlowRev {
+        from { stroke-dashoffset: 0; }
+        to { stroke-dashoffset: 64; }
+      }
+    </style>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="800" height="900" rx="24" fill="url(#mapBgGrad)" stroke="#1a2638" stroke-width="2"/>
+  <rect width="800" height="900" rx="24" fill="url(#radarGrid)"/>
+
+  <!-- Top Title Header -->
+  <g transform="translate(400, 48)" text-anchor="middle">
+    <rect x="-240" y="-28" width="480" height="48" rx="24" fill="#040812" stroke="#FFD000" stroke-width="2"/>
+    <text y="4" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="22" font-weight="900" font-style="italic" letter-spacing="2">
+      ★ SOLARSHIELD DISPATCH RADAR ★
+    </text>
+    <text y="42" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12" font-weight="600" letter-spacing="1">
+      HERNANDO &bull; PASCO &bull; CITRUS COUNTIES
+    </text>
+  </g>
+
+  <!-- Gulf of Mexico Decorative Coastline Curve on Left -->
+  <path d="M 0 0 L 160 0 Q 120 180 140 320 T 110 520 T 130 720 T 100 900 L 0 900 Z" fill="#020409" opacity="0.85"/>
+  <path d="M 160 0 Q 120 180 140 320 T 110 520 T 130 720 T 100 900" fill="none" stroke="#00d2ff" stroke-width="2.5" stroke-opacity="0.3" filter="url(#blueGlow)"/>
+  <text x="65" y="470" fill="#203d66" font-family="'Barlow Condensed', sans-serif" font-size="20" font-weight="800" font-style="italic" letter-spacing="6" transform="rotate(-90 65 470)">GULF OF MEXICO</text>
+
+  <!-- ================= 1. CITRUS COUNTY (NORTH ZONE) ================= -->
+  <g id="zone-citrus" class="group">
+    <!-- Polygon shape for Citrus County -->
+    <polygon points="150,130 460,110 700,120 710,290 400,310 140,310" 
+             fill="url(#citrusZone)" stroke="#00D2FF" stroke-width="2.5" class="county-path" />
+    
+    <!-- County Title Banner -->
+    <rect x="360" y="145" width="280" height="42" rx="8" fill="#040916" stroke="#00D2FF" stroke-width="1.8"/>
+    <text x="500" y="172" fill="#FFFFFF" font-family="'Barlow Condensed', sans-serif" font-size="20" font-weight="900" font-style="italic" letter-spacing="2" text-anchor="middle">
+      CITRUS COUNTY <tspan fill="#00D2FF" font-size="14">(NORTH ZONE)</tspan>
+    </text>
+
+    <!-- Cities in Citrus -->
+    <!-- Crystal River -->
+    <g transform="translate(240, 205)">
+      <circle cx="0" cy="0" r="5" fill="#00D2FF" stroke="#000" stroke-width="2"/>
+      <rect x="-10" y="-22" width="95" height="18" rx="4" fill="#000" fill-opacity="0.85"/>
+      <text x="38" y="-9" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Crystal River</text>
+    </g>
+
+    <!-- Inverness -->
+    <g transform="translate(560, 225)">
+      <circle cx="0" cy="0" r="5" fill="#00D2FF" stroke="#000" stroke-width="2"/>
+      <rect x="-10" y="-22" width="75" height="18" rx="4" fill="#000" fill-opacity="0.85"/>
+      <text x="28" y="-9" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Inverness</text>
+    </g>
+
+    <!-- Homosassa -->
+    <g transform="translate(260, 265)">
+      <circle cx="0" cy="0" r="4.5" fill="#00D2FF" stroke="#000" stroke-width="2"/>
+      <rect x="-10" y="-22" width="85" height="18" rx="4" fill="#000" fill-opacity="0.85"/>
+      <text x="33" y="-9" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="11" font-weight="600" text-anchor="middle">Homosassa</text>
+    </g>
+  </g>
+
+  <!-- ================= 2. HERNANDO COUNTY (PRIMARY HUB) ================= -->
+  <g id="zone-hernando" class="group">
+    <!-- Glowing under-polygon for Hub -->
+    <polygon points="140,310 400,310 710,290 730,570 360,580 130,540" 
+             fill="url(#hernandoZone)" stroke="#FFD000" stroke-width="4.5" filter="url(#goldGlow)" class="county-path" />
+
+    <!-- Pulsing Radar Circles centered at Spring Hill (390, 480) -->
+    <circle cx="390" cy="480" r="40" fill="none" stroke="#FFD000" stroke-width="2" class="radar-pulse" opacity="0.8"/>
+    <circle cx="390" cy="480" r="40" fill="none" stroke="#FFD000" stroke-width="1.5" class="radar-pulse-2" opacity="0.8"/>
+
+    <!-- Prominent Hernando County Header Badge -->
+    <rect x="250" y="340" width="460" height="54" rx="12" fill="#000000" stroke="#FFD000" stroke-width="3"/>
+    <text x="480" y="375" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="26" font-weight="900" font-style="italic" letter-spacing="2" text-anchor="middle">
+      ★ HERNANDO COUNTY (PRIMARY HUB) ★
+    </text>
+    <text x="480" y="415" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="12" font-weight="700" letter-spacing="1" text-anchor="middle">
+      FASTEST DISPATCH &bull; SAME-DAY &bull; NEXT-DAY
+    </text>
+
+    <!-- Spring Hill - Central Dispatch Headquarters -->
+    <g transform="translate(390, 480)">
+      <!-- HQ Outer Ring -->
+      <circle cx="0" cy="0" r="20" fill="rgba(255,208,0,0.3)" stroke="#FFD000" stroke-width="2"/>
+      <circle cx="0" cy="0" r="12" fill="#FFD000" stroke="#000" stroke-width="2"/>
+      <text x="0" y="4" fill="#000000" font-family="'Inter', sans-serif" font-size="13" font-weight="900" text-anchor="middle">★</text>
+      
+      <!-- Prominent Spring Hill Label -->
+      <rect x="-110" y="24" width="220" height="38" rx="8" fill="#000000" stroke="#FFD000" stroke-width="2" filter="drop-shadow(0 6px 12px rgba(0,0,0,0.8))"/>
+      <text x="0" y="42" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="16" font-weight="900" font-style="italic" letter-spacing="1" text-anchor="middle">SPRING HILL</text>
+      <text x="0" y="56" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="10" font-weight="700" text-anchor="middle">MOBILE DISPATCH BASE</text>
+    </g>
+
+    <!-- Brooksville -->
+    <g transform="translate(580, 460)">
+      <circle cx="0" cy="0" r="6" fill="#FFD000" stroke="#000" stroke-width="2"/>
+      <rect x="-10" y="-24" width="90" height="20" rx="4" fill="#000" stroke="#FFD000" stroke-width="1"/>
+      <text x="35" y="-10" fill="#FFD000" font-family="'Inter', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Brooksville</text>
+    </g>
+
+    <!-- Weeki Wachee -->
+    <g transform="translate(240, 440)">
+      <circle cx="0" cy="0" r="5" fill="#FFD000" stroke="#000" stroke-width="2"/>
+      <rect x="-10" y="-24" width="105" height="20" rx="4" fill="#000" stroke="#FFD000" stroke-width="1"/>
+      <text x="43" y="-10" fill="#FFD000" font-family="'Inter', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Weeki Wachee</text>
+    </g>
+  </g>
+
+  <!-- ================= 3. PASCO COUNTY (SOUTH ZONE) ================= -->
+  <g id="zone-pasco" class="group">
+    <!-- Polygon shape for Pasco County -->
+    <polygon points="130,540 360,580 730,570 740,780 420,790 120,760" 
+             fill="url(#pascoZone)" stroke="#00D2FF" stroke-width="2.5" class="county-path" />
+
+    <!-- County Title Banner -->
+    <rect x="360" y="610" width="280" height="42" rx="8" fill="#040916" stroke="#00D2FF" stroke-width="1.8"/>
+    <text x="500" y="637" fill="#FFFFFF" font-family="'Barlow Condensed', sans-serif" font-size="20" font-weight="900" font-style="italic" letter-spacing="2" text-anchor="middle">
+      PASCO COUNTY <tspan fill="#00D2FF" font-size="14">(SOUTH ZONE)</tspan>
+    </text>
+
+    <!-- New Port Richey -->
+    <g transform="translate(220, 680)">
+      <circle cx="0" cy="0" r="5" fill="#00D2FF" stroke="#000" stroke-width="2"/>
+      <rect x="-10" y="-22" width="115" height="18" rx="4" fill="#000" fill-opacity="0.85"/>
+      <text x="48" y="-9" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="11" font-weight="700" text-anchor="middle">New Port Richey</text>
+    </g>
+
+    <!-- Trinity -->
+    <g transform="translate(320, 735)">
+      <circle cx="0" cy="0" r="4.5" fill="#00D2FF" stroke="#000" stroke-width="2"/>
+      <rect x="-10" y="-22" width="65" height="18" rx="4" fill="#000" fill-opacity="0.85"/>
+      <text x="23" y="-9" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Trinity</text>
+    </g>
+
+    <!-- Land O Lakes -->
+    <g transform="translate(480, 710)">
+      <circle cx="0" cy="0" r="5" fill="#00D2FF" stroke="#000" stroke-width="2"/>
+      <rect x="-10" y="-22" width="100" height="18" rx="4" fill="#000" fill-opacity="0.85"/>
+      <text x="40" y="-9" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Land O' Lakes</text>
+    </g>
+
+    <!-- Wesley Chapel -->
+    <g transform="translate(620, 725)">
+      <circle cx="0" cy="0" r="4.5" fill="#00D2FF" stroke="#000" stroke-width="2"/>
+      <rect x="-10" y="-22" width="105" height="18" rx="4" fill="#000" fill-opacity="0.85"/>
+      <text x="43" y="-9" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="11" font-weight="700" text-anchor="middle">Wesley Chapel</text>
+    </g>
+  </g>
+
+  <!-- ================= ANIMATED DISPATCH HIGHWAY CORRIDORS ================= -->
+  <!-- Suncoast Corridor (FL-589) & US-19 animated connection lines -->
+  <path d="M 390 480 L 240 205" fill="none" stroke="#FFD000" stroke-width="2.5" class="dispatch-dash" opacity="0.6"/>
+  <path d="M 390 480 L 560 225" fill="none" stroke="#FFD000" stroke-width="2" class="dispatch-dash" opacity="0.5"/>
+  <path d="M 390 480 L 220 680" fill="none" stroke="#FFD000" stroke-width="2.5" class="dispatch-dash" opacity="0.6"/>
+  <path d="M 390 480 L 480 710" fill="none" stroke="#FFD000" stroke-width="2" class="dispatch-dash" opacity="0.5"/>
+
+  <!-- Bottom Legend Bar -->
+  <g transform="translate(400, 845)" text-anchor="middle">
+    <rect x="-340" y="-24" width="680" height="48" rx="16" fill="#02050b" stroke="#FFD000" stroke-width="1.5"/>
+    <text y="-2" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="16" font-weight="900" font-style="italic" letter-spacing="1">
+      100% DRIVEWAY &amp; COMMERCIAL DISPATCH &bull; NO EXTRA TRAVEL FEES
+    </text>
+    <text y="16" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="11" font-weight="600">
+      CALL OR TEXT: (727) 598-TINT &bull; WE COME TO YOUR HOME OR WORKPLACE
+    </text>
+  </g>
+</svg>
