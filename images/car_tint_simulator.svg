@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420" width="100%" height="100%">
+  <defs>
+    <!-- Car paint gradient (Sleek gunmetal silver) -->
+    <linearGradient id="carPaint" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8e9eab"/>
+      <stop offset="30%" stop-color="#eef2f3"/>
+      <stop offset="70%" stop-color="#b0bec5"/>
+      <stop offset="100%" stop-color="#37474f"/>
+    </linearGradient>
+
+    <!-- Wheel rim gradient -->
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="50%" stop-color="#37474f"/>
+      <stop offset="100%" stop-color="#0a0a0a"/>
+    </linearGradient>
+
+    <linearGradient id="caliperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff1744"/>
+      <stop offset="100%" stop-color="#b71c1c"/>
+    </linearGradient>
+
+    <!-- Interior seats seen through glass -->
+    <radialGradient id="interiorLight" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#cfd8dc"/>
+      <stop offset="100%" stop-color="#37474f"/>
+    </radialGradient>
+
+    <!-- Glass gloss reflection highlight -->
+    <linearGradient id="glassSheen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.4"/>
+      <stop offset="35%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#00d2ff" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ground Shadow -->
+  <ellipse cx="450" cy="370" rx="420" ry="24" fill="#000000" opacity="0.75" />
+
+  <!-- ================= CAR BODY SHELL ================= -->
+  <!-- Main silhouette -->
+  <path d="M 70 310 
+           L 100 310 
+           A 55 55 0 0 1 210 310 
+           L 660 310 
+           A 55 55 0 0 1 770 310 
+           L 840 310 
+           Q 855 305 850 270 
+           Q 840 230 800 220 
+           L 700 185 
+           L 570 115 
+           Q 530 100 430 100 
+           L 290 100 
+           Q 240 100 200 150 
+           L 110 215 
+           Q 60 235 50 275 
+           Q 45 305 70 310 Z" 
+        fill="url(#carPaint)" stroke="#263238" stroke-width="3"/>
+
+  <!-- Body Character Lines and Seams -->
+  <path d="M 100 225 Q 400 220 800 215" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+  <path d="M 120 245 Q 450 240 780 235" fill="none" stroke="#37474f" stroke-width="2" opacity="0.5"/>
+  
+  <!-- Front / Rear Door Seam -->
+  <path d="M 425 110 L 420 308" fill="none" stroke="#263238" stroke-width="2.5"/>
+  <!-- Front Door Front Seam -->
+  <path d="M 225 160 L 210 308" fill="none" stroke="#263238" stroke-width="2.5"/>
+  <!-- Rear Door Back Seam -->
+  <path d="M 610 135 Q 640 215 640 308" fill="none" stroke="#263238" stroke-width="2.5"/>
+
+  <!-- Door Handles -->
+  <rect x="365" y="230" width="32" height="8" rx="4" fill="#263238" stroke="#90a4ae" stroke-width="1"/>
+  <rect x="555" y="228" width="32" height="8" rx="4" fill="#263238" stroke="#90a4ae" stroke-width="1"/>
+
+  <!-- Side Mirror -->
+  <path d="M 220 175 Q 200 160 180 170 Q 185 190 210 195 Z" fill="#1c252c" stroke="#000000" stroke-width="2"/>
+
+  <!-- Headlight and Taillight -->
+  <path d="M 60 255 Q 80 245 110 250 L 90 275 Z" fill="#e0f7fa" stroke="#80deea" stroke-width="1.5" opacity="0.85"/>
+  <path d="M 840 255 Q 820 245 790 250 L 810 275 Z" fill="#d50000" stroke="#ff1744" stroke-width="1.5" opacity="0.95"/>
+
+  <!-- ================= CAR WINDOWS / GLASS ZONES ================= -->
+  <!-- Outer Window Frame Trim (Black Gloss) -->
+  <path d="M 230 165 
+           L 295 110 
+           L 420 110 
+           L 570 120 
+           Q 600 135 635 170 
+           L 630 200 
+           L 230 200 Z" 
+        fill="#0a0d12" stroke="#1f2937" stroke-width="4"/>
+
+  <!-- Interior Background seen through glass (steering wheel, seats, headrests) -->
+  <g id="car-interior">
+    <!-- Front Interior (Steering wheel and driver seat) -->
+    <rect x="235" y="112" width="180" height="85" fill="url(#interiorLight)"/>
+    <!-- Driver Seat Headrest and Seatback -->
+    <path d="M 320 135 Q 335 135 335 150 L 335 195 L 305 195 L 305 150 Q 305 135 320 135 Z" fill="#1e293b"/>
+    <circle cx="320" cy="127" r="10" fill="#0f172a"/>
+    <!-- Steering wheel angle -->
+    <ellipse cx="270" cy="170" rx="8" ry="16" fill="none" stroke="#0f172a" stroke-width="4" transform="rotate(15 270 170)"/>
+
+    <!-- Rear Interior (Passenger seat and headrest) -->
+    <rect x="430" y="112" width="195" height="85" fill="url(#interiorLight)"/>
+    <!-- Rear Seat Headrest and Seatback -->
+    <path d="M 515 140 Q 530 140 530 155 L 530 195 L 500 195 L 500 155 Q 500 140 515 140 Z" fill="#1e293b"/>
+    <circle cx="515" cy="133" r="9" fill="#0f172a"/>
+    <path d="M 570 150 Q 582 150 582 165 L 582 195 L 558 195 L 558 165 Q 558 150 570 150 Z" fill="#1e293b"/>
+    <circle cx="570" cy="143" r="8" fill="#0f172a"/>
+  </g>
+
+  <!-- ================= DYNAMIC FRONT DRIVER WINDOW TINT LAYER ================= -->
+  <path id="front-tint-layer"
+        d="M 235 195 
+           L 290 115 
+           L 418 115 
+           L 418 195 Z" 
+        fill="#000000" 
+        style="opacity: 0.70; transition: opacity 0.25s ease-in-out;"/>
+
+  <!-- Front Window Glass Gloss Sheen -->
+  <path d="M 235 195 L 290 115 L 418 115 L 418 195 Z" fill="url(#glassSheen)" pointer-events="none"/>
+  
+  <!-- B-Pillar Separator -->
+  <rect x="418" y="110" width="8" height="90" fill="#0a0d12" stroke="#1a202c" stroke-width="1"/>
+
+  <!-- ================= DYNAMIC REAR PASSENGER WINDOW TINT LAYER ================= -->
+  <path id="rear-tint-layer"
+        d="M 426 115 
+           L 565 122 
+           Q 590 135 625 170 
+           L 620 195 
+           L 426 195 Z" 
+        fill="#000000" 
+        style="opacity: 0.85; transition: opacity 0.25s ease-in-out;"/>
+
+  <!-- Rear Window Glass Gloss Sheen -->
+  <path d="M 426 115 L 565 122 Q 590 135 625 170 L 620 195 L 426 195 Z" fill="url(#glassSheen)" pointer-events="none"/>
+
+  <!-- ================= WHEELS & TIRES ================= -->
+  <!-- Front Wheel -->
+  <g transform="translate(155, 310)">
+    <circle cx="0" cy="0" r="55" fill="#0d1117" stroke="#21262d" stroke-width="4"/>
+    <circle cx="0" cy="0" r="38" fill="url(#rimGrad)" stroke="#485460" stroke-width="2"/>
+    <rect x="-16" y="-26" width="12" height="20" rx="3" fill="url(#caliperGrad)"/>
+    <circle cx="0" cy="0" r="12" fill="#1e293b" stroke="#FFD000" stroke-width="1"/>
+    <line x1="0" y1="-12" x2="0" y2="-36" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+    <line x1="11" y1="-4" x2="34" y2="-12" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+    <line x1="7" y1="10" x2="21" y2="30" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-7" y1="10" x2="-21" y2="30" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-11" y1="-4" x2="-34" y2="-12" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Rear Wheel -->
+  <g transform="translate(715, 310)">
+    <circle cx="0" cy="0" r="55" fill="#0d1117" stroke="#21262d" stroke-width="4"/>
+    <circle cx="0" cy="0" r="38" fill="url(#rimGrad)" stroke="#485460" stroke-width="2"/>
+    <rect x="-16" y="-26" width="12" height="20" rx="3" fill="url(#caliperGrad)"/>
+    <circle cx="0" cy="0" r="12" fill="#1e293b" stroke="#FFD000" stroke-width="1"/>
+    <line x1="0" y1="-12" x2="0" y2="-36" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+    <line x1="11" y1="-4" x2="34" y2="-12" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+    <line x1="7" y1="10" x2="21" y2="30" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-7" y1="10" x2="-21" y2="30" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+    <line x1="-11" y1="-4" x2="-34" y2="-12" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Indicator Badges Above Front and Rear Windows -->
+  <g transform="translate(325, 75)" text-anchor="middle">
+    <rect x="-65" y="-16" width="130" height="24" rx="6" fill="#000000" stroke="#FFD000" stroke-width="1.5"/>
+    <text x="0" y="1" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="900" font-style="italic">FRONT: <tspan id="svg-front-vlt">30%</tspan></text>
+    <path d="M 0 10 L 0 35" stroke="#FFD000" stroke-width="2" stroke-dasharray="3 3"/>
+  </g>
+
+  <g transform="translate(525, 75)" text-anchor="middle">
+    <rect x="-65" y="-16" width="130" height="24" rx="6" fill="#000000" stroke="#FFD000" stroke-width="1.5"/>
+    <text x="0" y="1" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="12" font-weight="900" font-style="italic">REAR: <tspan id="svg-rear-vlt">15%</tspan></text>
+    <path d="M 0 10 L 0 35" stroke="#FFD000" stroke-width="2" stroke-dasharray="3 3"/>
+  </g>
+</svg>

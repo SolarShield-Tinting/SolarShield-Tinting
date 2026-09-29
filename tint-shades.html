@@ -57,7 +57,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         <a href="index.html" class="flex items-center gap-3 group">
-          <img src="images/hero_logo@2x.png" alt="SolarShield Mobile Tinting" class="h-14 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105">
+          <img src="images/solar_shield_nav_logo.svg" alt="SolarShield Mobile Tinting" class="h-12 sm:h-14 w-auto object-contain transition-transform group-hover:scale-105">
         </a>
         <nav class="hidden md:flex items-center gap-7 font-racing text-xl tracking-wider">
           <a href="index.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">HOME</a>
@@ -107,52 +107,210 @@
     </div>
   </section>
 
-  <!-- ================= INTERACTIVE SIMULATOR ================= -->
+  <!-- ================= INTERACTIVE VEHICLE TINT SIMULATOR ================= -->
   <section class="py-16 bg-zinc-900 border-b border-zinc-800">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-10 shadow-2xl">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           
+          <!-- Left: Realtime Vehicle Side-Profile Display -->
           <div class="lg:col-span-6 flex flex-col items-center">
-            <div class="relative w-full max-w-md h-60 sm:h-72 rounded-2xl overflow-hidden border-4 border-zinc-700 shadow-2xl bg-zinc-800 flex items-center justify-center">
-              <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('images/service_res_sunset.jpg');"></div>
-              <div id="tint-glass-overlay" class="absolute inset-0 bg-black transition-opacity duration-200" style="opacity: 0.65;"></div>
-              <div class="absolute inset-0 border-[14px] border-zinc-950 pointer-events-none rounded-xl"></div>
-              <div class="absolute top-4 right-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-racing tracking-wider border border-white/20 text-white">
-                VIEW THROUGH TINTED GLASS
-              </div>
-              <div class="relative z-10 text-center">
-                <span id="simulator-percentage-display" class="font-racing font-black text-6xl sm:text-7xl text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">30%</span>
-                <span id="simulator-shade-name" class="block font-racing font-bold text-xl sm:text-2xl text-brand-yellow drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">FLORIDA LEGAL (FRONT WINDOWS)</span>
-              </div>
+            
+            <!-- Window Selector Pills above Car -->
+            <div class="w-full flex items-center justify-between gap-2 mb-3">
+              <button type="button" onclick="selectWindowTarget('front')" id="pill-front-window" class="flex-1 py-2 px-3 rounded-xl border border-brand-yellow/70 bg-zinc-900 text-brand-yellow font-racing text-xs sm:text-sm font-bold flex items-center justify-center gap-2 hover:bg-zinc-800 transition-all">
+                <span>🪟 DRIVER WINDOW:</span>
+                <span id="label-front-pct" class="font-black text-white px-2 py-0.5 rounded bg-black">30%</span>
+              </button>
+              <button type="button" onclick="selectWindowTarget('rear')" id="pill-rear-window" class="flex-1 py-2 px-3 rounded-xl border border-zinc-700 bg-zinc-900 text-zinc-300 font-racing text-xs sm:text-sm font-bold flex items-center justify-center gap-2 hover:bg-zinc-800 transition-all">
+                <span>🪟 REAR WINDOWS:</span>
+                <span id="label-rear-pct" class="font-black text-white px-2 py-0.5 rounded bg-black">15%</span>
+              </button>
             </div>
+
+            <!-- Vehicle Stage with Ambient Underglow -->
+            <div class="relative w-full rounded-2xl overflow-hidden border-2 border-zinc-800 bg-gradient-to-b from-[#090d16] to-[#040609] p-4 flex items-center justify-center shadow-inner">
+              
+              <!-- Inline SVG Vehicle with Interactive Window Layers -->
+              <svg id="car-tint-svg" class="w-full h-auto max-h-[340px] drop-shadow-2xl relative z-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 420">
+                <defs>
+                  <linearGradient id="carPaint" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#94a3b8"/>
+                    <stop offset="30%" stop-color="#f1f5f9"/>
+                    <stop offset="70%" stop-color="#cbd5e1"/>
+                    <stop offset="100%" stop-color="#334155"/>
+                  </linearGradient>
+                  <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#0f172a"/>
+                    <stop offset="50%" stop-color="#334155"/>
+                    <stop offset="100%" stop-color="#020617"/>
+                  </linearGradient>
+                  <linearGradient id="caliperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#ef4444"/>
+                    <stop offset="100%" stop-color="#991b1b"/>
+                  </linearGradient>
+                  <radialGradient id="interiorLight" cx="50%" cy="40%" r="60%">
+                    <stop offset="0%" stop-color="#f8fafc"/>
+                    <stop offset="100%" stop-color="#334155"/>
+                  </radialGradient>
+                  <linearGradient id="glassSheen" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35"/>
+                    <stop offset="35%" stop-color="#ffffff" stop-opacity="0.10"/>
+                    <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
+                    <stop offset="100%" stop-color="#00d2ff" stop-opacity="0.08"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Ground Shadow -->
+                <ellipse cx="450" cy="370" rx="420" ry="24" fill="#000000" opacity="0.8" />
+
+                <!-- Car Body Silhouette -->
+                <path d="M 70 310 L 100 310 A 55 55 0 0 1 210 310 L 660 310 A 55 55 0 0 1 770 310 L 840 310 Q 855 305 850 270 Q 840 230 800 220 L 700 185 L 570 115 Q 530 100 430 100 L 290 100 Q 240 100 200 150 L 110 215 Q 60 235 50 275 Q 45 305 70 310 Z" fill="url(#carPaint)" stroke="#1e293b" stroke-width="3"/>
+
+                <!-- Character Body Lines -->
+                <path d="M 100 225 Q 400 220 800 215" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.6"/>
+                <path d="M 120 245 Q 450 240 780 235" fill="none" stroke="#334155" stroke-width="2" opacity="0.5"/>
+                
+                <!-- Door Seams -->
+                <path d="M 425 110 L 420 308" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+                <path d="M 225 160 L 210 308" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+                <path d="M 610 135 Q 640 215 640 308" fill="none" stroke="#1e293b" stroke-width="2.5"/>
+
+                <!-- Handles -->
+                <rect x="365" y="230" width="32" height="8" rx="4" fill="#1e293b" stroke="#94a3b8" stroke-width="1"/>
+                <rect x="555" y="228" width="32" height="8" rx="4" fill="#1e293b" stroke="#94a3b8" stroke-width="1"/>
+
+                <!-- Side Mirror -->
+                <path d="M 220 175 Q 200 160 180 170 Q 185 190 210 195 Z" fill="#0f172a" stroke="#000000" stroke-width="2"/>
+
+                <!-- Headlight and Taillight -->
+                <path d="M 60 255 Q 80 245 110 250 L 90 275 Z" fill="#e0f7fa" stroke="#80deea" stroke-width="1.5" opacity="0.9"/>
+                <path d="M 840 255 Q 820 245 790 250 L 810 275 Z" fill="#dc2626" stroke="#ef4444" stroke-width="1.5" opacity="0.95"/>
+
+                <!-- Outer Window Frame Trim -->
+                <path d="M 230 165 L 295 110 L 420 110 L 570 120 Q 600 135 635 170 L 630 200 L 230 200 Z" fill="#020617" stroke="#0f172a" stroke-width="4"/>
+
+                <!-- Interior Background seen through glass -->
+                <g id="car-interior">
+                  <rect x="235" y="112" width="180" height="85" fill="url(#interiorLight)"/>
+                  <path d="M 320 135 Q 335 135 335 150 L 335 195 L 305 195 L 305 150 Q 305 135 320 135 Z" fill="#1e293b"/>
+                  <circle cx="320" cy="127" r="10" fill="#0f172a"/>
+                  <ellipse cx="270" cy="170" rx="8" ry="16" fill="none" stroke="#0f172a" stroke-width="4" transform="rotate(15 270 170)"/>
+
+                  <rect x="430" y="112" width="195" height="85" fill="url(#interiorLight)"/>
+                  <path d="M 515 140 Q 530 140 530 155 L 530 195 L 500 195 L 500 155 Q 500 140 515 140 Z" fill="#1e293b"/>
+                  <circle cx="515" cy="133" r="9" fill="#0f172a"/>
+                  <path d="M 570 150 Q 582 150 582 165 L 582 195 L 558 195 L 558 165 Q 558 150 570 150 Z" fill="#1e293b"/>
+                  <circle cx="570" cy="143" r="8" fill="#0f172a"/>
+                </g>
+
+                <!-- Dynamic Front Driver Window Tint Layer -->
+                <path id="front-tint-layer" onclick="selectWindowTarget('front')" d="M 235 195 L 290 115 L 418 115 L 418 195 Z" fill="#000000" style="opacity: 0.70; transition: opacity 0.25s ease-in-out; cursor: pointer;"/>
+                <path d="M 235 195 L 290 115 L 418 115 L 418 195 Z" fill="url(#glassSheen)" pointer-events="none"/>
+                
+                <!-- B-Pillar Separator -->
+                <rect x="418" y="110" width="8" height="90" fill="#020617" stroke="#0f172a" stroke-width="1"/>
+
+                <!-- Dynamic Rear Passenger Window Tint Layer -->
+                <path id="rear-tint-layer" onclick="selectWindowTarget('rear')" d="M 426 115 L 565 122 Q 590 135 625 170 L 620 195 L 426 195 Z" fill="#000000" style="opacity: 0.85; transition: opacity 0.25s ease-in-out; cursor: pointer;"/>
+                <path d="M 426 115 L 565 122 Q 590 135 625 170 L 620 195 L 426 195 Z" fill="url(#glassSheen)" pointer-events="none"/>
+
+                <!-- Wheels -->
+                <g transform="translate(155, 310)">
+                  <circle cx="0" cy="0" r="55" fill="#020617" stroke="#1e293b" stroke-width="4"/>
+                  <circle cx="0" cy="0" r="38" fill="url(#rimGrad)" stroke="#475569" stroke-width="2"/>
+                  <rect x="-16" y="-26" width="12" height="20" rx="3" fill="url(#caliperGrad)"/>
+                  <circle cx="0" cy="0" r="12" fill="#0f172a" stroke="#FFD000" stroke-width="1.5"/>
+                  <line x1="0" y1="-12" x2="0" y2="-36" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+                  <line x1="11" y1="-4" x2="34" y2="-12" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+                  <line x1="7" y1="10" x2="21" y2="30" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+                  <line x1="-7" y1="10" x2="-21" y2="30" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+                  <line x1="-11" y1="-4" x2="-34" y2="-12" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+                </g>
+
+                <g transform="translate(715, 310)">
+                  <circle cx="0" cy="0" r="55" fill="#020617" stroke="#1e293b" stroke-width="4"/>
+                  <circle cx="0" cy="0" r="38" fill="url(#rimGrad)" stroke="#475569" stroke-width="2"/>
+                  <rect x="-16" y="-26" width="12" height="20" rx="3" fill="url(#caliperGrad)"/>
+                  <circle cx="0" cy="0" r="12" fill="#0f172a" stroke="#FFD000" stroke-width="1.5"/>
+                  <line x1="0" y1="-12" x2="0" y2="-36" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+                  <line x1="11" y1="-4" x2="34" y2="-12" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+                  <line x1="7" y1="10" x2="21" y2="30" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+                  <line x1="-7" y1="10" x2="-21" y2="30" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+                  <line x1="-11" y1="-4" x2="-34" y2="-12" stroke="#cbd5e1" stroke-width="6" stroke-linecap="round"/>
+                </g>
+
+                <!-- Floating Indicator Callout Badges -->
+                <g id="svg-badge-front" transform="translate(325, 75)" text-anchor="middle" cursor="pointer" onclick="selectWindowTarget('front')">
+                  <rect x="-65" y="-16" width="130" height="26" rx="6" fill="#000000" stroke="#FFD000" stroke-width="1.8"/>
+                  <text x="0" y="2" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="13" font-weight="900" font-style="italic">FRONT: <tspan id="svg-front-vlt">30%</tspan></text>
+                  <path d="M 0 10 L 0 35" stroke="#FFD000" stroke-width="2" stroke-dasharray="3 3"/>
+                </g>
+
+                <g id="svg-badge-rear" transform="translate(525, 75)" text-anchor="middle" cursor="pointer" onclick="selectWindowTarget('rear')">
+                  <rect x="-65" y="-16" width="130" height="26" rx="6" fill="#000000" stroke="#FFD000" stroke-width="1.8"/>
+                  <text x="0" y="2" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="13" font-weight="900" font-style="italic">REAR: <tspan id="svg-rear-vlt">15%</tspan></text>
+                  <path d="M 0 10 L 0 35" stroke="#FFD000" stroke-width="2" stroke-dasharray="3 3"/>
+                </g>
+              </svg>
+            </div>
+
+            <!-- Hint below car -->
             <p class="text-xs text-zinc-400 mt-3 text-center">
-              *Florida Law: Front side windows minimum 28% VLT. Back &amp; rear windows 15% VLT.
+              💡 Click either window or use the controls below to compare shades on the vehicle
             </p>
           </div>
 
-          <div class="lg:col-span-6 space-y-6">
+          <!-- Right: Interactive Controls & Legal Specifications -->
+          <div class="lg:col-span-6 space-y-5">
+            
+            <!-- Window Selection Target Modes -->
             <div>
-              <label class="block text-xs uppercase font-racing tracking-wider text-zinc-400 mb-2">Select Preset Shade Percentage:</label>
-              <div class="grid grid-cols-5 gap-2">
-                <button type="button" onclick="setShade(5)" class="shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-base text-white transition-colors border border-zinc-700" data-pct="5">5%</button>
-                <button type="button" onclick="setShade(15)" class="shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-base text-white transition-colors border border-zinc-700" data-pct="15">15%</button>
-                <button type="button" onclick="setShade(30)" class="shade-btn py-2.5 rounded bg-brand-yellow text-black font-racing font-bold text-base transition-colors border border-brand-yellow" data-pct="30">30%</button>
-                <button type="button" onclick="setShade(50)" class="shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-base text-white transition-colors border border-zinc-700" data-pct="50">50%</button>
-                <button type="button" onclick="setShade(70)" class="shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-base text-white transition-colors border border-zinc-700" data-pct="70">70%</button>
+              <span class="block text-xs uppercase font-racing tracking-wider text-zinc-400 mb-2">Adjusting Window:</span>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <button type="button" onclick="selectWindowTarget('both')" id="target-btn-both" class="py-2 px-2 rounded-lg bg-brand-yellow text-black font-racing font-bold text-xs sm:text-sm text-center transition-all border border-brand-yellow">BOTH WINDOWS</button>
+                <button type="button" onclick="selectWindowTarget('front')" id="target-btn-front" class="py-2 px-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-racing font-bold text-xs sm:text-sm text-center transition-all border border-zinc-700">DRIVER ONLY</button>
+                <button type="button" onclick="selectWindowTarget('rear')" id="target-btn-rear" class="py-2 px-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-racing font-bold text-xs sm:text-sm text-center transition-all border border-zinc-700">REAR ONLY</button>
+                <button type="button" onclick="setFLLegalCombo()" id="target-btn-combo" class="py-2 px-2 rounded-lg bg-blue-900/60 hover:bg-blue-800 text-blue-200 border border-blue-500/50 font-racing font-bold text-xs sm:text-sm text-center transition-all">⭐ FL LEGAL (30/15)</button>
               </div>
             </div>
 
-            <div class="space-y-2">
-              <div class="flex justify-between text-sm font-racing text-zinc-400">
+            <!-- Shade Preset Buttons: 5, 15, 30, 50, 70 -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label class="block text-xs uppercase font-racing tracking-wider text-zinc-400">Select Tint Darkness (VLT%):</label>
+                <span id="active-target-hint" class="text-xs font-racing text-brand-yellow uppercase">Target: Both Windows</span>
+              </div>
+              <div class="grid grid-cols-5 gap-2">
+                <button type="button" onclick="setPresetShade(5)" class="shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-sm text-white transition-colors border border-zinc-700" data-pct="5">5%<span class="block text-[10px] font-normal">LIMO</span></button>
+                <button type="button" onclick="setPresetShade(15)" class="shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-sm text-white transition-colors border border-zinc-700" data-pct="15">15%<span class="block text-[10px] font-normal">DARK</span></button>
+                <button type="button" onclick="setPresetShade(30)" class="shade-btn py-2.5 rounded bg-brand-yellow text-black font-racing font-bold text-sm transition-colors border border-brand-yellow" data-pct="30">30%<span class="block text-[10px] font-normal">FL FRONT</span></button>
+                <button type="button" onclick="setPresetShade(50)" class="shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-sm text-white transition-colors border border-zinc-700" data-pct="50">50%<span class="block text-[10px] font-normal">MEDIUM</span></button>
+                <button type="button" onclick="setPresetShade(70)" class="shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-sm text-white transition-colors border border-zinc-700" data-pct="70">70%<span class="block text-[10px] font-normal">CLEAR IR</span></button>
+              </div>
+            </div>
+
+            <!-- Dynamic Slider -->
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-racing text-zinc-400">
                 <span>DARKEST (5% LIMO TINT)</span>
                 <span>LIGHTEST (70% AIR CERAMIC)</span>
               </div>
               <input id="shade-slider" type="range" min="5" max="70" value="30" step="5" class="w-full h-3 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-brand-yellow" aria-label="Tint Shade Slider">
             </div>
 
-            <div class="grid grid-cols-3 gap-3 pt-2 text-center">
+            <!-- Florida Legal Compliance Status Box -->
+            <div id="compliance-alert" class="p-3.5 rounded-xl bg-zinc-900 border border-emerald-500/50 flex items-start gap-3">
+              <div id="compliance-icon" class="text-emerald-400 text-xl font-bold">✓</div>
+              <div>
+                <div id="compliance-title" class="font-racing font-bold text-sm text-emerald-400 tracking-wide">100% FLORIDA LEGAL SETUP</div>
+                <div id="compliance-desc" class="text-xs text-zinc-300 mt-0.5">Front driver window is at or above 28% VLT legal requirement. Rear windows meet or exceed Florida law.</div>
+              </div>
+            </div>
+
+            <!-- Ceramic Specs Matrix -->
+            <div class="grid grid-cols-3 gap-3 text-center">
               <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800">
                 <span class="block text-2xl font-racing font-black text-brand-yellow" id="spec-uv">99.9%</span>
                 <span class="text-xs uppercase font-racing text-zinc-400">UV Protection</span>
@@ -167,9 +325,10 @@
               </div>
             </div>
 
-            <div class="pt-2">
-              <a href="contact.html?shade=30" id="simulator-quote-btn" class="w-full flex items-center justify-center gap-2 bg-brand-yellow hover:bg-brand-yellowHover text-black font-racing font-extrabold text-xl py-3.5 rounded-xl transition-all shadow-lg">
-                <span>GET QUOTE FOR 30% CERAMIC</span>
+            <!-- Action CTA Button -->
+            <div class="pt-1">
+              <a href="contact.html?front=30&amp;rear=15" id="simulator-quote-btn" class="w-full flex items-center justify-center gap-2 bg-brand-yellow hover:bg-brand-yellowHover text-black font-racing font-extrabold text-xl py-3.5 rounded-xl transition-all shadow-lg shadow-brand-yellow/20">
+                <span>GET QUOTE FOR 30% FRONT / 15% REAR</span>
                 <svg class="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
               </a>
             </div>
@@ -253,7 +412,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-zinc-800">
         <div class="md:col-span-2 space-y-3">
-          <img src="images/hero_logo@2x.png" alt="SolarShield" class="h-14 mx-auto sm:mx-0">
+          <img src="images/solar_shield_nav_logo.svg" alt="SolarShield Mobile Tinting" class="h-12 mx-auto sm:mx-0">
           <p class="text-zinc-400 text-sm max-w-sm">Professional mobile window tinting serving Citrus, Hernando, and Pasco counties.</p>
         </div>
         <div>
@@ -283,45 +442,187 @@
   </div>
 
   <script>
-    const shadeData = {
-      5: { name: 'LIMO TINT (MAX PRIVACY)', opacity: 0.95, uv: '99.9%', heat: '94%', glare: '95%' },
-      15: { name: 'DARK PRIVACY (FACTORY REAR MATCH)', opacity: 0.85, uv: '99.9%', heat: '92%', glare: '88%' },
-      30: { name: 'FLORIDA LEGAL (FRONT WINDOWS)', opacity: 0.70, uv: '99.9%', heat: '89%', glare: '70%' },
-      50: { name: 'SUBTLE LIGHT HEAT SHIELD', opacity: 0.50, uv: '99.9%', heat: '83%', glare: '45%' },
-      70: { name: 'CLEAR CERAMIC WINDSHIELD SHIELD', opacity: 0.30, uv: '99.9%', heat: '80%', glare: '20%' }
-    };
-    const slider = document.getElementById('shade-slider');
-    const glassOverlay = document.getElementById('tint-glass-overlay');
-    const pctDisplay = document.getElementById('simulator-percentage-display');
-    const shadeNameDisplay = document.getElementById('simulator-shade-name');
-    const specUv = document.getElementById('spec-uv');
-    const specHeat = document.getElementById('spec-heat');
-    const specGlare = document.getElementById('spec-glare');
-    const simQuoteBtn = document.getElementById('simulator-quote-btn');
+    // State
+    let frontPct = 30;
+    let rearPct = 15;
+    let currentTarget = 'both'; // 'both', 'front', 'rear'
 
-    function applyShade(pct) {
-      const data = shadeData[pct] || { name: pct + '% CUSTOM SHADE', opacity: (100 - pct) / 100, uv: '99.9%', heat: '85%', glare: (100 - pct) + '%' };
-      glassOverlay.style.opacity = data.opacity;
-      pctDisplay.textContent = pct + '%';
-      shadeNameDisplay.textContent = data.name;
-      specUv.textContent = data.uv;
-      specHeat.textContent = data.heat;
-      specGlare.textContent = data.glare;
-      simQuoteBtn.querySelector('span').textContent = `GET QUOTE FOR ${pct}% CERAMIC`;
-      simQuoteBtn.href = `contact.html?shade=${pct}`;
+    const shadeSpecs = {
+      5: { name: '5% LIMO TINT', opacity: 0.94, uv: '99.9%', heat: '95%', glare: '95%' },
+      15: { name: '15% DARK PRIVACY', opacity: 0.85, uv: '99.9%', heat: '92%', glare: '88%' },
+      30: { name: '30% FLORIDA LEGAL FRONT', opacity: 0.70, uv: '99.9%', heat: '89%', glare: '70%' },
+      50: { name: '50% MEDIUM HEAT SHIELD', opacity: 0.50, uv: '99.9%', heat: '83%', glare: '45%' },
+      70: { name: '70% CLEAR AIR CERAMIC', opacity: 0.28, uv: '99.9%', heat: '80%', glare: '20%' }
+    };
+
+    function getOpacityForVlt(vlt) {
+      if (shadeSpecs[vlt]) return shadeSpecs[vlt].opacity;
+      return Math.max(0.20, Math.min(0.96, 0.98 - (vlt / 100) * 0.94));
+    }
+
+    function updateVehicleDisplay() {
+      // 1. Update SVG window opacity
+      const frontLayer = document.getElementById('front-tint-layer');
+      const rearLayer = document.getElementById('rear-tint-layer');
+      if (frontLayer) frontLayer.style.opacity = getOpacityForVlt(frontPct);
+      if (rearLayer) rearLayer.style.opacity = getOpacityForVlt(rearPct);
+
+      // 2. Update SVG callout badges
+      const svgFront = document.getElementById('svg-front-vlt');
+      const svgRear = document.getElementById('svg-rear-vlt');
+      if (svgFront) svgFront.textContent = frontPct + '%';
+      if (svgRear) svgRear.textContent = rearPct + '%';
+
+      // 3. Update pill badges above vehicle
+      const lblFront = document.getElementById('label-front-pct');
+      const lblRear = document.getElementById('label-rear-pct');
+      if (lblFront) lblFront.textContent = frontPct + '%';
+      if (lblRear) lblRear.textContent = rearPct + '%';
+
+      // 4. Update slider value based on active target
+      const slider = document.getElementById('shade-slider');
+      if (slider) {
+        if (currentTarget === 'front') slider.value = frontPct;
+        else if (currentTarget === 'rear') slider.value = rearPct;
+        else slider.value = frontPct;
+      }
+
+      // 5. Update Florida Legal Compliance Status
+      const alertBox = document.getElementById('compliance-alert');
+      const alertIcon = document.getElementById('compliance-icon');
+      const alertTitle = document.getElementById('compliance-title');
+      const alertDesc = document.getElementById('compliance-desc');
+
+      if (frontPct < 28) {
+        alertBox.className = 'p-3.5 rounded-xl bg-amber-950/40 border border-amber-500/60 flex items-start gap-3';
+        alertIcon.className = 'text-amber-400 text-xl font-bold';
+        alertIcon.textContent = '⚠️';
+        alertTitle.className = 'font-racing font-bold text-sm text-amber-300 tracking-wide';
+        alertTitle.textContent = `FRONT ${frontPct}% IS BELOW FLORIDA LEGAL MINIMUM (28%)`;
+        alertDesc.textContent = `Front driver windows require 28% VLT min in FL. 5% & 15% front shades are popular for off-road/show cars, out-of-state registered vehicles, or medical exemption permits.`;
+      } else {
+        alertBox.className = 'p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/50 flex items-start gap-3';
+        alertIcon.className = 'text-emerald-400 text-xl font-bold';
+        alertIcon.textContent = '✓';
+        alertTitle.className = 'font-racing font-bold text-sm text-emerald-400 tracking-wide';
+        alertTitle.textContent = '100% FLORIDA HIGHWAY LEGAL SETUP';
+        alertDesc.textContent = `Driver window (${frontPct}% VLT) meets Florida's 28% legal requirement. Rear windows (${rearPct}% VLT) comply with Florida's 15% car limit (and any darkness on SUVs/trucks).`;
+      }
+
+      // 6. Update Performance Specs
+      const primaryVlt = (currentTarget === 'rear') ? rearPct : frontPct;
+      const specUv = document.getElementById('spec-uv');
+      const specHeat = document.getElementById('spec-heat');
+      const specGlare = document.getElementById('spec-glare');
+      if (specUv) specUv.textContent = '99.9%';
+      if (specHeat) specHeat.textContent = Math.round(80 + (70 - primaryVlt) * 0.22) + '%';
+      if (specGlare) specGlare.textContent = Math.round(100 - primaryVlt * 0.95) + '%';
+
+      // 7. Update Quote CTA Button
+      const quoteBtn = document.getElementById('simulator-quote-btn');
+      if (quoteBtn) {
+        quoteBtn.href = `contact.html?front=${frontPct}&rear=${rearPct}`;
+        quoteBtn.querySelector('span').textContent = `GET QUOTE FOR ${frontPct}% FRONT / ${rearPct}% REAR`;
+      }
+
+      // 8. Highlight Active Preset Button
       document.querySelectorAll('.shade-btn').forEach(btn => {
-        btn.className = (parseInt(btn.getAttribute('data-pct')) === parseInt(pct)) ?
-          'shade-btn py-2.5 rounded bg-brand-yellow text-black font-racing font-bold text-sm border border-brand-yellow' :
-          'shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-sm text-white border border-zinc-700';
+        const btnPct = parseInt(btn.getAttribute('data-pct'));
+        const activePct = (currentTarget === 'rear') ? rearPct : frontPct;
+        if (btnPct === activePct) {
+          btn.className = 'shade-btn py-2.5 rounded bg-brand-yellow text-black font-racing font-bold text-sm border border-brand-yellow shadow-md shadow-brand-yellow/30';
+        } else {
+          btn.className = 'shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-sm text-white transition-colors border border-zinc-700';
+        }
       });
     }
-    function setShade(pct) { slider.value = pct; applyShade(pct); }
-    slider.addEventListener('input', (e) => applyShade(parseInt(e.target.value)));
-    applyShade(30);
 
+    function selectWindowTarget(target) {
+      currentTarget = target;
+      
+      // Update target button styles
+      const targets = ['both', 'front', 'rear'];
+      targets.forEach(t => {
+        const btn = document.getElementById(`target-btn-${t}`);
+        if (btn) {
+          if (t === target) {
+            btn.className = 'py-2 px-2 rounded-lg bg-brand-yellow text-black font-racing font-bold text-xs sm:text-sm text-center border border-brand-yellow shadow';
+          } else {
+            btn.className = 'py-2 px-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-racing font-bold text-xs sm:text-sm text-center border border-zinc-700';
+          }
+        }
+      });
+
+      // Update pill border highlight
+      const pillFront = document.getElementById('pill-front-window');
+      const pillRear = document.getElementById('pill-rear-window');
+      if (pillFront && pillRear) {
+        if (target === 'front') {
+          pillFront.classList.add('border-brand-yellow', 'ring-2', 'ring-brand-yellow/50');
+          pillRear.classList.remove('border-brand-yellow', 'ring-2', 'ring-brand-yellow/50');
+        } else if (target === 'rear') {
+          pillRear.classList.add('border-brand-yellow', 'ring-2', 'ring-brand-yellow/50');
+          pillFront.classList.remove('border-brand-yellow', 'ring-2', 'ring-brand-yellow/50');
+        } else {
+          pillFront.classList.remove('ring-2', 'ring-brand-yellow/50');
+          pillRear.classList.remove('ring-2', 'ring-brand-yellow/50');
+        }
+      }
+
+      const hint = document.getElementById('active-target-hint');
+      if (hint) {
+        if (target === 'both') hint.textContent = 'Target: Both Windows (Front & Rear)';
+        else if (target === 'front') hint.textContent = 'Target: Driver Window (Front Only)';
+        else if (target === 'rear') hint.textContent = 'Target: Rear Windows Only';
+      }
+
+      updateVehicleDisplay();
+    }
+
+    function setPresetShade(pct) {
+      if (currentTarget === 'both') {
+        frontPct = pct;
+        rearPct = pct;
+      } else if (currentTarget === 'front') {
+        frontPct = pct;
+      } else if (currentTarget === 'rear') {
+        rearPct = pct;
+      }
+      updateVehicleDisplay();
+    }
+
+    function setFLLegalCombo() {
+      frontPct = 30;
+      rearPct = 15;
+      currentTarget = 'both';
+      selectWindowTarget('both');
+    }
+
+    const slider = document.getElementById('shade-slider');
+    if (slider) {
+      slider.addEventListener('input', (e) => {
+        const val = parseInt(e.target.value);
+        if (currentTarget === 'both') {
+          frontPct = val;
+          rearPct = val;
+        } else if (currentTarget === 'front') {
+          frontPct = val;
+        } else if (currentTarget === 'rear') {
+          rearPct = val;
+        }
+        updateVehicleDisplay();
+      });
+    }
+
+    // Initialize with FL standard: Front 30%, Rear 15%
+    updateVehicleDisplay();
+
+    // Mobile menu toggle
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileNav = document.getElementById('mobile-nav');
-    mobileBtn.addEventListener('click', () => { mobileNav.classList.toggle('hidden'); });
+    if (mobileBtn && mobileNav) {
+      mobileBtn.addEventListener('click', () => { mobileNav.classList.toggle('hidden'); });
+    }
   </script>
 </body>
 </html>
