@@ -108,6 +108,9 @@
 
         <!-- Header CTA Buttons -->
         <div class="hidden lg:flex items-center gap-4">
+          <a href="tel:7275988468" class="text-right group">
+            <span class="block text-xs uppercase tracking-widest text-brand-yellow font-racing">Direct Mobile Dispatch</span>
+            <span class="text-lg font-racing font-bold text-white group-hover:text-brand-yellow transition-colors">(727) 598-TINT</span>
           <a href="tel:7275988468" class="text-right group flex items-center gap-2.5">
             <div class="w-9 h-9 rounded-full bg-brand-yellow/15 border border-brand-yellow/40 flex items-center justify-center text-brand-yellow group-hover:bg-brand-yellow group-hover:text-black transition-colors">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
@@ -497,11 +500,11 @@
               </button>
             </div>
 
-            <!-- Vehicle Stage with Real Studio Vehicle Profile -->
-            <div class="relative w-full rounded-2xl overflow-hidden border-2 border-zinc-800 bg-[#07090e] p-2 sm:p-3 flex items-center justify-center shadow-2xl">
+            <!-- Vehicle Stage with Real Studio Vehicle Profile (Zoomed in on Cabin & Windows) -->
+            <div class="relative w-full rounded-2xl overflow-hidden border-2 border-zinc-800 bg-[#07090e] p-2 sm:p-4 flex items-center justify-center shadow-2xl">
               
-              <!-- Real Photographic Vehicle with Interactive Window Tint Overlays -->
-              <svg id="car-tint-svg" class="w-full h-auto drop-shadow-2xl relative z-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1376 768">
+              <!-- Real Photographic Vehicle with Interactive Window Tint Overlays (Zoomed viewBox) -->
+              <svg id="car-tint-svg" class="w-full h-auto drop-shadow-2xl relative z-10" xmlns="http://www.w3.org/2000/svg" viewBox="400 120 760 380">
                 <defs>
                   <!-- Glass Sheen Linear Gradients -->
                   <linearGradient id="glassSheenFront" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -520,46 +523,46 @@
                   </linearGradient>
                 </defs>
 
-                <!-- 1. Real Studio Car Photograph Base -->
+                <!-- 1. Real Studio Car Photograph Base (Native 1376x768, zoomed into 400 120 760 380) -->
                 <image href="images/tint_car_profile.jpg" x="0" y="0" width="1376" height="768" />
 
                 <!-- 2. Interactive Front Driver Window Layer -->
                 <g class="cursor-pointer" onclick="selectWindowTarget('front')" title="Click to adjust Front Driver Tint">
                   <!-- Multiply Tint Layer (Darkness changes with VLT%) -->
-                  <polygon id="front-tint-layer" points="552,344 568,288 590,274 615,262 645,251 680,243 720,237 763,235 763,344" 
+                  <polygon id="front-tint-layer" points="562,344 568,305 585,290 605,280 625,272 650,264 680,258 710,254 742,252 742,344" 
                            fill="#050608" opacity="0.70" style="mix-blend-mode: multiply; transition: opacity 0.25s ease;"/>
                   <!-- Real Glass Sheen Reflection -->
-                  <polygon points="552,344 568,288 590,274 615,262 645,251 680,243 720,237 763,235 763,344" 
-                           fill="url(#glassSheenFront)" opacity="0.45" pointer-events="none"/>
-                  <!-- Active Target Indicator Ring/Border -->
-                  <polygon id="front-window-border" points="552,344 568,288 590,274 615,262 645,251 680,243 720,237 763,235 763,344" 
-                           fill="none" stroke="#FFD000" stroke-width="3" opacity="1" style="transition: opacity 0.25s ease;"/>
+                  <polygon points="562,344 568,305 585,290 605,280 625,272 650,264 680,258 710,254 742,252 742,344" 
+                           fill="url(#glassSheenFront)" opacity="0.40" pointer-events="none"/>
+                  <!-- Active Target Indicator Border -->
+                  <polygon id="front-window-border" points="562,344 568,305 585,290 605,280 625,272 650,264 680,258 710,254 742,252 742,344" 
+                           fill="none" stroke="#FFD000" stroke-width="2.5" opacity="1" style="transition: opacity 0.25s ease;"/>
                 </g>
 
                 <!-- 3. Interactive Rear Passenger & Quarter Window Layer -->
                 <g class="cursor-pointer" onclick="selectWindowTarget('rear')" title="Click to adjust Rear Passenger Tint">
                   <!-- Multiply Tint Layer (Darkness changes with VLT%) -->
-                  <polygon id="rear-tint-layer" points="788,344 788,235 820,234 860,236 900,239 935,243 965,256 990,280 1012,320 1018,344" 
+                  <polygon id="rear-tint-layer" points="784,344 784,252 810,252 840,252 870,254 900,257 930,263 960,272 985,284 1005,300 1018,325 1020,344" 
                            fill="#050608" opacity="0.85" style="mix-blend-mode: multiply; transition: opacity 0.25s ease;"/>
                   <!-- Real Glass Sheen Reflection -->
-                  <polygon points="788,344 788,235 820,234 860,236 900,239 935,243 965,256 990,280 1012,320 1018,344" 
-                           fill="url(#glassSheenRear)" opacity="0.45" pointer-events="none"/>
-                  <!-- Active Target Indicator Ring/Border -->
-                  <polygon id="rear-window-border" points="788,344 788,235 820,234 860,236 900,239 935,243 965,256 990,280 1012,320 1018,344" 
-                           fill="none" stroke="#FFD000" stroke-width="3" opacity="1" style="transition: opacity 0.25s ease;"/>
+                  <polygon points="784,344 784,252 810,252 840,252 870,254 900,257 930,263 960,272 985,284 1005,300 1018,325 1020,344" 
+                           fill="url(#glassSheenRear)" opacity="0.40" pointer-events="none"/>
+                  <!-- Active Target Indicator Border -->
+                  <polygon id="rear-window-border" points="784,344 784,252 810,252 840,252 870,254 900,257 930,263 960,272 985,284 1005,300 1018,325 1020,344" 
+                           fill="none" stroke="#FFD000" stroke-width="2.5" opacity="1" style="transition: opacity 0.25s ease;"/>
                 </g>
 
-                <!-- Floating Callout Badges above Real Car -->
-                <g id="svg-badge-front" transform="translate(660, 160)" text-anchor="middle" cursor="pointer" onclick="selectWindowTarget('front')">
-                  <rect x="-75" y="-18" width="150" height="34" rx="8" fill="#000000" stroke="#FFD000" stroke-width="2.5" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.8))"/>
+                <!-- Floating Callout Badges above Zoomed Real Car -->
+                <g id="svg-badge-front" transform="translate(650, 160)" text-anchor="middle" cursor="pointer" onclick="selectWindowTarget('front')">
+                  <rect x="-70" y="-18" width="140" height="34" rx="8" fill="#000000" stroke="#FFD000" stroke-width="2" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.8))"/>
                   <text x="0" y="4" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="16" font-weight="900" font-style="italic">FRONT: <tspan id="svg-front-vlt">30%</tspan></text>
-                  <path d="M 0 16 L 0 74" stroke="#FFD000" stroke-width="2.5" stroke-dasharray="4 4"/>
+                  <path d="M 0 16 L 0 90" stroke="#FFD000" stroke-width="2" stroke-dasharray="4 4"/>
                 </g>
 
                 <g id="svg-badge-rear" transform="translate(900, 160)" text-anchor="middle" cursor="pointer" onclick="selectWindowTarget('rear')">
-                  <rect x="-75" y="-18" width="150" height="34" rx="8" fill="#000000" stroke="#FFD000" stroke-width="2.5" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.8))"/>
+                  <rect x="-70" y="-18" width="140" height="34" rx="8" fill="#000000" stroke="#FFD000" stroke-width="2" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.8))"/>
                   <text x="0" y="4" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="16" font-weight="900" font-style="italic">REAR: <tspan id="svg-rear-vlt">15%</tspan></text>
-                  <path d="M 0 16 L 0 74" stroke="#FFD000" stroke-width="2.5" stroke-dasharray="4 4"/>
+                  <path d="M 0 16 L 0 90" stroke="#FFD000" stroke-width="2" stroke-dasharray="4 4"/>
                 </g>
               </svg>
             </div>
@@ -865,6 +868,9 @@
 
         <!-- Right Column: Map Graphic (Matching Mockup with Neon County Highlight) -->
         <div class="lg:col-span-6 flex justify-center">
+          <div class="relative w-full max-w-lg bg-zinc-950/80 border-2 border-brand-yellow/40 rounded-3xl p-4 shadow-2xl overflow-hidden group">
+            <div class="absolute inset-0 bg-brand-yellow/5 opacity-40 group-hover:opacity-100 transition-opacity"></div>
+            <img src="images/service_map@2x.png" alt="Service Area Map - Citrus, Hernando, Pasco Counties" class="w-full h-auto object-contain rounded-2xl border border-zinc-800 filter drop-shadow-[0_0_20px_rgba(255,208,0,0.2)]">
           <div class="relative w-full max-w-lg bg-zinc-950/80 border-2 border-brand-yellow/40 rounded-3xl p-3 sm:p-4 shadow-2xl overflow-hidden group">
             <div class="rounded-2xl overflow-hidden border border-zinc-800 bg-[#040812]">
               <img src="images/service_area_animated.svg" alt="SolarShield Tri-County Service Area Radar Map" class="w-full h-auto object-contain">
@@ -873,10 +879,12 @@
             <!-- Map Tag & Interactive Link -->
             <div class="mt-3 flex flex-col sm:flex-row items-center justify-between gap-2 px-1">
               <span class="inline-flex items-center gap-2 bg-black/90 px-3 py-1.5 rounded-full border border-brand-yellow text-brand-yellow font-racing text-xs font-bold tracking-widest">
+                <span class="w-2 h-2 rounded-full bg-brand-yellow animate-ping"></span>
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                 FULL MOBILE DISPATCH
               </span>
               <a href="service-area.html" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-racing font-bold text-white hover:text-brand-yellow transition-colors underline underline-offset-4">
+                <span>VIEW INTERACTIVE MAP</span>
                 <span>VIEW SERVICE AREA</span>
                 <svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
               </a>
