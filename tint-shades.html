@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tint Shades & Simulator | SolarShield Mobile Tinting | Florida Tint Laws</title>
+  <meta name="description" content="Interactive Florida window tint simulator. Compare 5%, 15%, 20%, 35%, 50%, and 70% VLT ceramic tint percentages and check Florida tint legal limits.">
+  <link rel="icon" type="image/png" href="images/header_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              yellow: '#FFD000',
+              yellowHover: '#E5BC00',
+              blue: '#0D62D9',
+              blueDark: '#083B85',
+              dark: '#0A0C10'
+            }
+          },
+          fontFamily: {
+            display: ['"Barlow Condensed"', 'sans-serif'],
+            body: ['"Inter"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .font-racing {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 26px;
+      width: 26px;
+      border-radius: 50%;
+      background: #FFD000;
+      cursor: pointer;
+      box-shadow: 0 0 14px rgba(255, 208, 0, 0.7);
+      border: 3px solid #000;
+    }
+  </style>
+</head>
+<body class="bg-zinc-950 text-white font-body antialiased selection:bg-brand-yellow selection:text-black">
+
+  <!-- ================= HEADER (TINT SHADES ACTIVE) ================= -->
+  <header class="sticky top-0 z-50 bg-black/95 backdrop-blur border-b border-white/10 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="images/hero_logo@2x.png" alt="SolarShield Mobile Tinting" class="h-14 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105">
+        </a>
+        <nav class="hidden md:flex items-center gap-7 font-racing text-xl tracking-wider">
+          <a href="index.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">HOME</a>
+          <a href="services.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">SERVICES</a>
+          <a href="tint-shades.html" class="text-brand-yellow font-extrabold pb-1 border-b-2 border-brand-yellow">TINT SHADES</a>
+          <a href="gallery.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">GALLERY</a>
+          <a href="service-area.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">SERVICE AREA</a>
+          <a href="contact.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">CONTACT</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="tel:7275988468" class="text-right group">
+            <span class="block text-xs uppercase tracking-widest text-brand-yellow font-racing">Direct Dispatch</span>
+            <span class="text-lg font-racing font-bold text-white group-hover:text-brand-yellow">(727) 598-TINT</span>
+          </a>
+          <a href="contact.html" class="bg-brand-yellow hover:bg-brand-yellowHover text-black font-racing font-extrabold text-xl px-6 py-2.5 rounded shadow-lg">
+            GET A QUOTE
+          </a>
+        </div>
+        <div class="flex items-center gap-3 md:hidden">
+          <a href="contact.html" class="bg-brand-yellow text-black font-racing font-bold text-base px-3 py-1.5 rounded">QUOTE</a>
+          <button id="mobile-menu-btn" type="button" class="p-2 text-white hover:text-brand-yellow">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-nav" class="hidden md:hidden bg-zinc-950 border-b border-white/10 px-6 py-6 font-racing text-2xl tracking-wider space-y-4">
+      <a href="index.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">HOME</a>
+      <a href="services.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">SERVICES</a>
+      <a href="tint-shades.html" class="block text-brand-yellow font-bold py-1 border-l-4 border-brand-yellow pl-2">TINT SHADES &amp; SIMULATOR</a>
+      <a href="gallery.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">GALLERY / RECENT WORK</a>
+      <a href="service-area.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">SERVICE AREA</a>
+      <a href="contact.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">CONTACT US</a>
+    </div>
+  </header>
+
+  <!-- ================= BANNER ================= -->
+  <section class="bg-black text-white py-14 border-b border-zinc-800 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="text-brand-yellow font-racing tracking-widest text-lg font-bold">VISIBLE LIGHT TRANSMISSION (VLT%) GUIDE</span>
+      <h1 class="font-racing font-black text-4xl sm:text-6xl text-white mt-1">
+        TINT PERCENTAGE <span class="text-brand-yellow">SIMULATOR</span>
+      </h1>
+      <p class="text-zinc-400 max-w-2xl mx-auto mt-2 text-base sm:text-lg">
+        Drag the interactive slider below to see how each window shade looks and performs in Florida sunlight.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= INTERACTIVE SIMULATOR ================= -->
+  <section class="py-16 bg-zinc-900 border-b border-zinc-800">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 sm:p-10 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-6 flex flex-col items-center">
+            <div class="relative w-full max-w-md h-60 sm:h-72 rounded-2xl overflow-hidden border-4 border-zinc-700 shadow-2xl bg-zinc-800 flex items-center justify-center">
+              <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('images/service_res_sunset.jpg');"></div>
+              <div id="tint-glass-overlay" class="absolute inset-0 bg-black transition-opacity duration-200" style="opacity: 0.65;"></div>
+              <div class="absolute inset-0 border-[14px] border-zinc-950 pointer-events-none rounded-xl"></div>
+              <div class="absolute top-4 right-4 bg-black/80 backdrop-blur px-3 py-1 rounded text-xs font-racing tracking-wider border border-white/20 text-white">
+                VIEW THROUGH TINTED GLASS
+              </div>
+              <div class="relative z-10 text-center">
+                <span id="simulator-percentage-display" class="font-racing font-black text-6xl sm:text-7xl text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">30%</span>
+                <span id="simulator-shade-name" class="block font-racing font-bold text-xl sm:text-2xl text-brand-yellow drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">FLORIDA LEGAL (FRONT WINDOWS)</span>
+              </div>
+            </div>
+            <p class="text-xs text-zinc-400 mt-3 text-center">
+              *Florida Law: Front side windows minimum 28% VLT. Back &amp; rear windows 15% VLT.
+            </p>
+          </div>
+
+          <div class="lg:col-span-6 space-y-6">
+            <div>
+              <label class="block text-xs uppercase font-racing tracking-wider text-zinc-400 mb-2">Select Preset Shade Percentage:</label>
+              <div class="grid grid-cols-5 gap-2">
+                <button type="button" onclick="setShade(5)" class="shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-base text-white transition-colors border border-zinc-700" data-pct="5">5%</button>
+                <button type="button" onclick="setShade(15)" class="shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-base text-white transition-colors border border-zinc-700" data-pct="15">15%</button>
+                <button type="button" onclick="setShade(30)" class="shade-btn py-2.5 rounded bg-brand-yellow text-black font-racing font-bold text-base transition-colors border border-brand-yellow" data-pct="30">30%</button>
+                <button type="button" onclick="setShade(50)" class="shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-base text-white transition-colors border border-zinc-700" data-pct="50">50%</button>
+                <button type="button" onclick="setShade(70)" class="shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-base text-white transition-colors border border-zinc-700" data-pct="70">70%</button>
+              </div>
+            </div>
+
+            <div class="space-y-2">
+              <div class="flex justify-between text-sm font-racing text-zinc-400">
+                <span>DARKEST (5% LIMO TINT)</span>
+                <span>LIGHTEST (70% AIR CERAMIC)</span>
+              </div>
+              <input id="shade-slider" type="range" min="5" max="70" value="30" step="5" class="w-full h-3 bg-zinc-800 rounded-lg appearance-none cursor-pointer accent-brand-yellow" aria-label="Tint Shade Slider">
+            </div>
+
+            <div class="grid grid-cols-3 gap-3 pt-2 text-center">
+              <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800">
+                <span class="block text-2xl font-racing font-black text-brand-yellow" id="spec-uv">99.9%</span>
+                <span class="text-xs uppercase font-racing text-zinc-400">UV Protection</span>
+              </div>
+              <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800">
+                <span class="block text-2xl font-racing font-black text-brand-yellow" id="spec-heat">89%</span>
+                <span class="text-xs uppercase font-racing text-zinc-400">IR Heat Rejection</span>
+              </div>
+              <div class="bg-zinc-900 p-3 rounded-xl border border-zinc-800">
+                <span class="block text-2xl font-racing font-black text-brand-yellow" id="spec-glare">70%</span>
+                <span class="text-xs uppercase font-racing text-zinc-400">Glare Reduction</span>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <a href="contact.html?shade=30" id="simulator-quote-btn" class="w-full flex items-center justify-center gap-2 bg-brand-yellow hover:bg-brand-yellowHover text-black font-racing font-extrabold text-xl py-3.5 rounded-xl transition-all shadow-lg">
+                <span>GET QUOTE FOR 30% CERAMIC</span>
+                <svg class="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FLORIDA TINT LAW GUIDE ================= -->
+  <section class="py-16 bg-black text-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="font-racing font-black text-3xl sm:text-5xl text-white">
+          FLORIDA WINDOW TINT <span class="text-brand-yellow">LAWS (2026)</span>
+        </h2>
+        <p class="text-zinc-400 text-sm mt-2">Stay 100% legal with SolarShield's precision-metered films</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-2xl space-y-4">
+          <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
+            <h3 class="font-racing font-bold text-2xl text-white">PASSENGER CARS (SEDANS &amp; COUPES)</h3>
+            <span class="bg-brand-blue text-white font-racing text-xs px-2.5 py-1 rounded">SEDANS</span>
+          </div>
+          <ul class="space-y-3 text-sm text-zinc-300">
+            <li class="flex justify-between items-center py-1 border-b border-zinc-800/60">
+              <span>Front Side Windows:</span>
+              <strong class="text-brand-yellow font-bold text-base">28% VLT Minimum</strong>
+            </li>
+            <li class="flex justify-between items-center py-1 border-b border-zinc-800/60">
+              <span>Back Side Windows:</span>
+              <strong class="text-brand-yellow font-bold text-base">15% VLT Minimum</strong>
+            </li>
+            <li class="flex justify-between items-center py-1 border-b border-zinc-800/60">
+              <span>Rear Window:</span>
+              <strong class="text-brand-yellow font-bold text-base">15% VLT Minimum</strong>
+            </li>
+            <li class="flex justify-between items-center py-1">
+              <span>Front Windshield:</span>
+              <strong class="text-brand-yellow font-bold text-base">Non-reflective tint above AS-1 line (or 70% clear ceramic)</strong>
+            </li>
+          </ul>
+        </div>
+
+        <div class="p-6 bg-zinc-900 border border-zinc-800 rounded-2xl space-y-4">
+          <div class="flex items-center justify-between border-b border-zinc-800 pb-3">
+            <h3 class="font-racing font-bold text-2xl text-white">MULTI-PURPOSE VEHICLES (SUVS &amp; TRUCKS)</h3>
+            <span class="bg-brand-yellow text-black font-racing text-xs font-bold px-2.5 py-1 rounded">TRUCKS / SUVS</span>
+          </div>
+          <ul class="space-y-3 text-sm text-zinc-300">
+            <li class="flex justify-between items-center py-1 border-b border-zinc-800/60">
+              <span>Front Side Windows:</span>
+              <strong class="text-brand-yellow font-bold text-base">28% VLT Minimum</strong>
+            </li>
+            <li class="flex justify-between items-center py-1 border-b border-zinc-800/60">
+              <span>Back Side Windows:</span>
+              <strong class="text-brand-yellow font-bold text-base">6% VLT (Any darkness legal)</strong>
+            </li>
+            <li class="flex justify-between items-center py-1 border-b border-zinc-800/60">
+              <span>Rear Window:</span>
+              <strong class="text-brand-yellow font-bold text-base">6% VLT (Any darkness legal)</strong>
+            </li>
+            <li class="flex justify-between items-center py-1">
+              <span>Front Windshield:</span>
+              <strong class="text-brand-yellow font-bold text-base">Above AS-1 line / 70% clear ceramic</strong>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-black text-white border-t border-zinc-900 pt-12 pb-24 sm:pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-zinc-800">
+        <div class="md:col-span-2 space-y-3">
+          <img src="images/hero_logo@2x.png" alt="SolarShield" class="h-14 mx-auto sm:mx-0">
+          <p class="text-zinc-400 text-sm max-w-sm">Professional mobile window tinting serving Citrus, Hernando, and Pasco counties.</p>
+        </div>
+        <div>
+          <h4 class="font-racing text-brand-yellow text-lg">Links</h4>
+          <ul class="text-zinc-400 text-sm space-y-1 mt-2">
+            <li><a href="index.html" class="hover:text-white">Home</a></li>
+            <li><a href="services.html" class="hover:text-white">Services</a></li>
+            <li><a href="tint-shades.html" class="text-brand-yellow">Tint Shades</a></li>
+            <li><a href="gallery.html" class="hover:text-white">Gallery</a></li>
+            <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-racing text-brand-yellow text-lg">Direct Line</h4>
+          <p class="text-white font-bold text-xl mt-2"><a href="tel:7275988468">(727) 598-TINT</a></p>
+        </div>
+      </div>
+      <div class="pt-6 text-xs text-zinc-500 text-center">&copy; 2026 SolarShield Mobile Tinting.</div>
+    </div>
+  </footer>
+
+  <!-- Mobile Bar -->
+  <div class="fixed bottom-0 inset-x-0 z-40 bg-zinc-950/95 backdrop-blur border-t border-zinc-800 p-2 sm:hidden flex items-center gap-2">
+    <a href="tel:7275988468" class="flex-1 bg-zinc-900 border border-zinc-700 text-white font-racing font-bold text-center py-2.5 rounded-lg flex items-center justify-center gap-1.5 text-base">CALL NOW</a>
+    <a href="sms:7275988468" class="flex-1 bg-zinc-900 border border-zinc-700 text-white font-racing font-bold text-center py-2.5 rounded-lg flex items-center justify-center gap-1.5 text-base">TEXT US</a>
+    <a href="contact.html" class="flex-1 bg-brand-yellow text-black font-racing font-black text-center py-2.5 rounded-lg text-base shadow-lg">GET QUOTE</a>
+  </div>
+
+  <script>
+    const shadeData = {
+      5: { name: 'LIMO TINT (MAX PRIVACY)', opacity: 0.95, uv: '99.9%', heat: '94%', glare: '95%' },
+      15: { name: 'DARK PRIVACY (FACTORY REAR MATCH)', opacity: 0.85, uv: '99.9%', heat: '92%', glare: '88%' },
+      30: { name: 'FLORIDA LEGAL (FRONT WINDOWS)', opacity: 0.70, uv: '99.9%', heat: '89%', glare: '70%' },
+      50: { name: 'SUBTLE LIGHT HEAT SHIELD', opacity: 0.50, uv: '99.9%', heat: '83%', glare: '45%' },
+      70: { name: 'CLEAR CERAMIC WINDSHIELD SHIELD', opacity: 0.30, uv: '99.9%', heat: '80%', glare: '20%' }
+    };
+    const slider = document.getElementById('shade-slider');
+    const glassOverlay = document.getElementById('tint-glass-overlay');
+    const pctDisplay = document.getElementById('simulator-percentage-display');
+    const shadeNameDisplay = document.getElementById('simulator-shade-name');
+    const specUv = document.getElementById('spec-uv');
+    const specHeat = document.getElementById('spec-heat');
+    const specGlare = document.getElementById('spec-glare');
+    const simQuoteBtn = document.getElementById('simulator-quote-btn');
+
+    function applyShade(pct) {
+      const data = shadeData[pct] || { name: pct + '% CUSTOM SHADE', opacity: (100 - pct) / 100, uv: '99.9%', heat: '85%', glare: (100 - pct) + '%' };
+      glassOverlay.style.opacity = data.opacity;
+      pctDisplay.textContent = pct + '%';
+      shadeNameDisplay.textContent = data.name;
+      specUv.textContent = data.uv;
+      specHeat.textContent = data.heat;
+      specGlare.textContent = data.glare;
+      simQuoteBtn.querySelector('span').textContent = `GET QUOTE FOR ${pct}% CERAMIC`;
+      simQuoteBtn.href = `contact.html?shade=${pct}`;
+      document.querySelectorAll('.shade-btn').forEach(btn => {
+        btn.className = (parseInt(btn.getAttribute('data-pct')) === parseInt(pct)) ?
+          'shade-btn py-2.5 rounded bg-brand-yellow text-black font-racing font-bold text-sm border border-brand-yellow' :
+          'shade-btn py-2.5 rounded bg-zinc-800 hover:bg-brand-yellow hover:text-black font-racing font-bold text-sm text-white border border-zinc-700';
+      });
+    }
+    function setShade(pct) { slider.value = pct; applyShade(pct); }
+    slider.addEventListener('input', (e) => applyShade(parseInt(e.target.value)));
+    applyShade(30);
+
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    mobileBtn.addEventListener('click', () => { mobileNav.classList.toggle('hidden'); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | SolarShield Mobile Tinting | Automotive, Residential & Commercial</title>
+  <meta name="description" content="Explore our mobile window tinting services in Hernando, Pasco, and Citrus Counties. Ceramic automotive, residential heat reduction, and commercial solar film.">
+  <link rel="icon" type="image/png" href="images/header_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              yellow: '#FFD000',
+              yellowHover: '#E5BC00',
+              blue: '#0D62D9',
+              blueDark: '#083B85',
+              dark: '#0A0C10',
+              card: '#121620'
+            }
+          },
+          fontFamily: {
+            display: ['"Barlow Condensed"', 'sans-serif'],
+            body: ['"Inter"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .font-racing {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+    .bg-honeycomb {
+      background-color: #f8fafc;
+      background-image: radial-gradient(#cbd5e1 1.2px, transparent 1.2px);
+      background-size: 18px 18px;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-body antialiased selection:bg-brand-yellow selection:text-black">
+
+  <!-- ================= HEADER (SERVICES ACTIVE) ================= -->
+  <header class="sticky top-0 z-50 bg-black/95 backdrop-blur border-b border-white/10 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="images/hero_logo@2x.png" alt="SolarShield Mobile Tinting" class="h-14 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105">
+        </a>
+        <nav class="hidden md:flex items-center gap-7 font-racing text-xl tracking-wider">
+          <a href="index.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">HOME</a>
+          <a href="services.html" class="text-brand-yellow font-extrabold pb-1 border-b-2 border-brand-yellow">SERVICES</a>
+          <a href="tint-shades.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">TINT SHADES</a>
+          <a href="gallery.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">GALLERY</a>
+          <a href="service-area.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">SERVICE AREA</a>
+          <a href="contact.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">CONTACT</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="tel:7275988468" class="text-right group">
+            <span class="block text-xs uppercase tracking-widest text-brand-yellow font-racing">Direct Dispatch</span>
+            <span class="text-lg font-racing font-bold text-white group-hover:text-brand-yellow">(727) 598-TINT</span>
+          </a>
+          <a href="contact.html" class="bg-brand-yellow hover:bg-brand-yellowHover text-black font-racing font-extrabold text-xl px-6 py-2.5 rounded shadow-lg">
+            GET A QUOTE
+          </a>
+        </div>
+        <div class="flex items-center gap-3 md:hidden">
+          <a href="contact.html" class="bg-brand-yellow text-black font-racing font-bold text-base px-3 py-1.5 rounded">QUOTE</a>
+          <button id="mobile-menu-btn" type="button" class="p-2 text-white hover:text-brand-yellow">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-nav" class="hidden md:hidden bg-zinc-950 border-b border-white/10 px-6 py-6 font-racing text-2xl tracking-wider space-y-4">
+      <a href="index.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">HOME</a>
+      <a href="services.html" class="block text-brand-yellow font-bold py-1 border-l-4 border-brand-yellow pl-2">SERVICES</a>
+      <a href="tint-shades.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">TINT SHADES &amp; SIMULATOR</a>
+      <a href="gallery.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">GALLERY / RECENT WORK</a>
+      <a href="service-area.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">SERVICE AREA</a>
+      <a href="contact.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">CONTACT US</a>
+    </div>
+  </header>
+
+  <!-- ================= PAGE BANNER ================= -->
+  <section class="bg-black text-white py-14 border-b border-zinc-800 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <span class="text-brand-yellow font-racing tracking-widest text-lg sm:text-xl font-bold">SOLARSHIELD MOBILE TINTING</span>
+      <h1 class="font-racing font-black text-4xl sm:text-6xl text-white mt-1">
+        OUR <span class="text-brand-blue">SERVICES</span>
+      </h1>
+      <p class="text-zinc-400 max-w-2xl mx-auto mt-3 text-base sm:text-lg">
+        Precision mobile window tinting installed on-site at your home, business, or jobsite. Auto, residential, and commercial applications with lifetime warranty.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= 1. AUTOMOTIVE SECTION ================= -->
+  <section id="automotive" class="py-16 bg-white border-b border-zinc-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6 rounded-2xl overflow-hidden shadow-2xl border border-zinc-200">
+          <img src="images/service_auto_hellcat.jpg" alt="Dodge Charger SRT Hellcat Automotive Window Tinting" class="w-full h-auto object-cover">
+        </div>
+        <div class="lg:col-span-6 space-y-5">
+          <div class="inline-flex items-center gap-2 bg-brand-yellow/20 border border-brand-yellow/50 text-black px-3 py-1 rounded font-racing text-sm font-bold">
+            MOBILE DRIVEWAY INSTALLATION
+          </div>
+          <h2 class="font-racing font-black text-3xl sm:text-5xl text-black">
+            AUTOMOTIVE <span class="text-brand-blue">WINDOW TINTING</span>
+          </h2>
+          <p class="text-zinc-700 leading-relaxed">
+            Florida sunshine is brutal on car interiors and AC compressors. Our high-grade nano-ceramic films reject up to 98% of infrared heat, allowing your cabin to cool down in seconds without straining your engine or battery.
+          </p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-4 bg-zinc-50 border border-zinc-200 rounded-xl">
+              <h4 class="font-racing font-bold text-xl text-black">Nano-Ceramic IR Film</h4>
+              <p class="text-xs text-zinc-600 mt-1">Maximum heat blockage without dark visibility compromise. Zero GPS or cellular signal interference.</p>
+            </div>
+            <div class="p-4 bg-zinc-50 border border-zinc-200 rounded-xl">
+              <h4 class="font-racing font-bold text-xl text-black">Windshield &amp; Visor Brow</h4>
+              <p class="text-xs text-zinc-600 mt-1">Full 70% clear ceramic heat shields or legal AS-1 visor brow strips for ultimate driver comfort.</p>
+            </div>
+          </div>
+          <div class="pt-4 flex flex-wrap gap-4 items-center">
+            <a href="contact.html?service=Automotive" class="bg-brand-yellow hover:bg-brand-yellowHover text-black font-racing font-black text-xl px-7 py-3 rounded-lg shadow-lg">
+              GET AUTO QUOTE
+            </a>
+            <a href="tel:7275988468" class="font-racing font-bold text-lg text-black hover:text-brand-blue">
+              CALL / TEXT (727) 598-TINT
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 2. RESIDENTIAL SECTION ================= -->
+  <section id="residential" class="py-16 bg-zinc-50 border-b border-zinc-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6 space-y-5 order-2 lg:order-1">
+          <div class="inline-flex items-center gap-2 bg-brand-yellow/20 border border-brand-yellow/50 text-black px-3 py-1 rounded font-racing text-sm font-bold">
+            HOMES, CONDOS &amp; PATIOS
+          </div>
+          <h2 class="font-racing font-black text-3xl sm:text-5xl text-black">
+            RESIDENTIAL <span class="text-brand-blue">HOME TINTING</span>
+          </h2>
+          <p class="text-zinc-700 leading-relaxed">
+            Stop solar heat from turning your living room into a greenhouse. Residential architectural films dramatically reduce your monthly electric cooling bills, eliminate TV glare, and prevent costly hardwood floors, rugs, and leather furniture from fading.
+          </p>
+          <ul class="space-y-2 text-zinc-700 text-sm">
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-brand-yellow"></span>
+              <strong>Sliding Glass Doors &amp; Sunrooms:</strong> Keep lakefront and pool views intact while eliminating heat.
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-brand-yellow"></span>
+              <strong>Daytime Privacy:</strong> Enjoy unobstructed views looking outside while preventing neighbors from seeing in.
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-brand-yellow"></span>
+              <strong>99.9% UV Protection:</strong> Shields your family and skin from dangerous ultraviolet radiation.
+            </li>
+          </ul>
+          <div class="pt-4 flex flex-wrap gap-4 items-center">
+            <a href="contact.html?service=Residential" class="bg-brand-yellow hover:bg-brand-yellowHover text-black font-racing font-black text-xl px-7 py-3 rounded-lg shadow-lg">
+              GET HOME QUOTE
+            </a>
+            <a href="tel:7275988468" class="font-racing font-bold text-lg text-black hover:text-brand-blue">
+              SCHEDULE HOME ESTIMATE
+            </a>
+          </div>
+        </div>
+        <div class="lg:col-span-6 rounded-2xl overflow-hidden shadow-2xl border border-zinc-200 order-1 lg:order-2">
+          <img src="images/service_res_sunset.jpg" alt="Residential Home Window Tinting" class="w-full h-auto object-cover">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. COMMERCIAL SECTION ================= -->
+  <section id="commercial" class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-6 rounded-2xl overflow-hidden shadow-2xl border border-zinc-200">
+          <img src="images/service_comm_plaza.jpg" alt="Commercial Storefront Window Tinting" class="w-full h-auto object-cover">
+        </div>
+        <div class="lg:col-span-6 space-y-5">
+          <div class="inline-flex items-center gap-2 bg-brand-yellow/20 border border-brand-yellow/50 text-black px-3 py-1 rounded font-racing text-sm font-bold">
+            STOREFRONTS, OFFICES &amp; FLEETS
+          </div>
+          <h2 class="font-racing font-black text-3xl sm:text-5xl text-black">
+            COMMERCIAL <span class="text-brand-blue">WINDOW TINTING</span>
+          </h2>
+          <p class="text-zinc-700 leading-relaxed">
+            Enhance building aesthetics, protect inventory from sun bleach, cut commercial HVAC energy costs, and provide security against smash-and-grab break-ins.
+          </p>
+          <div class="space-y-3">
+            <div class="p-3 bg-zinc-50 border border-zinc-200 rounded-lg">
+              <strong class="font-racing text-lg text-black block">Safety &amp; Shatter-Resistant Films</strong>
+              <span class="text-xs text-zinc-600">Holds glass fragments together during severe storms, hurricanes, or forced entry attempts.</span>
+            </div>
+            <div class="p-3 bg-zinc-50 border border-zinc-200 rounded-lg">
+              <strong class="font-racing text-lg text-black block">Decorative Frost &amp; Conference Room Privacy</strong>
+              <span class="text-xs text-zinc-600">Sleek frosted bands and matte privacy films for doctor offices, boardrooms, and client suites.</span>
+            </div>
+          </div>
+          <div class="pt-4 flex flex-wrap gap-4 items-center">
+            <a href="contact.html?service=Commercial" class="bg-brand-yellow hover:bg-brand-yellowHover text-black font-racing font-black text-xl px-7 py-3 rounded-lg shadow-lg">
+              REQUEST COMMERCIAL BID
+            </a>
+            <a href="tel:7275988468" class="font-racing font-bold text-lg text-black hover:text-brand-blue">
+              CALL (727) 598-TINT
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CERAMIC VS CARBON TABLE ================= -->
+  <section class="py-16 bg-zinc-950 text-white border-t border-zinc-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="font-racing font-black text-3xl sm:text-5xl text-white">
+          FILM TECHNOLOGY <span class="text-brand-yellow">COMPARISON</span>
+        </h2>
+        <p class="text-zinc-400 text-sm mt-2">Why SolarShield installs top-tier Nano-Ceramic films</p>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-zinc-800 shadow-2xl">
+        <table class="w-full text-left text-sm text-zinc-300">
+          <thead class="bg-zinc-900 font-racing text-lg text-white border-b border-zinc-800">
+            <tr>
+              <th class="p-4">Feature</th>
+              <th class="p-4 text-zinc-400">Standard Dyed</th>
+              <th class="p-4 text-zinc-300">Carbon Film</th>
+              <th class="p-4 text-brand-yellow">Nano-Ceramic IR (Our Standard)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-800">
+            <tr>
+              <td class="p-4 font-bold text-white">Infrared Heat Rejection</td>
+              <td class="p-4 text-zinc-400">15% - 25%</td>
+              <td class="p-4">40% - 50%</td>
+              <td class="p-4 font-bold text-brand-yellow">88% - 98%</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white">UV Ray Block (Fading)</td>
+              <td class="p-4 text-zinc-400">95%</td>
+              <td class="p-4">99%</td>
+              <td class="p-4 font-bold text-brand-yellow">99.9% Maximum</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white">Fade &amp; Purple Turn Resistance</td>
+              <td class="p-4 text-red-400">Turns purple in FL heat</td>
+              <td class="p-4 text-emerald-400">Color stable</td>
+              <td class="p-4 font-bold text-brand-yellow">Lifetime Color Stable Guarantee</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white">Phone / GPS Signal Interference</td>
+              <td class="p-4">Zero</td>
+              <td class="p-4">Zero</td>
+              <td class="p-4 font-bold text-brand-yellow">Zero (100% Non-Metallic)</td>
+            </tr>
+            <tr>
+              <td class="p-4 font-bold text-white">Warranty</td>
+              <td class="p-4 text-zinc-400">1 - 3 Years</td>
+              <td class="p-4">5 - 10 Years</td>
+              <td class="p-4 font-bold text-brand-yellow">Lifetime Nationwide Warranty</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-black text-white border-t border-zinc-900 pt-12 pb-24 sm:pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-zinc-800">
+        <div class="md:col-span-2 space-y-4">
+          <img src="images/hero_logo@2x.png" alt="SolarShield Mobile Tinting" class="h-16 w-auto object-contain">
+          <p class="text-zinc-400 text-sm max-w-sm">Florida's top-rated mobile window tinting specialists. Exceptional craftsmanship, lifetime warranty ceramic films, and mobile service that comes right to your door.</p>
+        </div>
+        <div class="space-y-3 font-racing text-lg">
+          <div class="text-brand-yellow uppercase tracking-widest text-sm font-bold">Pages</div>
+          <ul class="space-y-1.5 text-zinc-400">
+            <li><a href="index.html" class="hover:text-white">Home</a></li>
+            <li><a href="services.html" class="text-brand-yellow">Our Services</a></li>
+            <li><a href="tint-shades.html" class="hover:text-white">Tint Shade Simulator</a></li>
+            <li><a href="gallery.html" class="hover:text-white">Recent Work Gallery</a></li>
+            <li><a href="service-area.html" class="hover:text-white">Service Areas</a></li>
+            <li><a href="contact.html" class="hover:text-white">Request a Quote</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3 font-racing text-lg">
+          <div class="text-brand-yellow uppercase tracking-widest text-sm font-bold">Call / Text Dispatch</div>
+          <p class="text-white font-bold text-2xl"><a href="tel:7275988468">(727) 598-TINT</a></p>
+          <p class="text-zinc-400 text-sm">Hernando &bull; Pasco &bull; Citrus</p>
+        </div>
+      </div>
+      <div class="pt-6 text-xs text-zinc-500 text-center">&copy; 2026 SolarShield Mobile Tinting. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Mobile Floating Action Bar -->
+  <div class="fixed bottom-0 inset-x-0 z-40 bg-zinc-950/95 backdrop-blur border-t border-zinc-800 p-2 sm:hidden flex items-center gap-2">
+    <a href="tel:7275988468" class="flex-1 bg-zinc-900 border border-zinc-700 text-white font-racing font-bold text-center py-2.5 rounded-lg flex items-center justify-center gap-1.5 text-base">CALL NOW</a>
+    <a href="sms:7275988468" class="flex-1 bg-zinc-900 border border-zinc-700 text-white font-racing font-bold text-center py-2.5 rounded-lg flex items-center justify-center gap-1.5 text-base">TEXT US</a>
+    <a href="contact.html" class="flex-1 bg-brand-yellow text-black font-racing font-black text-center py-2.5 rounded-lg text-base shadow-lg">GET QUOTE</a>
+  </div>
+
+  <script>
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    mobileBtn.addEventListener('click', () => { mobileNav.classList.toggle('hidden'); });
+  </script>
+</body>
+</html>

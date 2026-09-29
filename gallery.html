@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery & Recent Work | SolarShield Mobile Tinting</title>
+  <meta name="description" content="View our recent window tinting projects in Hernando, Pasco, and Citrus Counties. Automotive, trucks, SUVs, and luxury residential tint jobs.">
+  <link rel="icon" type="image/png" href="images/header_logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              yellow: '#FFD000',
+              yellowHover: '#E5BC00',
+              blue: '#0D62D9',
+              blueDark: '#083B85',
+              dark: '#0A0C10'
+            }
+          },
+          fontFamily: {
+            display: ['"Barlow Condensed"', 'sans-serif'],
+            body: ['"Inter"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .font-racing {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(8px);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-[#091932] via-[#0b2447] to-[#071326] text-white font-body antialiased selection:bg-brand-yellow selection:text-black min-h-screen flex flex-col justify-between">
+
+  <!-- ================= HEADER (GALLERY ACTIVE) ================= -->
+  <header class="sticky top-0 z-50 bg-black/95 backdrop-blur border-b border-white/10 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="images/hero_logo@2x.png" alt="SolarShield Mobile Tinting" class="h-14 sm:h-16 w-auto object-contain transition-transform group-hover:scale-105">
+        </a>
+        <nav class="hidden md:flex items-center gap-7 font-racing text-xl tracking-wider">
+          <a href="index.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">HOME</a>
+          <a href="services.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">SERVICES</a>
+          <a href="tint-shades.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">TINT SHADES</a>
+          <a href="gallery.html" class="text-brand-yellow font-extrabold pb-1 border-b-2 border-brand-yellow">GALLERY</a>
+          <a href="service-area.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">SERVICE AREA</a>
+          <a href="contact.html" class="text-gray-300 hover:text-brand-yellow transition-colors pb-1 border-b-2 border-transparent hover:border-brand-yellow">CONTACT</a>
+        </nav>
+        <div class="hidden lg:flex items-center gap-4">
+          <a href="tel:7275988468" class="text-right group">
+            <span class="block text-xs uppercase tracking-widest text-brand-yellow font-racing">Direct Dispatch</span>
+            <span class="text-lg font-racing font-bold text-white group-hover:text-brand-yellow">(727) 598-TINT</span>
+          </a>
+          <a href="contact.html" class="bg-brand-yellow hover:bg-brand-yellowHover text-black font-racing font-extrabold text-xl px-6 py-2.5 rounded shadow-lg">
+            GET A QUOTE
+          </a>
+        </div>
+        <div class="flex items-center gap-3 md:hidden">
+          <a href="contact.html" class="bg-brand-yellow text-black font-racing font-bold text-base px-3 py-1.5 rounded">QUOTE</a>
+          <button id="mobile-menu-btn" type="button" class="p-2 text-white hover:text-brand-yellow">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-nav" class="hidden md:hidden bg-zinc-950 border-b border-white/10 px-6 py-6 font-racing text-2xl tracking-wider space-y-4">
+      <a href="index.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">HOME</a>
+      <a href="services.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">SERVICES</a>
+      <a href="tint-shades.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">TINT SHADES &amp; SIMULATOR</a>
+      <a href="gallery.html" class="block text-brand-yellow font-bold py-1 border-l-4 border-brand-yellow pl-2">GALLERY / RECENT WORK</a>
+      <a href="service-area.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">SERVICE AREA</a>
+      <a href="contact.html" class="block text-gray-300 hover:text-brand-yellow py-1 pl-2">CONTACT US</a>
+    </div>
+  </header>
+
+  <!-- ================= BANNER ================= -->
+  <section class="py-14 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <span class="text-brand-yellow font-racing tracking-widest text-lg font-bold">REAL COMPLETED WORK</span>
+      <h1 class="font-racing font-black text-4xl sm:text-6xl text-white mt-1">
+        PROJECT <span class="text-brand-yellow">GALLERY</span>
+      </h1>
+      <p class="text-blue-200 max-w-2xl mx-auto mt-2 text-base sm:text-lg">
+        Click any photo to view in high definition. Every installation comes with our lifetime nationwide warranty.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mt-8">
+        <button type="button" onclick="filterGallery('all')" class="gallery-filter-btn px-5 py-2 rounded-full font-racing text-lg bg-brand-yellow text-black font-bold transition-all" data-category="all">ALL WORK</button>
+        <button type="button" onclick="filterGallery('truck')" class="gallery-filter-btn px-5 py-2 rounded-full font-racing text-lg bg-black/60 hover:bg-black text-white font-bold border border-white/20 transition-all" data-category="truck">TRUCKS &amp; JEEPS</button>
+        <button type="button" onclick="filterGallery('car')" class="gallery-filter-btn px-5 py-2 rounded-full font-racing text-lg bg-black/60 hover:bg-black text-white font-bold border border-white/20 transition-all" data-category="car">CARS &amp; SUVS</button>
+        <button type="button" onclick="filterGallery('res-comm')" class="gallery-filter-btn px-5 py-2 rounded-full font-racing text-lg bg-black/60 hover:bg-black text-white font-bold border border-white/20 transition-all" data-category="res-comm">RESIDENTIAL &amp; COMMERCIAL</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY GRID ================= -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 flex-1">
+    <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- 1. Ford F-150 Sunset -->
+      <div class="gallery-card group rounded-xl overflow-hidden shadow-xl border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="truck" onclick="openLightbox('images/gallery_f150_sunset.jpg', 'Ford F-150 SuperCrew - Waterfront Sunset Ceramic Tint')">
+        <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+          <img src="images/gallery_f150_sunset.jpg" alt="Ford F-150 Waterfront Sunset Window Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="p-3 bg-black/90">
+          <div class="font-racing font-bold text-base text-white">FORD F-150 SUPERCREW</div>
+          <div class="text-xs text-brand-yellow font-racing">Full Ceramic IR Privacy Tint</div>
+        </div>
+      </div>
+
+      <!-- 2. Dodge Charger Hellcat -->
+      <div class="gallery-card group rounded-xl overflow-hidden shadow-xl border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="car" onclick="openLightbox('images/service_auto_hellcat.jpg', 'Dodge Charger SRT Hellcat Widebody - Full Nano-Ceramic Tint')">
+        <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+          <img src="images/service_auto_hellcat.jpg" alt="Dodge Charger SRT Hellcat Widebody Ceramic Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="p-3 bg-black/90">
+          <div class="font-racing font-bold text-base text-white">DODGE CHARGER HELLCAT</div>
+          <div class="text-xs text-brand-yellow font-racing">Nano-Ceramic Heat Shield</div>
+        </div>
+      </div>
+
+      <!-- 3. Blue Jeep Gladiator -->
+      <div class="gallery-card group rounded-xl overflow-hidden shadow-xl border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="truck" onclick="openLightbox('images/gallery_blue_jeep_gladiator.jpg', 'Lifted Hydro Blue Jeep Gladiator - Full Cab Ceramic Tint')">
+        <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+          <img src="images/gallery_blue_jeep_gladiator.jpg" alt="Blue Jeep Gladiator Ceramic Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="p-3 bg-black/90">
+          <div class="font-racing font-bold text-base text-white">JEEP GLADIATOR 4X4</div>
+          <div class="text-xs text-brand-yellow font-racing">Florida Heat Rejection Tint</div>
+        </div>
+      </div>
+
+      <!-- 4. Luxury Residence Sunset -->
+      <div class="gallery-card group rounded-xl overflow-hidden shadow-xl border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="res-comm" onclick="openLightbox('images/service_res_sunset.jpg', 'Luxury Modern Florida Residence - Architectural Solar Glass Film')">
+        <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+          <img src="images/service_res_sunset.jpg" alt="Modern Luxury House Window Tinting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="p-3 bg-black/90">
+          <div class="font-racing font-bold text-base text-white">LUXURY FLORIDA RESIDENCE</div>
+          <div class="text-xs text-brand-yellow font-racing">Lower AC Bills &bull; 99% UV Block</div>
+        </div>
+      </div>
+
+      <!-- 5. Commercial Plaza -->
+      <div class="gallery-card group rounded-xl overflow-hidden shadow-xl border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="res-comm" onclick="openLightbox('images/service_comm_plaza.jpg', 'Commercial Storefront & Plaza - Reflective Solar Privacy Film')">
+        <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+          <img src="images/service_comm_plaza.jpg" alt="Commercial Storefront Window Tinting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="p-3 bg-black/90">
+          <div class="font-racing font-bold text-base text-white">COMMERCIAL PLAZA</div>
+          <div class="text-xs text-brand-yellow font-racing">Security Film &bull; Glare Control</div>
+        </div>
+      </div>
+
+      <!-- 6. Toyota Camry Mobile Driveway -->
+      <div class="gallery-card group rounded-xl overflow-hidden shadow-xl border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="car" onclick="openLightbox('images/gallery_camry_mobile.jpg', 'Toyota Camry - Mobile Driveway Window Tinting Installation')">
+        <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+          <img src="images/gallery_camry_mobile.jpg" alt="Toyota Camry Mobile Driveway Window Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="p-3 bg-black/90">
+          <div class="font-racing font-bold text-base text-white">TOYOTA CAMRY SEDAN</div>
+          <div class="text-xs text-brand-yellow font-racing">Mobile Driveway Installation</div>
+        </div>
+      </div>
+
+      <!-- 7. Jeep Compass Sunset -->
+      <div class="gallery-card group rounded-xl overflow-hidden shadow-xl border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="car" onclick="openLightbox('images/gallery_jeep_compass_sunset.jpg', 'Jeep Compass - Side Windows & Visor Eyebrow Strip')">
+        <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+          <img src="images/gallery_jeep_compass_sunset.jpg" alt="Jeep Compass Ceramic Tint with Visor Strip" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="p-3 bg-black/90">
+          <div class="font-racing font-bold text-base text-white">JEEP COMPASS SUV</div>
+          <div class="text-xs text-brand-yellow font-racing">Visor Eyebrow &bull; Side Windows</div>
+        </div>
+      </div>
+
+      <!-- 8. Silver Explorer SUV -->
+      <div class="gallery-card group rounded-xl overflow-hidden shadow-xl border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="car" onclick="openLightbox('images/gallery_silver_suv_side.jpg', 'Silver SUV - Full Ceramic Privacy Tinting')">
+        <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+          <img src="images/gallery_silver_suv_side.jpg" alt="Silver SUV Ceramic Privacy Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        </div>
+        <div class="p-3 bg-black/90">
+          <div class="font-racing font-bold text-base text-white">FULL-SIZE SUV CERAMIC</div>
+          <div class="text-xs text-brand-yellow font-racing">Maximum Heat Rejection</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <dialog id="lightbox-dialog" class="p-0 rounded-2xl bg-black text-white max-w-3xl w-[92vw] shadow-2xl border border-zinc-700">
+    <div class="relative">
+      <button type="button" onclick="closeLightbox()" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-black/80 border border-white/20 text-white hover:text-brand-yellow flex items-center justify-center font-bold text-xl">&times;</button>
+      <div class="overflow-hidden rounded-t-2xl bg-zinc-950 flex items-center justify-center min-h-[300px]">
+        <img id="lightbox-img" src="" alt="Enlarged job photo" class="w-full h-auto max-h-[80vh] object-contain">
+      </div>
+      <div class="p-4 bg-zinc-900 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <span id="lightbox-caption" class="font-racing font-bold text-lg text-white"></span>
+        <a href="contact.html" onclick="closeLightbox()" class="bg-brand-yellow text-black font-racing font-bold text-sm px-4 py-2 rounded text-center">
+          REQUEST QUOTE FOR THIS SERVICE
+        </a>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-black text-white border-t border-zinc-900 pt-12 pb-24 sm:pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-zinc-800">
+        <div class="md:col-span-2 space-y-3">
+          <img src="images/hero_logo@2x.png" alt="SolarShield" class="h-14 mx-auto sm:mx-0">
+          <p class="text-zinc-400 text-sm max-w-sm">Professional mobile window tinting serving Citrus, Hernando, and Pasco counties.</p>
+        </div>
+        <div>
+          <h4 class="font-racing text-brand-yellow text-lg">Links</h4>
+          <ul class="text-zinc-400 text-sm space-y-1 mt-2">
+            <li><a href="index.html" class="hover:text-white">Home</a></li>
+            <li><a href="services.html" class="hover:text-white">Services</a></li>
+            <li><a href="tint-shades.html" class="hover:text-white">Tint Shades</a></li>
+            <li><a href="gallery.html" class="text-brand-yellow">Gallery</a></li>
+            <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-racing text-brand-yellow text-lg">Direct Line</h4>
+          <p class="text-white font-bold text-xl mt-2"><a href="tel:7275988468">(727) 598-TINT</a></p>
+        </div>
+      </div>
+      <div class="pt-6 text-xs text-zinc-500 text-center">&copy; 2026 SolarShield Mobile Tinting.</div>
+    </div>
+  </footer>
+
+  <div class="fixed bottom-0 inset-x-0 z-40 bg-zinc-950/95 backdrop-blur border-t border-zinc-800 p-2 sm:hidden flex items-center gap-2">
+    <a href="tel:7275988468" class="flex-1 bg-zinc-900 border border-zinc-700 text-white font-racing font-bold text-center py-2.5 rounded-lg flex items-center justify-center gap-1.5 text-base">CALL NOW</a>
+    <a href="sms:7275988468" class="flex-1 bg-zinc-900 border border-zinc-700 text-white font-racing font-bold text-center py-2.5 rounded-lg flex items-center justify-center gap-1.5 text-base">TEXT US</a>
+    <a href="contact.html" class="flex-1 bg-brand-yellow text-black font-racing font-black text-center py-2.5 rounded-lg text-base shadow-lg">GET QUOTE</a>
+  </div>
+
+  <script>
+    function filterGallery(category) {
+      const cards = document.querySelectorAll('.gallery-card');
+      const buttons = document.querySelectorAll('.gallery-filter-btn');
+      buttons.forEach(btn => {
+        btn.className = (btn.getAttribute('data-category') === category) ?
+          'gallery-filter-btn px-5 py-2 rounded-full font-racing text-lg bg-brand-yellow text-black font-bold transition-all' :
+          'gallery-filter-btn px-5 py-2 rounded-full font-racing text-lg bg-black/60 hover:bg-black text-white font-bold border border-white/20 transition-all';
+      });
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    const lightbox = document.getElementById('lightbox-dialog');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    function openLightbox(src, caption) {
+      lightboxImg.src = src;
+      lightboxCaption.textContent = caption;
+      lightbox.showModal();
+    }
+    function closeLightbox() { lightbox.close(); }
+    lightbox.addEventListener('click', (event) => {
+      const rect = lightbox.getBoundingClientRect();
+      const isInDialog = (rect.top <= event.clientY && event.clientY <= rect.top + rect.height && rect.left <= event.clientX && event.clientX <= rect.left + rect.width);
+      if (!isInDialog) lightbox.close();
+    });
+
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileNav = document.getElementById('mobile-nav');
+    mobileBtn.addEventListener('click', () => { mobileNav.classList.toggle('hidden'); });
+  </script>
+</body>
+</html>

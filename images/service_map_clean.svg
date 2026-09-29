@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 720" width="100%" height="100%" style="background: radial-gradient(circle at 60% 50%, #0d1e38 0%, #050b14 100%); border-radius: 18px;">
+  <defs>
+    <filter id="glow-gold" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feColorMatrix type="matrix" values="
+        0 0 0 0 1
+        0 0 0 0 0.82
+        0 0 0 0 0
+        0 0 0 1 0" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="glow-blue" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feColorMatrix type="matrix" values="
+        0 0 0 0 0.05
+        0 0 0 0 0.38
+        0 0 0 0 0.85
+        0 0 0 0.8 0" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <linearGradient id="citrusFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e2a4a" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#143e6d" stop-opacity="0.65" />
+    </linearGradient>
+    <linearGradient id="hernandoFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD000" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#FFD000" stop-opacity="0.08" />
+    </linearGradient>
+    <linearGradient id="pascoFill" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f2642" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#19406f" stop-opacity="0.65" />
+    </linearGradient>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Grid -->
+  <rect width="650" height="720" fill="url(#grid)" />
+
+  <!-- Gulf of Mexico Coastline Indicator -->
+  <path d="M 0 0 L 175 0 L 150 140 L 130 250 L 120 370 L 140 480 L 145 600 L 120 720 L 0 720 Z" fill="#03070f" opacity="0.9" />
+  
+  <!-- Coastline Waves / Water Shimmer -->
+  <path d="M 175 0 Q 140 80 150 140 T 130 250 T 120 370 T 140 480 T 145 600 T 120 720" fill="none" stroke="#00d2ff" stroke-width="2" stroke-opacity="0.4" filter="url(#glow-blue)" />
+  <path d="M 165 0 Q 130 80 140 140 T 120 250 T 110 370 T 130 480 T 135 600 T 110 720" fill="none" stroke="#0077ff" stroke-width="1.5" stroke-opacity="0.25" />
+
+  <text x="60" y="380" fill="#244d7a" font-family="'Barlow Condensed', sans-serif" font-size="24" font-weight="800" font-style="italic" letter-spacing="5" transform="rotate(-90 60 380)">GULF OF MEXICO</text>
+
+  <!-- Surrounding Counties Reference Labels -->
+  <g opacity="0.6" font-family="'Barlow Condensed', sans-serif" font-weight="bold" font-size="14" fill="#476992" letter-spacing="2">
+    <text x="350" y="55">MARION / LEVY COUNTY (NORTH)</text>
+    <text x="560" y="320" transform="rotate(90 560 320)">SUMTER (EAST)</text>
+    <text x="340" y="685" text-anchor="middle">HILLSBOROUGH / PINELLAS (TAMPA BAY SOUTH)</text>
+  </g>
+
+  <!-- ================= 1. CITRUS COUNTY ================= -->
+  <g id="citrus-county">
+    <!-- Citrus Polygon -->
+    <polygon points="150,140 210,120 480,120 485,250 240,250 130,250" 
+             fill="url(#citrusFill)" stroke="#FFD000" stroke-width="2.5" />
+    
+    <!-- County Badge & Text -->
+    <rect x="230" y="160" width="220" height="50" rx="8" fill="#08101d" stroke="#FFD000" stroke-width="1.5" />
+    <text x="340" y="186" fill="#FFFFFF" font-family="'Barlow Condensed', sans-serif" font-size="22" font-weight="900" font-style="italic" letter-spacing="2" text-anchor="middle">CITRUS COUNTY</text>
+    <text x="340" y="202" fill="#FFD000" font-family="'Inter', sans-serif" font-size="10" font-weight="700" letter-spacing="1" text-anchor="middle">INVERNESS • CRYSTAL RIVER • HOMOSASSA</text>
+
+    <!-- Pins -->
+    <g transform="translate(190, 185)">
+      <circle cx="0" cy="0" r="4.5" fill="#FFD000" stroke="#000" stroke-width="1.5" />
+      <text x="0" y="-8" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="10" font-weight="600" text-anchor="middle">Crystal River</text>
+    </g>
+    <g transform="translate(420, 205)">
+      <circle cx="0" cy="0" r="4.5" fill="#FFD000" stroke="#000" stroke-width="1.5" />
+      <text x="0" y="-8" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="10" font-weight="600" text-anchor="middle">Inverness</text>
+    </g>
+  </g>
+
+  <!-- ================= 2. HERNANDO COUNTY (CENTER HUB) ================= -->
+  <g id="hernando-county">
+    <!-- Glowing Accent behind Hernando -->
+    <polygon points="130,250 240,250 485,250 500,410 140,410 120,370" 
+             fill="url(#hernandoFill)" stroke="#FFD000" stroke-width="4.5" filter="url(#glow-gold)" />
+    
+    <polygon points="130,250 240,250 485,250 500,410 140,410 120,370" 
+             fill="#141a24" fill-opacity="0.8" stroke="#FFFFFF" stroke-width="1.5" />
+
+    <!-- Prominent Hernando Badge -->
+    <rect x="200" y="295" width="280" height="60" rx="10" fill="#000000" stroke="#FFD000" stroke-width="2.5" />
+    <text x="340" y="328" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="28" font-weight="900" font-style="italic" letter-spacing="2" text-anchor="middle">★ HERNANDO COUNTY ★</text>
+    <text x="340" y="347" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="11" font-weight="700" letter-spacing="1" text-anchor="middle">SPRING HILL • BROOKSVILLE • WEEKI WACHEE</text>
+
+    <!-- Pins -->
+    <g transform="translate(215, 375)">
+      <circle cx="0" cy="0" r="6" fill="#FFD000" stroke="#000" stroke-width="2" />
+      <circle cx="0" cy="0" r="10" fill="none" stroke="#FFD000" stroke-width="1" opacity="0.6" />
+      <text x="0" y="16" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Spring Hill</text>
+    </g>
+    <g transform="translate(390, 355)">
+      <circle cx="0" cy="0" r="5.5" fill="#FFD000" stroke="#000" stroke-width="2" />
+      <text x="0" y="-10" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Brooksville</text>
+    </g>
+    <g transform="translate(160, 335)">
+      <circle cx="0" cy="0" r="4.5" fill="#FFD000" stroke="#000" stroke-width="1.5" />
+      <text x="0" y="-8" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="10" font-weight="600" text-anchor="middle">Weeki Wachee</text>
+    </g>
+  </g>
+
+  <!-- ================= 3. PASCO COUNTY ================= -->
+  <g id="pasco-county">
+    <!-- Pasco Polygon -->
+    <polygon points="140,410 500,410 525,590 145,590 140,480" 
+             fill="url(#pascoFill)" stroke="#FFD000" stroke-width="2.5" />
+
+    <!-- County Badge & Text -->
+    <rect x="225" y="465" width="240" height="52" rx="8" fill="#08101d" stroke="#FFD000" stroke-width="1.5" />
+    <text x="345" y="492" fill="#FFFFFF" font-family="'Barlow Condensed', sans-serif" font-size="24" font-weight="900" font-style="italic" letter-spacing="2" text-anchor="middle">PASCO COUNTY</text>
+    <text x="345" y="509" fill="#FFD000" font-family="'Inter', sans-serif" font-size="10" font-weight="700" letter-spacing="1" text-anchor="middle">NEW PORT RICHEY • LAND O' LAKES • TRINITY</text>
+
+    <!-- Pins -->
+    <g transform="translate(195, 535)">
+      <circle cx="0" cy="0" r="5" fill="#FFD000" stroke="#000" stroke-width="1.5" />
+      <text x="0" y="15" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">New Port Richey</text>
+    </g>
+    <g transform="translate(360, 545)">
+      <circle cx="0" cy="0" r="5" fill="#FFD000" stroke="#000" stroke-width="1.5" />
+      <text x="0" y="15" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Land O' Lakes</text>
+    </g>
+    <g transform="translate(450, 535)">
+      <circle cx="0" cy="0" r="4.5" fill="#FFD000" stroke="#000" stroke-width="1.5" />
+      <text x="0" y="-8" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="10" font-weight="600" text-anchor="middle">Wesley Chapel</text>
+    </g>
+  </g>
+
+  <!-- Bottom Mobile Dispatch Banner -->
+  <g transform="translate(325, 645)">
+    <rect x="-190" y="-20" width="380" height="40" rx="20" fill="#000000" stroke="#FFD000" stroke-width="2" />
+    <circle cx="-160" cy="0" r="6" fill="#10b981" />
+    <text x="10" y="6" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="18" font-weight="bold" font-style="italic" letter-spacing="2" text-anchor="middle">FULL MOBILE DISPATCH • WE COME TO YOU</text>
+  </g>
+</svg>
