@@ -1,0 +1,22 @@
+{
+  "name": "solar-shield-mobile-tinting",
+  "version": "1.0.0",
+  "description": "High-performance display website for SolarShield Mobile Tinting",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  },
+  "keywords": [
+    "window-tinting",
+    "solar-shield",
+    "mobile-tinting",
+    "automotive-tint",
+    "residential-tint"
+  ],
+  "author": "SolarShield Mobile Tinting",
+  "license": "MIT"
+}
