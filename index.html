@@ -868,23 +868,20 @@
 
         <!-- Right Column: Map Graphic (Matching Mockup with Neon County Highlight) -->
         <div class="lg:col-span-6 flex justify-center">
-          <div class="relative w-full max-w-lg bg-zinc-950/80 border-2 border-brand-yellow/40 rounded-3xl p-4 shadow-2xl overflow-hidden group">
-            <div class="absolute inset-0 bg-brand-yellow/5 opacity-40 group-hover:opacity-100 transition-opacity"></div>
-            <img src="images/service_map@2x.png" alt="Service Area Map - Citrus, Hernando, Pasco Counties" class="w-full h-auto object-contain rounded-2xl border border-zinc-800 filter drop-shadow-[0_0_20px_rgba(255,208,0,0.2)]">
           <div class="relative w-full max-w-lg bg-zinc-950/80 border-2 border-brand-yellow/40 rounded-3xl p-3 sm:p-4 shadow-2xl overflow-hidden group">
             <div class="rounded-2xl overflow-hidden border border-zinc-800 bg-[#040812]">
-              <img src="images/service_area_animated.svg" alt="SolarShield Tri-County Service Area Radar Map" class="w-full h-auto object-contain">
+              <object type="image/svg+xml" data="images/service_area_animated.svg" class="w-full h-auto" aria-label="SolarShield Tri-County Service Area Radar Map">
+                <p class="text-center text-zinc-400 py-8">Service Area Map — Hernando, Pasco &amp; Citrus Counties</p>
+              </object>
             </div>
             
             <!-- Map Tag & Interactive Link -->
             <div class="mt-3 flex flex-col sm:flex-row items-center justify-between gap-2 px-1">
               <span class="inline-flex items-center gap-2 bg-black/90 px-3 py-1.5 rounded-full border border-brand-yellow text-brand-yellow font-racing text-xs font-bold tracking-widest">
-                <span class="w-2 h-2 rounded-full bg-brand-yellow animate-ping"></span>
                 <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
                 FULL MOBILE DISPATCH
               </span>
               <a href="service-area.html" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-racing font-bold text-white hover:text-brand-yellow transition-colors underline underline-offset-4">
-                <span>VIEW INTERACTIVE MAP</span>
                 <span>VIEW SERVICE AREA</span>
                 <svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
               </a>
