@@ -1,6 +1,10 @@
 {
   "name": "solarshield-tinting",
   "compatibility_date": "2026-09-01",
+  "routes": [
+    { "pattern": "solarshieldmobiletinting.com", "custom_domain": true },
+    { "pattern": "www.solarshieldmobiletinting.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./",
     "html_handling": "auto-trailing-slash",

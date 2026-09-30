@@ -1052,6 +1052,10 @@
               </div>
               <p class="mt-1">Thanks! We received your inquiry and will call/text you back shortly with your estimate.</p>
             </div>
+            <div id="form-error-msg" class="hidden p-4 bg-red-50 border border-red-300 rounded-lg text-red-800 text-sm">
+              <p class="font-bold">Sorry, your request didn't go through.</p>
+              <p class="mt-1">Please call or text us at <a href="tel:7275988468" class="underline font-bold">(727) 598-TINT</a> and we'll get you a quote right away.</p>
+            </div>
 
           </form>
         </div>
@@ -1635,23 +1639,28 @@
       const form = event.target;
       const submitBtn = document.getElementById('submit-btn');
       const successMsg = document.getElementById('form-success-msg');
+      const errorMsg = document.getElementById('form-error-msg');
 
       const formData = {
+        access_key: '9a5b0d47-6f81-4a1b-9076-66abb6e3df14',
+        subject: `New Quote Request: ${form.name.value} (${form.phone.value})`,
+        from_name: 'SolarShield Website',
         name: form.name.value,
         phone: form.phone.value,
         service: form.service.value,
         vehicle_details: form.vehicle_details.value,
-        details: form.details.value,
-        _subject: 'New Quote Request - SolarShield Mobile Tinting'
+        details: form.details.value
       };
 
       submitBtn.disabled = true;
       submitBtn.classList.add('opacity-75');
       submitBtn.querySelector('span').textContent = 'SENDING REQUEST...';
+      successMsg.classList.add('hidden');
+      errorMsg.classList.add('hidden');
 
-      fetch('https://formsubmit.co/ajax/solarshieldmobiletinting@gmail.com', {
+      fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
@@ -1659,19 +1668,18 @@
       })
       .then(response => response.json())
       .then(data => {
-        submitBtn.disabled = false;
-        submitBtn.classList.remove('opacity-75');
-        submitBtn.querySelector('span').textContent = 'REQUEST QUOTE';
+        if (!data.success) throw new Error(data.message);
         successMsg.classList.remove('hidden');
         form.reset();
       })
       .catch(error => {
         console.error('Error submitting quote:', error);
+        errorMsg.classList.remove('hidden');
+      })
+      .finally(() => {
         submitBtn.disabled = false;
         submitBtn.classList.remove('opacity-75');
         submitBtn.querySelector('span').textContent = 'REQUEST QUOTE';
-        successMsg.classList.remove('hidden');
-        form.reset();
       });
     }
   </script>
