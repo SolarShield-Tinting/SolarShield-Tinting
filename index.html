@@ -58,15 +58,6 @@
       background-size: 18px 18px;
     }
 
-    /* Hide scrollbar for gallery track while keeping touch/scroll functional */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
     /* Glassmorphism */
     .glass-dark {
       background: rgba(10, 12, 16, 0.88);
@@ -184,8 +175,8 @@
           <!-- Main Headline -->
           <div class="space-y-1">
             <div class="inline-flex items-center gap-2 bg-black/80 border border-brand-yellow/60 text-brand-yellow px-3.5 py-1 rounded-full text-xs sm:text-sm font-racing tracking-widest font-bold mb-1 shadow-md">
-              <span class="w-2 h-2 rounded-full bg-brand-yellow animate-ping"></span>
-              FLORIDA'S PREMIER MOBILE WINDOW TINTING
+              <span class="w-2.5 h-2.5 rounded-full bg-brand-yellow animate-ping"></span>
+              PREMIUM MOBILE WINDOW TINTING
             </div>
             <h1 class="font-racing font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-none text-black">
               PROFESSIONAL<br>
@@ -225,13 +216,13 @@
 
         </div>
 
-        <!-- Right Hero Visual: Authentic Waterfront Sunset Ceramic Tint Truck -->
+        <!-- Right Hero Visual: Cadillac Escalade Luxury SUV Ceramic Window Tint -->
         <div class="lg:col-span-5 relative flex justify-center items-center">
           <div class="relative w-full max-w-lg lg:max-w-none group">
             <div class="absolute -inset-3 bg-gradient-to-r from-brand-yellow/30 to-brand-blue/30 rounded-3xl blur-2xl opacity-75 group-hover:opacity-100 transition duration-500"></div>
             
             <div class="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-zinc-900">
-              <img src="images/gallery_f150_sunset.jpg" alt="Ford F-150 SuperCrew Waterfront Sunset Window Tint" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+              <img src="images/real_escalade_front.jpg" alt="Cadillac Escalade Luxury SUV Ceramic Window Tint" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
               
               <!-- Badge overlay -->
               <div class="absolute bottom-3 left-3 right-3 bg-black/90 backdrop-blur border border-brand-yellow/50 text-white p-2.5 rounded-xl font-racing text-sm flex items-center justify-between shadow-xl">
@@ -239,7 +230,7 @@
                   <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
                   <span class="font-bold tracking-wide">100% MOBILE &bull; WE COME TO YOU</span>
                 </div>
-                <span class="text-brand-yellow font-bold text-xs uppercase">Driveway Install</span>
+                <span class="text-brand-yellow font-bold text-xs uppercase tracking-wider">LIFETIME WARRANTY</span>
               </div>
             </div>
           </div>
@@ -336,10 +327,10 @@
       <!-- 3 Service Cards Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <!-- Service 1: Automotive (Dodge Charger Hellcat HD) -->
+        <!-- Service 1: Automotive (Performance Coupe Nano-Ceramic) -->
         <div class="group relative rounded-2xl overflow-hidden shadow-xl bg-white border border-zinc-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
           <div class="relative h-64 sm:h-72 overflow-hidden bg-zinc-900">
-            <img src="images/service_auto_hellcat.jpg" alt="Automotive Ceramic Window Tinting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <img src="images/real_tesla_sport_front.jpg" alt="Automotive Ceramic Window Tinting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
             <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80"></div>
             
             <div class="absolute top-4 left-4 bg-brand-yellow text-black font-racing font-black text-sm px-3 py-1 rounded shadow">
@@ -677,8 +668,8 @@
         <!-- Filter Buttons & Quick Navigation -->
         <div class="flex flex-wrap items-center gap-2">
           <button type="button" onclick="filterGallery('all')" class="gallery-filter-btn px-4 py-1.5 rounded-full font-racing text-base bg-brand-yellow text-black font-bold transition-all" data-category="all">ALL</button>
-          <button type="button" onclick="filterGallery('truck')" class="gallery-filter-btn px-4 py-1.5 rounded-full font-racing text-base bg-black/60 hover:bg-black text-white font-bold border border-white/20 transition-all" data-category="truck">TRUCKS &amp; JEEPS</button>
-          <button type="button" onclick="filterGallery('car')" class="gallery-filter-btn px-4 py-1.5 rounded-full font-racing text-base bg-black/60 hover:bg-black text-white font-bold border border-white/20 transition-all" data-category="car">CARS &amp; SUVS</button>
+          <button type="button" onclick="filterGallery('truck')" class="gallery-filter-btn px-4 py-1.5 rounded-full font-racing text-base bg-black/60 hover:bg-black text-white font-bold border border-white/20 transition-all" data-category="truck">TRUCKS &amp; SUVS</button>
+          <button type="button" onclick="filterGallery('car')" class="gallery-filter-btn px-4 py-1.5 rounded-full font-racing text-base bg-black/60 hover:bg-black text-white font-bold border border-white/20 transition-all" data-category="car">CARS &amp; COUPES</button>
           <button type="button" onclick="filterGallery('res-comm')" class="gallery-filter-btn px-4 py-1.5 rounded-full font-racing text-base bg-black/60 hover:bg-black text-white font-bold border border-white/20 transition-all" data-category="res-comm">RESIDENTIAL &amp; COMM</button>
 
           <!-- Desktop / Tablet Quick Nav Arrows in Header -->
@@ -708,30 +699,30 @@
         <!-- Swipable Horizontal Track -->
         <div id="gallery-track" class="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-2 no-scrollbar px-1" style="scrollbar-width: none; -ms-overflow-style: none;">
           
-          <!-- Job 1: Ford F-150 Sunset -->
-          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="truck" onclick="openLightbox('images/gallery_f150_sunset.jpg', 'Ford F-150 SuperCrew - Waterfront Sunset Ceramic Tint')">
+          <!-- Job 1: Cadillac Escalade Luxury SUV -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="truck" onclick="openLightbox('images/real_escalade_front.jpg', 'Cadillac Escalade Luxury SUV - Full Nano-Ceramic Tint')">
             <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-              <img src="images/gallery_f150_sunset.jpg" alt="Ford F-150 Waterfront Sunset Window Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <img src="images/real_escalade_front.jpg" alt="Cadillac Escalade Luxury SUV Ceramic Window Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
             </div>
             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
             </div>
             <div class="p-3 bg-black/90">
-              <div class="font-racing font-bold text-base text-white">FORD F-150 SUPERCREW</div>
+              <div class="font-racing font-bold text-base text-white">CADILLAC ESCALADE LUXURY</div>
               <div class="text-xs text-brand-yellow font-racing">Full Ceramic IR Privacy Tint</div>
             </div>
           </div>
 
-          <!-- Job 2: Dodge Charger Hellcat -->
-          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="car" onclick="openLightbox('images/service_auto_hellcat.jpg', 'Dodge Charger SRT Hellcat Widebody - Full Nano-Ceramic Tint')">
+          <!-- Job 2: Tesla / Performance Coupe -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="car" onclick="openLightbox('images/real_tesla_sport_front.jpg', 'Performance Coupe - Full Nano-Ceramic Window Tint')">
             <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-              <img src="images/service_auto_hellcat.jpg" alt="Dodge Charger SRT Hellcat Widebody Ceramic Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <img src="images/real_tesla_sport_front.jpg" alt="Performance Coupe Ceramic Window Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
             </div>
             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
             </div>
             <div class="p-3 bg-black/90">
-              <div class="font-racing font-bold text-base text-white">DODGE CHARGER HELLCAT</div>
+              <div class="font-racing font-bold text-base text-white">PERFORMANCE COUPE</div>
               <div class="text-xs text-brand-yellow font-racing">Nano-Ceramic Heat Shield</div>
             </div>
           </div>
@@ -778,45 +769,45 @@
             </div>
           </div>
 
-          <!-- Job 6: Toyota Camry Mobile Driveway -->
-          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="car" onclick="openLightbox('images/gallery_camry_mobile.jpg', 'Toyota Camry - Mobile Driveway Window Tinting Installation')">
+          <!-- Job 6: Real Ford F-150 Mobile Driveway -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="truck" onclick="openLightbox('images/real_f150_mobile.jpg', 'Ford F-150 SuperCrew - Mobile Driveway Window Tinting Installation')">
             <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-              <img src="images/gallery_camry_mobile.jpg" alt="Toyota Camry Mobile Driveway Window Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <img src="images/real_f150_mobile.jpg" alt="Ford F-150 Mobile Driveway Window Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
             </div>
             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
             </div>
             <div class="p-3 bg-black/90">
-              <div class="font-racing font-bold text-base text-white">TOYOTA CAMRY SEDAN</div>
+              <div class="font-racing font-bold text-base text-white">FORD F-150 SUPERCREW</div>
               <div class="text-xs text-brand-yellow font-racing">Mobile Driveway Installation</div>
             </div>
           </div>
 
-          <!-- Job 7: Jeep Compass Sunset -->
-          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="car" onclick="openLightbox('images/gallery_jeep_compass_sunset.jpg', 'Jeep Compass - Side Windows & Visor Eyebrow Strip')">
+          <!-- Job 7: Performance Mustang Coupe -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="car" onclick="openLightbox('images/real_mustang_sport.jpg', 'Ford Mustang 5.0 - Full Nano-Ceramic Window Tint')">
             <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-              <img src="images/gallery_jeep_compass_sunset.jpg" alt="Jeep Compass Ceramic Tint with Visor Strip" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <img src="images/real_mustang_sport.jpg" alt="Ford Mustang Performance Ceramic Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
             </div>
             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
             </div>
             <div class="p-3 bg-black/90">
-              <div class="font-racing font-bold text-base text-white">JEEP COMPASS SUV</div>
-              <div class="text-xs text-brand-yellow font-racing">Visor Eyebrow &bull; Side Windows</div>
+              <div class="font-racing font-bold text-base text-white">FORD MUSTANG 5.0</div>
+              <div class="text-xs text-brand-yellow font-racing">Ceramic Privacy &amp; Heat Shield</div>
             </div>
           </div>
 
-          <!-- Job 8: Ford Explorer SUV -->
-          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="car" onclick="openLightbox('images/gallery_silver_suv_side.jpg', 'Silver SUV - Full Ceramic Privacy Tinting')">
+          <!-- Job 8: Cadillac Escalade Rear Privacy Tint -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="truck" onclick="openLightbox('images/real_escalade_rear.jpg', 'Cadillac Escalade Luxury SUV - Rear Dark Privacy Tint')">
             <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-              <img src="images/gallery_silver_suv_side.jpg" alt="Silver SUV Ceramic Privacy Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+              <img src="images/real_escalade_rear.jpg" alt="Cadillac Escalade Rear Privacy Window Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
             </div>
             <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
               <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
             </div>
             <div class="p-3 bg-black/90">
-              <div class="font-racing font-bold text-base text-white">FULL-SIZE SUV CERAMIC</div>
-              <div class="text-xs text-brand-yellow font-racing">Maximum Heat Rejection</div>
+              <div class="font-racing font-bold text-base text-white">ESCALADE REAR PRIVACY</div>
+              <div class="text-xs text-brand-yellow font-racing">Maximum Heat &amp; UV Block</div>
             </div>
           </div>
 
@@ -870,7 +861,7 @@
               </div>
               <div>
                 <h3 class="font-racing font-black text-2xl sm:text-3xl text-white tracking-wide">HERNANDO COUNTY</h3>
-                <p class="text-xs sm:text-sm text-zinc-400">Spring Hill, Brooksville, Weeki Wachee, Ridge Manor</p>
+                <p class="text-xs sm:text-sm text-brand-yellow/90 font-racing uppercase tracking-wider font-bold">Full Mobile Window Tinting Dispatch</p>
               </div>
             </div>
 
@@ -881,7 +872,7 @@
               </div>
               <div>
                 <h3 class="font-racing font-black text-2xl sm:text-3xl text-white tracking-wide">PASCO COUNTY</h3>
-                <p class="text-xs sm:text-sm text-zinc-400">New Port Richey, Land O' Lakes, Trinity, Wesley Chapel, Hudson</p>
+                <p class="text-xs sm:text-sm text-brand-yellow/90 font-racing uppercase tracking-wider font-bold">Automotive, Residential &amp; Commercial</p>
               </div>
             </div>
 
@@ -892,7 +883,7 @@
               </div>
               <div>
                 <h3 class="font-racing font-black text-2xl sm:text-3xl text-white tracking-wide">CITRUS COUNTY</h3>
-                <p class="text-xs sm:text-sm text-zinc-400">Inverness, Crystal River, Homosassa, Sugarmill Woods, Lecanto</p>
+                <p class="text-xs sm:text-sm text-brand-yellow/90 font-racing uppercase tracking-wider font-bold">Premium Nano-Ceramic Service</p>
               </div>
             </div>
 
@@ -1041,31 +1032,30 @@
         <div class="lg:col-span-5 space-y-6 pt-2">
           
           <!-- Contact Item 1: Phone -->
-          <a href="tel:7275988468" class="flex items-center gap-3 sm:gap-4 group p-3 rounded-2xl transition-all hover:bg-white/80">
-            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brand-yellow text-black flex items-center justify-center shrink-0 shadow-lg shadow-brand-yellow/30 group-hover:scale-105 transition-transform">
-              <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <a href="tel:7275988468" class="flex items-center gap-4 group p-3 rounded-2xl transition-all hover:bg-white/80">
+            <div class="w-14 h-14 rounded-full bg-brand-yellow text-black flex items-center justify-center shrink-0 shadow-lg shadow-brand-yellow/30 group-hover:scale-105 transition-transform">
+              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             </div>
-            <div class="inline-flex flex-col">
-              <div class="font-racing font-black text-3xl sm:text-4xl text-black group-hover:text-brand-blue transition-colors leading-none tracking-wide">
+            <div>
+              <div class="font-racing font-black text-3xl sm:text-4xl text-black group-hover:text-brand-blue transition-colors">
                 (727) 598-TINT
               </div>
-              <div class="w-full flex items-center justify-between text-xs sm:text-sm font-racing font-bold text-zinc-500 mt-1">
-                <span class="tracking-widest uppercase">CALL OR TEXT</span>
-                <span class="text-sm sm:text-base font-black text-zinc-800 tracking-wider">(8468)</span>
+              <div class="text-sm font-racing font-bold text-zinc-500">
+                (8468) &bull; CALL OR TEXT
               </div>
             </div>
           </a>
 
           <!-- Contact Item 2: Email -->
-          <a href="mailto:Solarshieldmobiletinting@gmail.com" class="flex items-center gap-3 sm:gap-4 group p-3 rounded-2xl transition-all hover:bg-white/80">
-            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brand-yellow text-black flex items-center justify-center shrink-0 shadow-lg shadow-brand-yellow/30 group-hover:scale-105 transition-transform">
-              <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <a href="mailto:Solarshieldmobiletinting@gmail.com" class="flex items-center gap-4 group p-3 rounded-2xl transition-all hover:bg-white/80">
+            <div class="w-14 h-14 rounded-full bg-brand-yellow text-black flex items-center justify-center shrink-0 shadow-lg shadow-brand-yellow/30 group-hover:scale-105 transition-transform">
+              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             </div>
-            <div class="min-w-0 flex-1">
-              <div class="text-[11px] min-[360px]:text-xs sm:text-base font-bold text-zinc-900 group-hover:text-brand-blue transition-colors whitespace-nowrap">
+            <div class="overflow-hidden">
+              <div class="text-base sm:text-lg font-bold text-zinc-900 group-hover:text-brand-blue transition-colors break-all">
                 Solarshieldmobiletinting@gmail.com
               </div>
-              <div class="text-xs uppercase font-racing tracking-widest text-zinc-500 font-bold mt-0.5">
+              <div class="text-xs uppercase font-racing tracking-widest text-zinc-500">
                 Official Business Email
               </div>
             </div>
@@ -1156,9 +1146,9 @@
         <div class="space-y-3 font-racing text-lg">
           <div class="text-brand-yellow uppercase tracking-widest text-sm font-bold">Coverage Areas</div>
           <ul class="space-y-1.5 text-zinc-400">
-            <li><span class="text-white">Hernando County:</span> Spring Hill, Brooksville</li>
-            <li><span class="text-white">Pasco County:</span> New Port Richey, Land O' Lakes</li>
-            <li><span class="text-white">Citrus County:</span> Inverness, Crystal River</li>
+            <li><span class="text-white">Hernando County</span></li>
+            <li><span class="text-white">Pasco County</span></li>
+            <li><span class="text-white">Citrus County</span></li>
             <li class="pt-2">
               <a href="tel:7275988468" class="text-brand-yellow font-bold text-xl block hover:underline">
                 (727) 598-TINT
@@ -1246,126 +1236,6 @@
       }
     }
 
-    // ================= GALLERY SWIPE & AUTO-ROTATE LOGIC =================
-    let galleryInterval = null;
-    let isGalleryPaused = false;
-    let resumeGalleryTimeout = null;
-
-    function getVisibleGalleryCards() {
-      const track = document.getElementById('gallery-track');
-      if (!track) return [];
-      return Array.from(track.querySelectorAll('.gallery-card')).filter(card => !card.classList.contains('hidden'));
-    }
-
-    function updateGalleryDots() {
-      const dotsContainer = document.getElementById('gallery-dots');
-      const track = document.getElementById('gallery-track');
-      if (!dotsContainer || !track) return;
-      
-      const visibleCards = getVisibleGalleryCards();
-      if (visibleCards.length <= 1) {
-        dotsContainer.innerHTML = '';
-        return;
-      }
-
-      // Calculate current active index based on scroll position
-      const scrollLeft = track.scrollLeft;
-      let activeIndex = 0;
-      let minDiff = Infinity;
-
-      visibleCards.forEach((card, idx) => {
-        const diff = Math.abs(card.offsetLeft - track.offsetLeft - scrollLeft);
-        if (diff < minDiff) {
-          minDiff = diff;
-          activeIndex = idx;
-        }
-      });
-
-      dotsContainer.innerHTML = visibleCards.map((_, idx) => `
-        <button type="button" onclick="scrollGalleryToIndex(${idx})" aria-label="Go to slide ${idx + 1}" class="h-2 rounded-full transition-all duration-300 cursor-pointer ${idx === activeIndex ? 'bg-brand-yellow w-6' : 'bg-white/30 hover:bg-white/70 w-2'}"></button>
-      `).join('');
-    }
-
-    function scrollGalleryToIndex(index) {
-      const track = document.getElementById('gallery-track');
-      const visibleCards = getVisibleGalleryCards();
-      if (!track || !visibleCards[index]) return;
-      
-      const targetCard = visibleCards[index];
-      track.scrollTo({
-        left: targetCard.offsetLeft - track.offsetLeft,
-        behavior: 'smooth'
-      });
-      pauseGalleryAutoRotate();
-    }
-
-    function scrollGallery(direction) {
-      const track = document.getElementById('gallery-track');
-      if (!track) return;
-
-      const visibleCards = getVisibleGalleryCards();
-      if (visibleCards.length === 0) return;
-
-      const scrollLeft = track.scrollLeft;
-      const maxScroll = track.scrollWidth - track.clientWidth;
-
-      // Find current closest card
-      let activeIndex = 0;
-      let minDiff = Infinity;
-      visibleCards.forEach((card, idx) => {
-        const diff = Math.abs(card.offsetLeft - track.offsetLeft - scrollLeft);
-        if (diff < minDiff) {
-          minDiff = diff;
-          activeIndex = idx;
-        }
-      });
-
-      let nextIndex = activeIndex + direction;
-
-      if (direction > 0) {
-        // Going forward: if at or past the last card or near scroll end, wrap back to start
-        if (nextIndex >= visibleCards.length || scrollLeft >= maxScroll - 20) {
-          track.scrollTo({ left: 0, behavior: 'smooth' });
-          return;
-        }
-      } else {
-        // Going backwards: if before first card, wrap to last card
-        if (nextIndex < 0) {
-          const lastCard = visibleCards[visibleCards.length - 1];
-          track.scrollTo({
-            left: lastCard.offsetLeft - track.offsetLeft,
-            behavior: 'smooth'
-          });
-          return;
-        }
-      }
-
-      const targetCard = visibleCards[nextIndex];
-      if (targetCard) {
-        track.scrollTo({
-          left: targetCard.offsetLeft - track.offsetLeft,
-          behavior: 'smooth'
-        });
-      }
-    }
-
-    function startGalleryAutoRotate() {
-      if (galleryInterval) clearInterval(galleryInterval);
-      galleryInterval = setInterval(() => {
-        if (!isGalleryPaused) {
-          scrollGallery(1);
-        }
-      }, 4000);
-    }
-
-    function pauseGalleryAutoRotate() {
-      isGalleryPaused = true;
-      if (resumeGalleryTimeout) clearTimeout(resumeGalleryTimeout);
-      resumeGalleryTimeout = setTimeout(() => {
-        isGalleryPaused = false;
-      }, 6000);
-    }
-
     // Gallery Filter Logic
     function filterGallery(category) {
       const cards = document.querySelectorAll('.gallery-card');
@@ -1387,34 +1257,6 @@
           card.classList.add('hidden');
         }
       });
-
-      const track = document.getElementById('gallery-track');
-      if (track) {
-        track.scrollTo({ left: 0, behavior: 'smooth' });
-      }
-      setTimeout(updateGalleryDots, 100);
-    }
-
-    // Attach Gallery Interaction Listeners
-    const galleryTrack = document.getElementById('gallery-track');
-    if (galleryTrack) {
-      // Pause rotation when hovering with mouse
-      galleryTrack.addEventListener('mouseenter', () => { isGalleryPaused = true; });
-      galleryTrack.addEventListener('mouseleave', () => { isGalleryPaused = false; });
-      
-      // Pause rotation when user touches or swipes
-      galleryTrack.addEventListener('touchstart', () => { pauseGalleryAutoRotate(); }, { passive: true });
-      
-      // Update dots on scroll (debounced)
-      let scrollDotTimer = null;
-      galleryTrack.addEventListener('scroll', () => {
-        if (scrollDotTimer) clearTimeout(scrollDotTimer);
-        scrollDotTimer = setTimeout(updateGalleryDots, 80);
-      }, { passive: true });
-
-      // Initialize
-      updateGalleryDots();
-      startGalleryAutoRotate();
     }
 
     // ================= DUAL-WINDOW VEHICLE TINT SIMULATOR LOGIC =================
