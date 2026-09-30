@@ -58,6 +58,15 @@
       background-size: 18px 18px;
     }
 
+    /* Hide scrollbar for gallery track while keeping touch/scroll functional */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
     /* Glassmorphism */
     .glass-dark {
       background: rgba(10, 12, 16, 0.88);
@@ -208,13 +217,7 @@
               </div>
               <div class="text-left">
                 <span class="block text-xs uppercase text-brand-yellow tracking-widest font-racing">CALL / TEXT</span>
-                <span class="text-xl sm:text-2xl font-black text-white leading-none inline-flex items-baseline">
-                  <span>(727) 598-</span>
-                  <span class="inline-flex flex-col items-center">
-                    <span>TINT</span>
-                    <span class="text-[10px] text-brand-yellow font-bold leading-none mt-0.5 tracking-wider">(8468)</span>
-                  </span>
-                </span>
+                <span class="text-xl sm:text-2xl font-black text-white leading-none">(727) 598-TINT <span class="text-sm text-zinc-400 font-normal">(8468)</span></span>
               </div>
               <svg class="w-5 h-5 text-brand-yellow stroke-[3] ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
             </a>
@@ -671,130 +674,164 @@
           </p>
         </div>
 
-        <!-- Filter Buttons -->
+        <!-- Filter Buttons & Quick Navigation -->
         <div class="flex flex-wrap items-center gap-2">
           <button type="button" onclick="filterGallery('all')" class="gallery-filter-btn px-4 py-1.5 rounded-full font-racing text-base bg-brand-yellow text-black font-bold transition-all" data-category="all">ALL</button>
           <button type="button" onclick="filterGallery('truck')" class="gallery-filter-btn px-4 py-1.5 rounded-full font-racing text-base bg-black/60 hover:bg-black text-white font-bold border border-white/20 transition-all" data-category="truck">TRUCKS &amp; JEEPS</button>
           <button type="button" onclick="filterGallery('car')" class="gallery-filter-btn px-4 py-1.5 rounded-full font-racing text-base bg-black/60 hover:bg-black text-white font-bold border border-white/20 transition-all" data-category="car">CARS &amp; SUVS</button>
           <button type="button" onclick="filterGallery('res-comm')" class="gallery-filter-btn px-4 py-1.5 rounded-full font-racing text-base bg-black/60 hover:bg-black text-white font-bold border border-white/20 transition-all" data-category="res-comm">RESIDENTIAL &amp; COMM</button>
+
+          <!-- Desktop / Tablet Quick Nav Arrows in Header -->
+          <div class="hidden sm:flex items-center gap-1.5 ml-2 pl-3 border-l border-white/20">
+            <button type="button" onclick="scrollGallery(-1)" aria-label="Previous work" class="w-9 h-9 rounded-full bg-black/70 hover:bg-brand-yellow hover:text-black text-white border border-white/20 flex items-center justify-center transition-all shadow cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+            </button>
+            <button type="button" onclick="scrollGallery(1)" aria-label="Next work" class="w-9 h-9 rounded-full bg-black/70 hover:bg-brand-yellow hover:text-black text-white border border-white/20 flex items-center justify-center transition-all shadow cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
         </div>
       </div>
 
-      <!-- 8 Real Job Cards Grid -->
-      <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Job 1: Ford F-150 Sunset -->
-        <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="truck" onclick="openLightbox('images/gallery_f150_sunset.jpg', 'Ford F-150 SuperCrew - Waterfront Sunset Ceramic Tint')">
-          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-            <img src="images/gallery_f150_sunset.jpg" alt="Ford F-150 Waterfront Sunset Window Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          </div>
-          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
-          </div>
-          <div class="p-3 bg-black/90">
-            <div class="font-racing font-bold text-base text-white">FORD F-150 SUPERCREW</div>
-            <div class="text-xs text-brand-yellow font-racing">Full Ceramic IR Privacy Tint</div>
-          </div>
-        </div>
+      <!-- 8 Real Job Cards Carousel with Floating Navigation Arrows -->
+      <div id="gallery-container" class="relative group/carousel">
+        <!-- Floating Left Arrow Button -->
+        <button type="button" onclick="scrollGallery(-1)" aria-label="Previous slide" class="absolute -left-3 sm:-left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/85 hover:bg-brand-yellow text-white hover:text-black border border-white/20 flex items-center justify-center shadow-2xl transition-all duration-200 opacity-90 hover:opacity-100 hover:scale-105 active:scale-95 backdrop-blur-sm cursor-pointer">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+        </button>
 
-        <!-- Job 2: Dodge Charger Hellcat -->
-        <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="car" onclick="openLightbox('images/service_auto_hellcat.jpg', 'Dodge Charger SRT Hellcat Widebody - Full Nano-Ceramic Tint')">
-          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-            <img src="images/service_auto_hellcat.jpg" alt="Dodge Charger SRT Hellcat Widebody Ceramic Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-          </div>
-          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
-          </div>
-          <div class="p-3 bg-black/90">
-            <div class="font-racing font-bold text-base text-white">DODGE CHARGER HELLCAT</div>
-            <div class="text-xs text-brand-yellow font-racing">Nano-Ceramic Heat Shield</div>
-          </div>
-        </div>
+        <!-- Floating Right Arrow Button -->
+        <button type="button" onclick="scrollGallery(1)" aria-label="Next slide" class="absolute -right-3 sm:-right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/85 hover:bg-brand-yellow text-white hover:text-black border border-white/20 flex items-center justify-center shadow-2xl transition-all duration-200 opacity-90 hover:opacity-100 hover:scale-105 active:scale-95 backdrop-blur-sm cursor-pointer">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+        </button>
 
-        <!-- Job 3: Blue Jeep Gladiator -->
-        <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="truck" onclick="openLightbox('images/gallery_blue_jeep_gladiator.jpg', 'Lifted Hydro Blue Jeep Gladiator - Full Cab Ceramic Tint')">
-          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-            <img src="images/gallery_blue_jeep_gladiator.jpg" alt="Blue Jeep Gladiator Ceramic Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+        <!-- Swipable Horizontal Track -->
+        <div id="gallery-track" class="flex gap-4 sm:gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-2 no-scrollbar px-1" style="scrollbar-width: none; -ms-overflow-style: none;">
+          
+          <!-- Job 1: Ford F-150 Sunset -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="truck" onclick="openLightbox('images/gallery_f150_sunset.jpg', 'Ford F-150 SuperCrew - Waterfront Sunset Ceramic Tint')">
+            <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+              <img src="images/gallery_f150_sunset.jpg" alt="Ford F-150 Waterfront Sunset Window Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
+            </div>
+            <div class="p-3 bg-black/90">
+              <div class="font-racing font-bold text-base text-white">FORD F-150 SUPERCREW</div>
+              <div class="text-xs text-brand-yellow font-racing">Full Ceramic IR Privacy Tint</div>
+            </div>
           </div>
-          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
-          </div>
-          <div class="p-3 bg-black/90">
-            <div class="font-racing font-bold text-base text-white">JEEP GLADIATOR 4X4</div>
-            <div class="text-xs text-brand-yellow font-racing">Florida Heat Rejection Tint</div>
-          </div>
-        </div>
 
-        <!-- Job 4: Modern Luxury House Sunset -->
-        <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="res-comm" onclick="openLightbox('images/service_res_sunset.jpg', 'Luxury Modern Florida Residence - Architectural Solar Glass Film')">
-          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-            <img src="images/service_res_sunset.jpg" alt="Modern Luxury House Window Tinting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <!-- Job 2: Dodge Charger Hellcat -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="car" onclick="openLightbox('images/service_auto_hellcat.jpg', 'Dodge Charger SRT Hellcat Widebody - Full Nano-Ceramic Tint')">
+            <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+              <img src="images/service_auto_hellcat.jpg" alt="Dodge Charger SRT Hellcat Widebody Ceramic Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
+            </div>
+            <div class="p-3 bg-black/90">
+              <div class="font-racing font-bold text-base text-white">DODGE CHARGER HELLCAT</div>
+              <div class="text-xs text-brand-yellow font-racing">Nano-Ceramic Heat Shield</div>
+            </div>
           </div>
-          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
-          </div>
-          <div class="p-3 bg-black/90">
-            <div class="font-racing font-bold text-base text-white">LUXURY FLORIDA RESIDENCE</div>
-            <div class="text-xs text-brand-yellow font-racing">Lower AC Bills &bull; 99% UV Block</div>
-          </div>
-        </div>
 
-        <!-- Job 5: Commercial Storefront Plaza -->
-        <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="res-comm" onclick="openLightbox('images/service_comm_plaza.jpg', 'Commercial Storefront & Plaza - Reflective Solar Privacy Film')">
-          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-            <img src="images/service_comm_plaza.jpg" alt="Commercial Storefront Window Tinting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <!-- Job 3: Blue Jeep Gladiator -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="truck" onclick="openLightbox('images/gallery_blue_jeep_gladiator.jpg', 'Lifted Hydro Blue Jeep Gladiator - Full Cab Ceramic Tint')">
+            <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+              <img src="images/gallery_blue_jeep_gladiator.jpg" alt="Blue Jeep Gladiator Ceramic Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
+            </div>
+            <div class="p-3 bg-black/90">
+              <div class="font-racing font-bold text-base text-white">JEEP GLADIATOR 4X4</div>
+              <div class="text-xs text-brand-yellow font-racing">Florida Heat Rejection Tint</div>
+            </div>
           </div>
-          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
-          </div>
-          <div class="p-3 bg-black/90">
-            <div class="font-racing font-bold text-base text-white">COMMERCIAL PLAZA</div>
-            <div class="text-xs text-brand-yellow font-racing">Security Film &bull; Glare Control</div>
-          </div>
-        </div>
 
-        <!-- Job 6: Toyota Camry Mobile Driveway -->
-        <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="car" onclick="openLightbox('images/gallery_camry_mobile.jpg', 'Toyota Camry - Mobile Driveway Window Tinting Installation')">
-          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-            <img src="images/gallery_camry_mobile.jpg" alt="Toyota Camry Mobile Driveway Window Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <!-- Job 4: Modern Luxury House Sunset -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="res-comm" onclick="openLightbox('images/service_res_sunset.jpg', 'Luxury Modern Florida Residence - Architectural Solar Glass Film')">
+            <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+              <img src="images/service_res_sunset.jpg" alt="Modern Luxury House Window Tinting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
+            </div>
+            <div class="p-3 bg-black/90">
+              <div class="font-racing font-bold text-base text-white">LUXURY FLORIDA RESIDENCE</div>
+              <div class="text-xs text-brand-yellow font-racing">Lower AC Bills &bull; 99% UV Block</div>
+            </div>
           </div>
-          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
-          </div>
-          <div class="p-3 bg-black/90">
-            <div class="font-racing font-bold text-base text-white">TOYOTA CAMRY SEDAN</div>
-            <div class="text-xs text-brand-yellow font-racing">Mobile Driveway Installation</div>
-          </div>
-        </div>
 
-        <!-- Job 7: Jeep Compass Sunset -->
-        <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="car" onclick="openLightbox('images/gallery_jeep_compass_sunset.jpg', 'Jeep Compass - Side Windows & Visor Eyebrow Strip')">
-          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-            <img src="images/gallery_jeep_compass_sunset.jpg" alt="Jeep Compass Ceramic Tint with Visor Strip" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <!-- Job 5: Commercial Storefront Plaza -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="res-comm" onclick="openLightbox('images/service_comm_plaza.jpg', 'Commercial Storefront & Plaza - Reflective Solar Privacy Film')">
+            <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+              <img src="images/service_comm_plaza.jpg" alt="Commercial Storefront Window Tinting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
+            </div>
+            <div class="p-3 bg-black/90">
+              <div class="font-racing font-bold text-base text-white">COMMERCIAL PLAZA</div>
+              <div class="text-xs text-brand-yellow font-racing">Security Film &bull; Glare Control</div>
+            </div>
           </div>
-          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
-          </div>
-          <div class="p-3 bg-black/90">
-            <div class="font-racing font-bold text-base text-white">JEEP COMPASS SUV</div>
-            <div class="text-xs text-brand-yellow font-racing">Visor Eyebrow &bull; Side Windows</div>
-          </div>
-        </div>
 
-        <!-- Job 8: Ford Explorer SUV -->
-        <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black" data-category="car" onclick="openLightbox('images/gallery_silver_suv_side.jpg', 'Silver SUV - Full Ceramic Privacy Tinting')">
-          <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
-            <img src="images/gallery_silver_suv_side.jpg" alt="Silver SUV Ceramic Privacy Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+          <!-- Job 6: Toyota Camry Mobile Driveway -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="car" onclick="openLightbox('images/gallery_camry_mobile.jpg', 'Toyota Camry - Mobile Driveway Window Tinting Installation')">
+            <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+              <img src="images/gallery_camry_mobile.jpg" alt="Toyota Camry Mobile Driveway Window Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
+            </div>
+            <div class="p-3 bg-black/90">
+              <div class="font-racing font-bold text-base text-white">TOYOTA CAMRY SEDAN</div>
+              <div class="text-xs text-brand-yellow font-racing">Mobile Driveway Installation</div>
+            </div>
           </div>
-          <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-            <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
-          </div>
-          <div class="p-3 bg-black/90">
-            <div class="font-racing font-bold text-base text-white">FULL-SIZE SUV CERAMIC</div>
-            <div class="text-xs text-brand-yellow font-racing">Maximum Heat Rejection</div>
-          </div>
-        </div>
 
+          <!-- Job 7: Jeep Compass Sunset -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="car" onclick="openLightbox('images/gallery_jeep_compass_sunset.jpg', 'Jeep Compass - Side Windows & Visor Eyebrow Strip')">
+            <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+              <img src="images/gallery_jeep_compass_sunset.jpg" alt="Jeep Compass Ceramic Tint with Visor Strip" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
+            </div>
+            <div class="p-3 bg-black/90">
+              <div class="font-racing font-bold text-base text-white">JEEP COMPASS SUV</div>
+              <div class="text-xs text-brand-yellow font-racing">Visor Eyebrow &bull; Side Windows</div>
+            </div>
+          </div>
+
+          <!-- Job 8: Ford Explorer SUV -->
+          <div class="gallery-card group relative rounded-xl overflow-hidden shadow-lg border-2 border-white/10 hover:border-brand-yellow transition-all duration-300 cursor-pointer bg-black shrink-0 snap-start w-[80vw] max-w-[320px] sm:max-w-none sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]" data-category="car" onclick="openLightbox('images/gallery_silver_suv_side.jpg', 'Silver SUV - Full Ceramic Privacy Tinting')">
+            <div class="aspect-[4/3] overflow-hidden bg-zinc-900">
+              <img src="images/gallery_silver_suv_side.jpg" alt="Silver SUV Ceramic Privacy Tint" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+            </div>
+            <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="bg-brand-yellow text-black font-racing font-bold text-xs uppercase px-3 py-1.5 rounded shadow">Enlarge Photo</span>
+            </div>
+            <div class="p-3 bg-black/90">
+              <div class="font-racing font-bold text-base text-white">FULL-SIZE SUV CERAMIC</div>
+              <div class="text-xs text-brand-yellow font-racing">Maximum Heat Rejection</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Carousel Progress Dots & Mobile Swipe Indicator -->
+      <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-blue-200/80">
+        <div class="flex items-center gap-2">
+          <span class="inline-block w-2.5 h-2.5 rounded-full bg-brand-yellow animate-pulse"></span>
+          <span class="font-racing text-sm tracking-wider uppercase text-blue-200">Auto-Rotating Showcase &bull; Swipe or click arrows to explore</span>
+        </div>
+        <div id="gallery-dots" class="flex items-center gap-2">
+          <!-- Populated by JavaScript -->
+        </div>
       </div>
 
     </div>
@@ -1008,16 +1045,13 @@
             <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brand-yellow text-black flex items-center justify-center shrink-0 shadow-lg shadow-brand-yellow/30 group-hover:scale-105 transition-transform">
               <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
             </div>
-            <div>
-              <div class="flex items-baseline font-racing font-black text-2xl sm:text-4xl text-black group-hover:text-brand-blue transition-colors leading-none">
-                <span>(727) 598-</span>
-                <span class="inline-flex flex-col items-center">
-                  <span>TINT</span>
-                  <span class="text-xs sm:text-sm font-bold text-zinc-500 tracking-wider mt-0.5 sm:mt-1">(8468)</span>
-                </span>
+            <div class="inline-flex flex-col">
+              <div class="font-racing font-black text-3xl sm:text-4xl text-black group-hover:text-brand-blue transition-colors leading-none tracking-wide">
+                (727) 598-TINT
               </div>
-              <div class="text-xs uppercase font-racing tracking-widest text-zinc-500 font-bold mt-1">
-                CALL OR TEXT ANYTIME
+              <div class="w-full flex items-center justify-between text-xs sm:text-sm font-racing font-bold text-zinc-500 mt-1">
+                <span class="tracking-widest uppercase">CALL OR TEXT</span>
+                <span class="text-sm sm:text-base font-black text-zinc-800 tracking-wider">(8468)</span>
               </div>
             </div>
           </a>
@@ -1027,11 +1061,11 @@
             <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-brand-yellow text-black flex items-center justify-center shrink-0 shadow-lg shadow-brand-yellow/30 group-hover:scale-105 transition-transform">
               <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
             </div>
-            <div class="min-w-0 flex-1 overflow-hidden">
-              <div class="text-[13px] sm:text-base md:text-lg font-bold text-zinc-900 group-hover:text-brand-blue transition-colors whitespace-nowrap truncate">
+            <div class="min-w-0 flex-1">
+              <div class="text-[11px] min-[360px]:text-xs sm:text-base font-bold text-zinc-900 group-hover:text-brand-blue transition-colors whitespace-nowrap">
                 Solarshieldmobiletinting@gmail.com
               </div>
-              <div class="text-xs uppercase font-racing tracking-widest text-zinc-500 font-bold">
+              <div class="text-xs uppercase font-racing tracking-widest text-zinc-500 font-bold mt-0.5">
                 Official Business Email
               </div>
             </div>
@@ -1212,6 +1246,126 @@
       }
     }
 
+    // ================= GALLERY SWIPE & AUTO-ROTATE LOGIC =================
+    let galleryInterval = null;
+    let isGalleryPaused = false;
+    let resumeGalleryTimeout = null;
+
+    function getVisibleGalleryCards() {
+      const track = document.getElementById('gallery-track');
+      if (!track) return [];
+      return Array.from(track.querySelectorAll('.gallery-card')).filter(card => !card.classList.contains('hidden'));
+    }
+
+    function updateGalleryDots() {
+      const dotsContainer = document.getElementById('gallery-dots');
+      const track = document.getElementById('gallery-track');
+      if (!dotsContainer || !track) return;
+      
+      const visibleCards = getVisibleGalleryCards();
+      if (visibleCards.length <= 1) {
+        dotsContainer.innerHTML = '';
+        return;
+      }
+
+      // Calculate current active index based on scroll position
+      const scrollLeft = track.scrollLeft;
+      let activeIndex = 0;
+      let minDiff = Infinity;
+
+      visibleCards.forEach((card, idx) => {
+        const diff = Math.abs(card.offsetLeft - track.offsetLeft - scrollLeft);
+        if (diff < minDiff) {
+          minDiff = diff;
+          activeIndex = idx;
+        }
+      });
+
+      dotsContainer.innerHTML = visibleCards.map((_, idx) => `
+        <button type="button" onclick="scrollGalleryToIndex(${idx})" aria-label="Go to slide ${idx + 1}" class="h-2 rounded-full transition-all duration-300 cursor-pointer ${idx === activeIndex ? 'bg-brand-yellow w-6' : 'bg-white/30 hover:bg-white/70 w-2'}"></button>
+      `).join('');
+    }
+
+    function scrollGalleryToIndex(index) {
+      const track = document.getElementById('gallery-track');
+      const visibleCards = getVisibleGalleryCards();
+      if (!track || !visibleCards[index]) return;
+      
+      const targetCard = visibleCards[index];
+      track.scrollTo({
+        left: targetCard.offsetLeft - track.offsetLeft,
+        behavior: 'smooth'
+      });
+      pauseGalleryAutoRotate();
+    }
+
+    function scrollGallery(direction) {
+      const track = document.getElementById('gallery-track');
+      if (!track) return;
+
+      const visibleCards = getVisibleGalleryCards();
+      if (visibleCards.length === 0) return;
+
+      const scrollLeft = track.scrollLeft;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+
+      // Find current closest card
+      let activeIndex = 0;
+      let minDiff = Infinity;
+      visibleCards.forEach((card, idx) => {
+        const diff = Math.abs(card.offsetLeft - track.offsetLeft - scrollLeft);
+        if (diff < minDiff) {
+          minDiff = diff;
+          activeIndex = idx;
+        }
+      });
+
+      let nextIndex = activeIndex + direction;
+
+      if (direction > 0) {
+        // Going forward: if at or past the last card or near scroll end, wrap back to start
+        if (nextIndex >= visibleCards.length || scrollLeft >= maxScroll - 20) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+          return;
+        }
+      } else {
+        // Going backwards: if before first card, wrap to last card
+        if (nextIndex < 0) {
+          const lastCard = visibleCards[visibleCards.length - 1];
+          track.scrollTo({
+            left: lastCard.offsetLeft - track.offsetLeft,
+            behavior: 'smooth'
+          });
+          return;
+        }
+      }
+
+      const targetCard = visibleCards[nextIndex];
+      if (targetCard) {
+        track.scrollTo({
+          left: targetCard.offsetLeft - track.offsetLeft,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function startGalleryAutoRotate() {
+      if (galleryInterval) clearInterval(galleryInterval);
+      galleryInterval = setInterval(() => {
+        if (!isGalleryPaused) {
+          scrollGallery(1);
+        }
+      }, 4000);
+    }
+
+    function pauseGalleryAutoRotate() {
+      isGalleryPaused = true;
+      if (resumeGalleryTimeout) clearTimeout(resumeGalleryTimeout);
+      resumeGalleryTimeout = setTimeout(() => {
+        isGalleryPaused = false;
+      }, 6000);
+    }
+
     // Gallery Filter Logic
     function filterGallery(category) {
       const cards = document.querySelectorAll('.gallery-card');
@@ -1233,6 +1387,34 @@
           card.classList.add('hidden');
         }
       });
+
+      const track = document.getElementById('gallery-track');
+      if (track) {
+        track.scrollTo({ left: 0, behavior: 'smooth' });
+      }
+      setTimeout(updateGalleryDots, 100);
+    }
+
+    // Attach Gallery Interaction Listeners
+    const galleryTrack = document.getElementById('gallery-track');
+    if (galleryTrack) {
+      // Pause rotation when hovering with mouse
+      galleryTrack.addEventListener('mouseenter', () => { isGalleryPaused = true; });
+      galleryTrack.addEventListener('mouseleave', () => { isGalleryPaused = false; });
+      
+      // Pause rotation when user touches or swipes
+      galleryTrack.addEventListener('touchstart', () => { pauseGalleryAutoRotate(); }, { passive: true });
+      
+      // Update dots on scroll (debounced)
+      let scrollDotTimer = null;
+      galleryTrack.addEventListener('scroll', () => {
+        if (scrollDotTimer) clearTimeout(scrollDotTimer);
+        scrollDotTimer = setTimeout(updateGalleryDots, 80);
+      }, { passive: true });
+
+      // Initialize
+      updateGalleryDots();
+      startGalleryAutoRotate();
     }
 
     // ================= DUAL-WINDOW VEHICLE TINT SIMULATOR LOGIC =================
