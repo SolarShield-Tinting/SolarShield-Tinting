@@ -134,17 +134,17 @@
         <!-- ===== MODE SELECTOR: AUTO / RESIDENTIAL / COMMERCIAL ===== -->
         <div class="flex flex-col items-center mb-8">
           <span class="text-xs uppercase font-racing tracking-widest text-brand-yellow font-bold mb-3">CHOOSE SIMULATION CATEGORY:</span>
-          <div class="inline-flex bg-zinc-900 rounded-2xl border-2 border-zinc-800 p-1.5 gap-1.5 shadow-xl max-w-full overflow-x-auto">
-            <button type="button" onclick="switchMode('auto')" id="mode-btn-auto" class="mode-toggle-btn px-4 sm:px-8 py-3 rounded-xl font-racing font-black text-base sm:text-xl transition-all flex items-center gap-2 bg-brand-yellow text-black shadow-lg shadow-brand-yellow/20">
-              <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
+          <div class="grid grid-cols-3 w-full sm:inline-flex sm:w-auto bg-zinc-900 rounded-2xl border-2 border-zinc-800 p-1.5 gap-1.5 shadow-xl max-w-full">
+            <button type="button" onclick="switchMode('auto')" id="mode-btn-auto" class="mode-toggle-btn px-2 sm:px-8 py-3 rounded-xl font-racing font-black text-sm sm:text-xl transition-all flex items-center justify-center gap-1.5 sm:gap-2 bg-brand-yellow text-black shadow-lg shadow-brand-yellow/20">
+              <svg class="w-5 h-5 shrink-0 hidden min-[400px]:block" fill="currentColor" viewBox="0 0 24 24"><path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.21.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z"/></svg>
               <span>AUTOMOTIVE</span>
             </button>
-            <button type="button" onclick="switchMode('residential')" id="mode-btn-residential" class="mode-toggle-btn px-4 sm:px-8 py-3 rounded-xl font-racing font-bold text-base sm:text-xl transition-all flex items-center gap-2 bg-transparent text-zinc-400 hover:text-white hover:bg-zinc-800/80">
-              <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            <button type="button" onclick="switchMode('residential')" id="mode-btn-residential" class="mode-toggle-btn px-2 sm:px-8 py-3 rounded-xl font-racing font-bold text-sm sm:text-xl transition-all flex items-center justify-center gap-1.5 sm:gap-2 bg-transparent text-zinc-400 hover:text-white hover:bg-zinc-800/80">
+              <svg class="w-5 h-5 shrink-0 hidden min-[400px]:block" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
               <span>RESIDENTIAL</span>
             </button>
-            <button type="button" onclick="switchMode('commercial')" id="mode-btn-commercial" class="mode-toggle-btn px-4 sm:px-8 py-3 rounded-xl font-racing font-bold text-base sm:text-xl transition-all flex items-center gap-2 bg-transparent text-zinc-400 hover:text-white hover:bg-zinc-800/80">
-              <svg class="w-5 h-5 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+            <button type="button" onclick="switchMode('commercial')" id="mode-btn-commercial" class="mode-toggle-btn px-2 sm:px-8 py-3 rounded-xl font-racing font-bold text-sm sm:text-xl transition-all flex items-center justify-center gap-1.5 sm:gap-2 bg-transparent text-zinc-400 hover:text-white hover:bg-zinc-800/80">
+              <svg class="w-5 h-5 shrink-0 hidden min-[400px]:block" fill="currentColor" viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
               <span>COMMERCIAL</span>
             </button>
           </div>
@@ -462,6 +462,10 @@
           <div class="flex items-center gap-3 text-brand-yellow font-racing text-xs sm:text-sm font-bold">
             <span>FLORIDA LICENSED &bull; FULLY INSURED</span>
           </div>
+          <div class="pt-2">
+            <div class="text-[11px] uppercase font-racing tracking-[0.2em] text-zinc-500 font-bold mb-1.5">Proudly Installing</div>
+            <img src="images/rogue_logo.png" alt="Rogue Window Films" width="900" height="206" loading="lazy" class="h-8 w-auto object-contain">
+          </div>
         </div>
 
         <!-- Col 2: Navigation Links -->
@@ -567,9 +571,9 @@
       // Update Toggle Buttons Styling
       document.querySelectorAll('.mode-toggle-btn').forEach(btn => {
         if (btn.id === 'mode-btn-' + mode) {
-          btn.className = 'mode-toggle-btn px-4 sm:px-8 py-3 rounded-xl font-racing font-black text-base sm:text-xl transition-all flex items-center gap-2 bg-brand-yellow text-black shadow-lg shadow-brand-yellow/20';
+          btn.className = 'mode-toggle-btn px-2 sm:px-8 py-3 rounded-xl font-racing font-black text-sm sm:text-xl transition-all flex items-center justify-center gap-1.5 sm:gap-2 bg-brand-yellow text-black shadow-lg shadow-brand-yellow/20';
         } else {
-          btn.className = 'mode-toggle-btn px-4 sm:px-8 py-3 rounded-xl font-racing font-bold text-base sm:text-xl transition-all flex items-center gap-2 bg-transparent text-zinc-400 hover:text-white hover:bg-zinc-800/80';
+          btn.className = 'mode-toggle-btn px-2 sm:px-8 py-3 rounded-xl font-racing font-bold text-sm sm:text-xl transition-all flex items-center justify-center gap-1.5 sm:gap-2 bg-transparent text-zinc-400 hover:text-white hover:bg-zinc-800/80';
         }
       });
 
