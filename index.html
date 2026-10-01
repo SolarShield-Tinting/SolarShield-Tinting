@@ -105,6 +105,43 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+
+    /* Trustindex reviews widget: tighter cards so it stays compact on tablets */
+    #reviews .ti-widget .ti-review-item > .ti-inner {
+      padding: 14px 16px !important;
+    }
+    #reviews .ti-widget .ti-review-content,
+    #reviews .ti-widget .ti-review-content * {
+      font-size: 13.5px !important;
+      line-height: 20px !important;
+    }
+    /* Show exactly 4 full lines so no half line peeks out above "Read more" */
+    #reviews .ti-widget .ti-review-content {
+      max-height: 80px !important;
+      overflow: hidden !important;
+    }
+    #reviews .ti-widget .ti-name {
+      font-size: 14px !important;
+    }
+    #reviews .ti-widget .ti-date,
+    #reviews .ti-widget .ti-read-more,
+    #reviews .ti-widget .ti-read-more * {
+      font-size: 12px !important;
+    }
+    #reviews .ti-widget .ti-profile-img img {
+      width: 32px !important;
+      height: 32px !important;
+    }
+    #reviews .ti-widget .ti-stars .ti-star,
+    #reviews .ti-widget .ti-stars img {
+      width: 15px !important;
+      height: 15px !important;
+    }
+    #reviews .ti-widget .ti-review-image img {
+      max-width: 64px !important;
+      max-height: 64px !important;
+      object-fit: cover;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900 font-body antialiased selection:bg-brand-yellow selection:text-black">
