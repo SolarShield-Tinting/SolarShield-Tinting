@@ -363,10 +363,18 @@
   </section>
 
   <!-- ================= FILM BRAND STRIP ================= -->
-  <section class="bg-zinc-950 border-b border-zinc-800 py-5">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
-      <span class="font-racing font-bold text-sm sm:text-base tracking-[0.25em] text-zinc-400 uppercase">Proudly Installing</span>
-      <img src="images/rogue_logo.png" alt="Rogue Window Films" width="900" height="206" loading="lazy" class="h-10 sm:h-12 w-auto object-contain">
+  <section class="relative overflow-hidden bg-gradient-to-r from-black via-zinc-900 to-black border-y-2 border-brand-yellow/60 py-7 sm:py-8">
+    <!-- Soft gold glow behind the logo -->
+    <div class="absolute inset-0 pointer-events-none flex items-center justify-center">
+      <div class="w-[28rem] max-w-full h-24 bg-brand-yellow/20 rounded-full blur-3xl"></div>
+    </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8">
+      <div class="text-center sm:text-right">
+        <div class="font-racing font-black text-lg sm:text-2xl tracking-[0.2em] text-brand-yellow uppercase leading-none">Proudly Installing</div>
+        <div class="font-racing font-bold text-[11px] sm:text-xs tracking-[0.3em] text-zinc-400 uppercase mt-1.5">Premium Window Film</div>
+      </div>
+      <span class="hidden sm:block w-px h-14 bg-brand-yellow/40"></span>
+      <img src="images/rogue_logo.png" alt="Rogue Window Films" width="900" height="206" loading="lazy" class="h-14 sm:h-20 w-auto object-contain drop-shadow-[0_0_18px_rgba(255,208,0,0.35)]">
     </div>
   </section>
 
