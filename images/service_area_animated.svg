@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 820" width="100%" height="100%">
   <defs>
+    <!-- Load the brand font inside the SVG; it is embedded with <object>, so it can't use the page's fonts -->
+    <style>@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@1,800;1,900&amp;display=swap');</style>
     <radialGradient id="mapBgGrad" cx="60%" cy="50%" r="70%">
       <stop offset="0%" stop-color="#0e1d33"/>
       <stop offset="60%" stop-color="#08101e"/>
@@ -73,7 +75,7 @@
 
   <!-- County Label -->
   <g transform="translate(430, 400)">
-    <rect x="-150" y="-24" width="300" height="48" rx="12" fill="#040916" stroke="#FFD000" stroke-width="2"/>
+    <rect x="-175" y="-24" width="350" height="48" rx="12" fill="#040916" stroke="#FFD000" stroke-width="2"/>
     <text x="0" y="7" fill="#FFD000" font-family="'Barlow Condensed', sans-serif" font-size="24" font-weight="900" font-style="italic" letter-spacing="2" text-anchor="middle">
       HERNANDO COUNTY
     </text>
