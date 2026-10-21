@@ -423,6 +423,13 @@
     if (shadeParam) {
       document.getElementById('details').value = `Interested in ${shadeParam}% Ceramic Tint.`;
     }
+    // Setup chosen in the 3D tint studio on the home page
+    const tintParam = urlParams.get('tint');
+    if (tintParam) {
+      document.getElementById('details').value = `3D tint studio setup: ${tintParam.slice(0, 300)}`;
+    } else if (frontParam && rearParam) {
+      document.getElementById('details').value = `Interested in ${frontParam}% front / ${rearParam}% rear ceramic tint.`;
+    }
 
     const mobileBtn = document.getElementById('mobile-menu-btn');
     const mobileNav = document.getElementById('mobile-nav');
