@@ -67,6 +67,13 @@
             "@type": "Service",
             "name": "Commercial Window Tinting"
           }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Fleet Window Tinting"
+          }
         }
       ]
     }
@@ -171,43 +178,6 @@
     .no-scrollbar {
       -ms-overflow-style: none;
       scrollbar-width: none;
-    }
-
-    /* Trustindex reviews widget: tighter cards so it stays compact on tablets */
-    #reviews .ti-widget .ti-review-item > .ti-inner {
-      padding: 14px 16px !important;
-    }
-    #reviews .ti-widget .ti-review-content,
-    #reviews .ti-widget .ti-review-content * {
-      font-size: 13.5px !important;
-      line-height: 20px !important;
-    }
-    /* Show exactly 4 full lines so no half line peeks out above "Read more" */
-    #reviews .ti-widget .ti-review-content {
-      max-height: 80px !important;
-      overflow: hidden !important;
-    }
-    #reviews .ti-widget .ti-name {
-      font-size: 14px !important;
-    }
-    #reviews .ti-widget .ti-date,
-    #reviews .ti-widget .ti-read-more,
-    #reviews .ti-widget .ti-read-more * {
-      font-size: 12px !important;
-    }
-    #reviews .ti-widget .ti-profile-img img {
-      width: 32px !important;
-      height: 32px !important;
-    }
-    #reviews .ti-widget .ti-stars .ti-star,
-    #reviews .ti-widget .ti-stars img {
-      width: 15px !important;
-      height: 15px !important;
-    }
-    #reviews .ti-widget .ti-review-image img {
-      max-width: 64px !important;
-      max-height: 64px !important;
-      object-fit: cover;
     }
   </style>
 </head>
@@ -432,36 +402,6 @@
         </div>
 
       </div>
-      <!-- Real Google reviews, quoted word for word (kept as plain HTML so search engines can read them) -->
-      <div class="mt-10 sm:mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-        <figure class="flex flex-col rounded-2xl bg-zinc-900/80 border border-zinc-800 p-5 sm:p-6">
-          <div class="text-brand-yellow text-lg tracking-wide" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote class="mt-3 text-zinc-200 text-sm sm:text-base leading-relaxed flex-1">&ldquo;I messaged for a quote and my windows were tinted just hours later! Talk about fast and great service! Andrew came to my work and was done in no time at all!&rdquo;</blockquote>
-          <figcaption class="mt-4 flex items-center gap-2 text-sm">
-            <span class="font-racing font-bold text-white tracking-wide">Tonya C.</span>
-            <span class="text-zinc-500">&bull; Google review</span>
-          </figcaption>
-        </figure>
-        <figure class="flex flex-col rounded-2xl bg-zinc-900/80 border border-zinc-800 p-5 sm:p-6">
-          <div class="text-brand-yellow text-lg tracking-wide" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote class="mt-3 text-zinc-200 text-sm sm:text-base leading-relaxed flex-1">&ldquo;I have hesitated for a while because I don't like random people in my cars. Andrew and his team are pros - gave white glove service to my 2006 truck and brand new 2026 Acura. So glad I trusted them!&rdquo;</blockquote>
-          <figcaption class="mt-4 flex items-center gap-2 text-sm">
-            <span class="font-racing font-bold text-white tracking-wide">Todd R.</span>
-            <span class="text-zinc-500">&bull; Google review</span>
-          </figcaption>
-        </figure>
-        <figure class="flex flex-col rounded-2xl bg-zinc-900/80 border border-zinc-800 p-5 sm:p-6">
-          <div class="text-brand-yellow text-lg tracking-wide" aria-label="5 out of 5 stars">★★★★★</div>
-          <blockquote class="mt-3 text-zinc-200 text-sm sm:text-base leading-relaxed flex-1">&ldquo;I had SolarShield come out and do tinting on my company work truck. Andrew was great with communication and helpful with my selection. Came to my house and finished the work in no time!&rdquo;</blockquote>
-          <figcaption class="mt-4 flex items-center gap-2 text-sm">
-            <span class="font-racing font-bold text-white tracking-wide">DJ O.</span>
-            <span class="text-zinc-500">&bull; Google review</span>
-          </figcaption>
-        </figure>
-      </div>
-      <div class="mt-6 text-center">
-        <a href="#reviews" class="font-racing font-bold text-brand-yellow hover:text-white tracking-widest text-sm sm:text-base">SEE ALL 16 GOOGLE REVIEWS &rarr;</a>
-      </div>
     </div>
   </section>
 
@@ -481,6 +421,8 @@
           <span>RESIDENTIAL</span>
           <span class="text-brand-blue">&bull;</span>
           <span>COMMERCIAL</span>
+          <span class="text-brand-blue">&bull;</span>
+          <span>FLEET</span>
         </div>
         <p class="text-zinc-600 mt-3 text-base sm:text-lg">
           Industry-leading ceramic heat-blocking films that reject up to 98% of infrared heat and 99.9% of harmful UV rays.
@@ -642,6 +584,27 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- Fleet Services banner -->
+      <div class="mt-8 rounded-2xl overflow-hidden shadow-xl bg-gradient-to-r from-black via-zinc-950 to-brand-blueDark text-white border border-zinc-800">
+        <div class="grid grid-cols-1 md:grid-cols-12 items-center">
+          <div class="md:col-span-4 h-48 md:h-full min-h-[12rem] relative bg-zinc-900">
+            <img src="images/real_f150_mobile.jpg" alt="Mobile fleet window tinting on a work truck" loading="lazy" class="absolute inset-0 w-full h-full object-cover">
+          </div>
+          <div class="md:col-span-8 p-6 sm:p-8 space-y-3">
+            <div class="inline-flex items-center bg-brand-yellow text-black font-racing font-black text-sm px-3 py-1 rounded">NEW &bull; FLEET SERVICES</div>
+            <h3 class="font-racing font-black text-3xl sm:text-4xl text-white">YOUR WHOLE FLEET, <span class="text-brand-yellow">TINTED ON-SITE</span></h3>
+            <p class="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-2xl">Work trucks, service vans, and company cars. We come to your yard, lot, or jobsite and tint them where they're parked, scheduled around your routes, with one quote for every vehicle.</p>
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a href="contact.html?service=fleet" class="inline-flex items-center gap-2 bg-brand-yellow hover:bg-brand-yellowHover text-black font-racing font-black text-lg lg:text-xl px-6 py-3 rounded-lg shadow-lg shadow-brand-yellow/20 transition-all">
+                <span>BOOK FLEET SERVICE</span>
+                <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </a>
+              <a href="services.html#fleet" class="font-racing font-bold text-lg text-brand-yellow hover:text-white">HOW IT WORKS &rarr;</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -1020,16 +983,16 @@
         </h2>
 
         <div class="flex flex-wrap items-center gap-2">
-          <a href="https://share.google/gn8Lawacs1sofF1wk" target="_blank" rel="noopener" aria-label="Read our 16 Google reviews" class="flex items-center gap-2 bg-white hover:bg-zinc-100 text-zinc-900 rounded-full pl-2 pr-4 py-1.5 shadow transition-colors">
+          <a href="https://share.google/gn8Lawacs1sofF1wk" target="_blank" rel="noopener" aria-label="Read our Google reviews" class="flex items-center gap-2 bg-white hover:bg-zinc-100 text-zinc-900 rounded-full pl-2 pr-4 py-1.5 shadow transition-colors">
             <svg class="w-6 h-6 shrink-0" viewBox="0 0 48 48" aria-hidden="true">
               <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
               <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
               <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
               <path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/>
             </svg>
-            <span class="font-racing font-black text-xl leading-none">5.0</span>
+            <span class="font-racing font-black text-xl leading-none"><!--RATING-->5.0<!--/RATING--></span>
             <span class="text-brand-yellow text-base leading-none" aria-hidden="true">★★★★★</span>
-            <span class="text-sm text-zinc-600">(16)</span>
+            <span class="text-sm text-zinc-600">(<!--COUNT-->16<!--/COUNT-->)</span>
           </a>
           <a href="https://g.page/r/CRXuQEIRATEkEBE/review" target="_blank" rel="noopener" class="px-4 py-1.5 rounded-full font-racing text-base bg-brand-yellow hover:bg-brand-yellowHover text-black font-bold transition-all">
             LEAVE A REVIEW
@@ -1037,7 +1000,36 @@
         </div>
       </div>
 
-      <!-- Trustindex Google reviews widget (renders where this script sits; style is managed in the Trustindex dashboard) -->
+      <!-- Real Google reviews, kept as plain HTML so search engines can read them.
+           Refreshed daily from Google by .github/workflows/update-reviews.yml; edits between the markers get overwritten. -->
+      <!-- REVIEWS:START -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        <figure class="flex flex-col rounded-2xl bg-black/30 border border-blue-900/60 p-5 sm:p-6">
+          <div class="text-brand-yellow text-lg tracking-wide" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="mt-3 text-zinc-200 text-sm sm:text-base leading-relaxed flex-1 line-clamp-6">&ldquo;I messaged for a quote and my windows were tinted just hours later! Talk about fast and great service! Andrew came to my work and was done in no time at all!&rdquo;</blockquote>
+          <figcaption class="mt-4 flex items-center gap-2 text-sm">
+            <span class="font-racing font-bold text-white tracking-wide">Tonya C.</span>
+            <span class="text-zinc-500">&bull; Google review</span>
+          </figcaption>
+        </figure>
+        <figure class="flex flex-col rounded-2xl bg-black/30 border border-blue-900/60 p-5 sm:p-6">
+          <div class="text-brand-yellow text-lg tracking-wide" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="mt-3 text-zinc-200 text-sm sm:text-base leading-relaxed flex-1 line-clamp-6">&ldquo;I have hesitated for a while because I don't like random people in my cars. Andrew and his team are pros - gave white glove service to my 2006 truck and brand new 2026 Acura. So glad I trusted them!&rdquo;</blockquote>
+          <figcaption class="mt-4 flex items-center gap-2 text-sm">
+            <span class="font-racing font-bold text-white tracking-wide">Todd R.</span>
+            <span class="text-zinc-500">&bull; Google review</span>
+          </figcaption>
+        </figure>
+        <figure class="flex flex-col rounded-2xl bg-black/30 border border-blue-900/60 p-5 sm:p-6">
+          <div class="text-brand-yellow text-lg tracking-wide" aria-label="5 out of 5 stars">★★★★★</div>
+          <blockquote class="mt-3 text-zinc-200 text-sm sm:text-base leading-relaxed flex-1 line-clamp-6">&ldquo;I had SolarShield come out and do tinting on my company work truck. Andrew was great with communication and helpful with my selection. Came to my house and finished the work in no time!&rdquo;</blockquote>
+          <figcaption class="mt-4 flex items-center gap-2 text-sm">
+            <span class="font-racing font-bold text-white tracking-wide">DJ O.</span>
+            <span class="text-zinc-500">&bull; Google review</span>
+          </figcaption>
+        </figure>
+      </div>
+      <!-- REVIEWS:END -->
     </div>
   </section>
 
@@ -1195,6 +1187,7 @@
                   <option value="Automotive Tint">Automotive Window Tinting</option>
                   <option value="Residential Tint">Residential Home Tinting</option>
                   <option value="Commercial Tint">Commercial Building / Office Tinting</option>
+                  <option value="Fleet Tint">Fleet Services (Multiple Vehicles, On-Site)</option>
                   <option value="Windshield Tint">Full Windshield or Visor Strip Tint</option>
                   <option value="Removal and Retint">Old Tint Removal &amp; Retint</option>
                 </select>
