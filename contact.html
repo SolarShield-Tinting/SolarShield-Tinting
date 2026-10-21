@@ -156,6 +156,17 @@
             </select>
           </div>
 
+          <!-- Fleet vehicle counter (shown only when Fleet Services is selected) -->
+          <div id="fleet-count-wrap" class="hidden">
+            <label for="vehicle_count" class="block text-xs uppercase font-racing tracking-wider text-zinc-600 mb-1">How Many Vehicles Need Tint? *</label>
+            <div class="flex items-stretch gap-2">
+              <button type="button" data-step="-1" aria-label="One fewer vehicle" class="w-12 rounded-lg bg-black hover:bg-zinc-800 text-brand-yellow font-racing font-black text-3xl leading-none">&minus;</button>
+              <input type="number" id="vehicle_count" name="vehicle_count" min="2" max="500" value="2" inputmode="numeric" disabled class="w-24 px-2 py-3 bg-zinc-50 border border-zinc-300 rounded-lg text-zinc-900 text-center font-racing font-black text-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none">
+              <button type="button" data-step="1" aria-label="One more vehicle" class="w-12 rounded-lg bg-black hover:bg-zinc-800 text-brand-yellow font-racing font-black text-3xl leading-none">+</button>
+              <span class="self-center text-sm text-zinc-500 font-racing tracking-wider uppercase">vehicles</span>
+            </div>
+          </div>
+
           <div>
             <label for="vehicle_details" class="block text-xs uppercase font-racing tracking-wider text-zinc-600 mb-1">Vehicle Year / Make / Model or Property Type</label>
             <input type="text" id="vehicle_details" name="vehicle_details" placeholder="e.g. 2024 Ford F-150, Dodge Charger, or 4 Patio Doors" class="w-full px-4 py-3 bg-zinc-50 border border-zinc-300 rounded-lg text-zinc-900 focus:outline-none focus:ring-2 focus:ring-brand-blue">
@@ -392,11 +403,20 @@
     const detailsInput = document.getElementById('details');
     const defaultVehicleHint = vehicleInput.placeholder;
     const defaultDetailsHint = detailsInput.placeholder;
+    const fleetCountWrap = document.getElementById('fleet-count-wrap');
+    const vehicleCount = document.getElementById('vehicle_count');
     function updateFleetHints() {
       const fleet = serviceSelect.value === 'Fleet Tint';
       vehicleInput.placeholder = fleet ? 'e.g. 6 Ford Transit vans + 3 F-250 work trucks' : defaultVehicleHint;
       detailsInput.placeholder = fleet ? 'Where are the vehicles parked (yard, lot or jobsite) and what days work best?' : defaultDetailsHint;
+      fleetCountWrap.classList.toggle('hidden', !fleet);
+      vehicleCount.disabled = !fleet;
+      vehicleCount.required = fleet;
     }
+    fleetCountWrap.querySelectorAll('[data-step]').forEach(btn => btn.addEventListener('click', () => {
+      const n = (parseInt(vehicleCount.value, 10) || 2) + Number(btn.dataset.step);
+      vehicleCount.value = Math.min(500, Math.max(2, n));
+    }));
     serviceSelect.addEventListener('change', updateFleetHints);
     updateFleetHints();
 
@@ -416,6 +436,8 @@
       const errorMsg = document.getElementById('form-error-msg');
 
       const formData = new FormData(form);
+      const fleetCount = formData.get('vehicle_count');
+      const fleetTag = fleetCount ? `FLEET x ${fleetCount} vehicles: ` : '';
       submitBtn.disabled = true;
       submitBtn.classList.add('opacity-75');
       submitBtn.querySelector('span').textContent = 'DISPATCHING TO EMAIL...';
@@ -430,11 +452,12 @@
         },
         body: JSON.stringify({
           access_key: '9a5b0d47-6f81-4a1b-9076-66abb6e3df14',
-          subject: `New Window Tint Quote: ${formData.get('name')} (${formData.get('phone')})`,
+          subject: `${fleetTag}New Window Tint Quote: ${formData.get('name')} (${formData.get('phone')})`,
           from_name: 'SolarShield Website',
           name: formData.get('name'),
           phone: formData.get('phone'),
           service: formData.get('service'),
+          number_of_vehicles: fleetCount || undefined,
           vehicle_or_property: formData.get('vehicle_details'),
           details: formData.get('details')
         })
@@ -444,6 +467,7 @@
         if (!data.success) throw new Error(data.message);
         successMsg.classList.remove('hidden');
         form.reset();
+        updateFleetHints();
       })
       .catch(err => {
         console.error('Error submitting quote:', err);

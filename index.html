@@ -1197,6 +1197,17 @@
               </div>
             </div>
 
+            <!-- Fleet vehicle counter (shown only when Fleet Services is selected) -->
+            <div id="fleet-count-wrap" class="hidden">
+              <label for="vehicle_count" class="block text-xs uppercase font-racing tracking-wider text-zinc-600 mb-1">How Many Vehicles Need Tint? *</label>
+              <div class="flex items-stretch gap-2">
+                <button type="button" data-step="-1" aria-label="One fewer vehicle" class="w-12 rounded-lg bg-black hover:bg-zinc-800 text-brand-yellow font-racing font-black text-3xl leading-none">&minus;</button>
+                <input type="number" id="vehicle_count" name="vehicle_count" min="2" max="500" value="2" inputmode="numeric" disabled class="w-24 px-2 py-3 bg-zinc-50 border border-zinc-300 rounded-lg text-zinc-900 text-center font-racing font-black text-2xl focus:outline-none focus:ring-2 focus:ring-brand-blue [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none">
+                <button type="button" data-step="1" aria-label="One more vehicle" class="w-12 rounded-lg bg-black hover:bg-zinc-800 text-brand-yellow font-racing font-black text-3xl leading-none">+</button>
+                <span class="self-center text-sm text-zinc-500 font-racing tracking-wider uppercase">vehicles</span>
+              </div>
+            </div>
+
             <!-- Vehicle / Property Details Field -->
             <div>
               <label for="vehicle_details" class="block text-xs uppercase font-racing tracking-wider text-zinc-600 mb-1">Vehicle Year / Make / Model or Property Type</label>
@@ -1477,8 +1488,25 @@
       const select = document.getElementById('service');
       if (select) {
         select.value = serviceName;
+        updateFleetCount();
       }
     }
+
+    // Fleet vehicle counter: only shown (and sent) when Fleet Services is selected
+    const fleetCountWrap = document.getElementById('fleet-count-wrap');
+    const vehicleCount = document.getElementById('vehicle_count');
+    function updateFleetCount() {
+      const fleet = document.getElementById('service').value === 'Fleet Tint';
+      fleetCountWrap.classList.toggle('hidden', !fleet);
+      vehicleCount.disabled = !fleet;
+      vehicleCount.required = fleet;
+    }
+    fleetCountWrap.querySelectorAll('[data-step]').forEach(btn => btn.addEventListener('click', () => {
+      const n = (parseInt(vehicleCount.value, 10) || 2) + Number(btn.dataset.step);
+      vehicleCount.value = Math.min(500, Math.max(2, n));
+    }));
+    document.getElementById('service').addEventListener('change', updateFleetCount);
+    updateFleetCount();
 
     // Gallery Filter Logic
     function filterGallery(category) {
@@ -1828,13 +1856,16 @@
       const successMsg = document.getElementById('form-success-msg');
       const errorMsg = document.getElementById('form-error-msg');
 
+      const fleetCount = vehicleCount.disabled ? '' : vehicleCount.value;
+      const fleetTag = fleetCount ? `FLEET x ${fleetCount} vehicles: ` : '';
       const formData = {
         access_key: '9a5b0d47-6f81-4a1b-9076-66abb6e3df14',
-        subject: `New Quote Request: ${form.name.value} (${form.phone.value})`,
+        subject: `${fleetTag}New Quote Request: ${form.name.value} (${form.phone.value})`,
         from_name: 'SolarShield Website',
         name: form.name.value,
         phone: form.phone.value,
         service: form.service.value,
+        number_of_vehicles: fleetCount || undefined,
         vehicle_details: form.vehicle_details.value,
         details: form.details.value
       };
@@ -1858,6 +1889,7 @@
         if (!data.success) throw new Error(data.message);
         successMsg.classList.remove('hidden');
         form.reset();
+        updateFleetCount();
       })
       .catch(error => {
         console.error('Error submitting quote:', error);
