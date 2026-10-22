@@ -40,7 +40,7 @@ const FACTORY_PRIVACY = 22;   // typical factory privacy glass VLT (SUV / truck 
 // ---------------------------------------------------------------------------
 const VEHICLES = {
   sedan: {
-    label: 'Sedan', badge: 'Midsize Sedan', cls: 'car', privacy: false,
+    label: 'Sedan', badge: 'Midsize Sedan', cls: 'car', privacy: false, round: { noseIn: 0.13, tailIn: 0.09 },
     wheelR: 0.335, wheelX: [-1.395, 1.43], tireW: 0.235, rb: 0.07, rt: 0.08,
     keys: [
       [2.40, 0.38, 0.60, 0.635, 0.00, 0.74, 0.70],
@@ -51,12 +51,12 @@ const VEHICLES = {
       [0.55, 0.23, 0.93, 1.20, 0.05, 0.92, 0.80],
       [0.20, 0.23, 0.95, 1.40, 0.06, 0.92, 0.75],
       [-0.30, 0.23, 0.97, 1.445, 0.06, 0.92, 0.74],
-      [-0.85, 0.23, 0.98, 1.42, 0.06, 0.92, 0.74],
-      [-1.25, 0.24, 0.99, 1.26, 0.05, 0.915, 0.77],
-      [-1.60, 0.25, 1.00, 1.065, 0.04, 0.90, 0.83],
-      [-2.05, 0.27, 0.98, 1.04, 0.03, 0.89, 0.84],
-      [-2.38, 0.32, 0.92, 0.98, 0.02, 0.86, 0.82],
-      [-2.48, 0.38, 0.86, 0.92, 0.01, 0.80, 0.76]
+      [-0.85, 0.23, 0.995, 1.415, 0.06, 0.92, 0.745],
+      [-1.25, 0.24, 1.01, 1.27, 0.05, 0.915, 0.77],
+      [-1.60, 0.25, 1.02, 1.085, 0.04, 0.90, 0.83],
+      [-2.05, 0.27, 1.01, 1.06, 0.03, 0.89, 0.84],
+      [-2.38, 0.32, 0.96, 1.01, 0.02, 0.86, 0.82],
+      [-2.48, 0.38, 0.90, 0.95, 0.01, 0.80, 0.76]
     ],
     shield: [0.93, 0.24],
     back: { type: 'top', x: [-1.56, -0.90] },
@@ -66,14 +66,14 @@ const VEHICLES = {
     ],
     seams: [[1.00], [-0.10], [-1.24]], handles: [0.05, -1.00],
     mirror: { x: 0.80, s: 1 },
-    head: { y: [0.545, 0.625], z: [0.36, 0.70] }, grille: { y: [0.41, 0.535], z: 0.34 },
-    tail: { y: [0.79, 0.89], z: [0.40, 0.77] }, plate: [0.52, 0.66],
+    head: { y: [0.54, 0.625], z: [0.38, 0.86] }, grille: { y: [0.41, 0.53], z: 0.34 },
+    tail: { y: [0.82, 0.92], z: [0.40, 0.90] }, plate: [0.54, 0.68],
     seats: [{ x: 0.02, type: 'pair' }, { x: -0.86, type: 'bench' }], dash: 0.62, wheel: 0.36,
     rim: { spokes: 5, color: 0xc4c9d0, caliper: 0x2b2e33 },
     text: { rear: 'Rear door windows', back: 'Rear windshield' }
   },
   coupe: {
-    label: 'Coupe', badge: 'Sports Coupe', cls: 'car', privacy: false,
+    label: 'Coupe', badge: 'Sports Coupe', cls: 'car', privacy: false, round: { noseIn: 0.14, tailIn: 0.08, noseDrop: 0.05 },
     wheelR: 0.355, wheelX: [-1.25, 1.47], tireW: 0.265, rb: 0.07, rt: 0.08,
     keys: [
       [2.35, 0.35, 0.58, 0.615, 0.00, 0.76, 0.72],
@@ -98,14 +98,14 @@ const VEHICLES = {
     ],
     seams: [[0.80], [-0.92]], handles: [-0.62],
     mirror: { x: 0.66, s: 1 },
-    head: { y: [0.525, 0.6], z: [0.40, 0.72] }, grille: { y: [0.38, 0.515], z: 0.36 },
-    tail: { y: [0.77, 0.87], z: [0.34, 0.80], bars: 3 }, plate: [0.50, 0.64],
+    head: { y: [0.52, 0.6], z: [0.40, 0.88] }, grille: { y: [0.38, 0.51], z: 0.36 },
+    tail: { y: [0.77, 0.87], z: [0.34, 0.84], bars: 3 }, plate: [0.50, 0.64],
     seats: [{ x: -0.30, type: 'pair' }, { x: -1.08, type: 'bench', small: true }], dash: 0.44, wheel: 0.18,
     rim: { spokes: 5, color: 0x3a3d43, caliper: 0xb3161c, split: true },
     text: { rear: 'Rear quarter glass', back: 'Fastback glass' }
   },
   suv: {
-    label: 'SUV', badge: 'Midsize SUV', cls: 'mpv', privacy: true,
+    label: 'SUV', badge: 'Midsize SUV', cls: 'mpv', privacy: true, round: { noseIn: 0.11, tailIn: 0.06, tailDrop: 0.03 },
     wheelR: 0.37, wheelX: [-1.36, 1.33], tireW: 0.235, rb: 0.08, rt: 0.09,
     keys: [
       [2.25, 0.46, 0.78, 0.83, 0.00, 0.78, 0.74],
@@ -130,15 +130,15 @@ const VEHICLES = {
     ],
     seams: [[0.86], [-0.07], [-1.08]], handles: [0.05, -0.95],
     mirror: { x: 0.74, s: 1.1 },
-    head: { y: [0.70, 0.81], z: [0.40, 0.75] }, grille: { y: [0.49, 0.69], z: 0.40 },
-    tail: { y: [1.02, 1.12], z: [0.46, 0.84] }, plate: [0.64, 0.78],
+    head: { y: [0.70, 0.80], z: [0.40, 0.90] }, grille: { y: [0.49, 0.68], z: 0.40 },
+    tail: { y: [1.02, 1.12], z: [0.46, 0.92] }, plate: [0.64, 0.78],
     rails: [-1.95, 0.20],
     seats: [{ x: -0.18, type: 'pair' }, { x: -1.12, type: 'bench' }], dash: 0.52, wheel: 0.30,
     rim: { spokes: 6, color: 0xb9bec6, caliper: 0x2b2e33 },
     text: { rear: 'Rear doors & quarter glass', back: 'Liftgate glass' }
   },
   truck: {
-    label: 'Truck', badge: 'Crew Cab Pickup', cls: 'mpv', privacy: true,
+    label: 'Truck', badge: 'Crew Cab Pickup', cls: 'mpv', privacy: true, round: { noseIn: 0.05, noseLen: 0.35, noseDrop: 0.02, noseRise: 0.03, tailIn: 0, tailDrop: 0, tailRise: 0 },
     wheelR: 0.42, wheelX: [-1.71, 1.97], tireW: 0.275, rb: 0.08, rt: 0.08, flare: true,
     keys: [
       [2.95, 0.52, 1.00, 1.08, 0.00, 0.90, 0.86],
@@ -160,7 +160,7 @@ const VEHICLES = {
     ],
     seams: [[0.80], [-0.11], [-0.98]], handles: [0.00, -0.86],
     mirror: { x: 0.68, s: 1.45 },
-    head: { y: [0.90, 1.03], z: [0.64, 0.86] }, grille: { y: [0.62, 1.00], z: 0.60, chrome: true },
+    head: { y: [0.90, 1.03], z: [0.64, 0.95] }, grille: { y: [0.62, 1.00], z: 0.60, chrome: true },
     bumper: { y: [0.50, 0.62], chrome: true },
     bed: { x: [-2.94, -1.08], b: 0.50, rail: 1.30, floor: 0.93, w: 1.01, wall: 0.06 },
     runningBoard: true,
@@ -169,7 +169,7 @@ const VEHICLES = {
     text: { rear: 'Rear door windows', back: 'Rear cab slider' }
   },
   van: {
-    label: 'Work Van', badge: 'High-Roof Work Van', cls: 'mpv', privacy: false, noRear: true,
+    label: 'Work Van', badge: 'High-Roof Work Van', cls: 'mpv', privacy: false, noRear: true, round: { noseIn: 0.08, noseLen: 0.6, tailIn: 0.025, tailLen: 0.3, tailRise: 0.02, tailDrop: 0.01 },
     wheelR: 0.38, wheelX: [-1.71, 2.04], tireW: 0.235, rb: 0.08, rt: 0.12,
     keys: [
       [2.99, 0.45, 0.85, 0.95, 0.00, 0.92, 0.88],
@@ -190,7 +190,7 @@ const VEHICLES = {
     ],
     seams: [[1.99], [0.99, 2.40], [0.90, 2.40], [-0.62, 2.40]], handles: [1.10, 0.75],
     mirror: { x: 1.90, s: 1.7 },
-    head: { y: [0.78, 0.92], z: [0.56, 0.86] }, grille: { y: [0.52, 0.76], z: 0.52 },
+    head: { y: [0.78, 0.92], z: [0.56, 0.95] }, grille: { y: [0.52, 0.76], z: 0.52 },
     bumper: { y: [0.45, 0.53] }, rearBumper: [0.46, 0.58], rearDoorSeam: true,
     tail: { y: [0.95, 1.45], z: [0.88, 0.965] }, plate: [0.62, 0.76],
     seats: [{ x: 1.30, type: 'pair' }], bulkhead: 0.92, dash: 1.74, wheel: 1.55,
@@ -198,7 +198,7 @@ const VEHICLES = {
     text: { rear: 'Cargo area has no side glass', back: 'Rear door windows' }
   },
   minivan: {
-    label: 'Minivan', badge: 'Minivan', cls: 'mpv', privacy: true,
+    label: 'Minivan', badge: 'Minivan', cls: 'mpv', privacy: true, round: { noseIn: 0.12, tailIn: 0.06, tailDrop: 0.03 },
     wheelR: 0.36, wheelX: [-1.52, 1.57], tireW: 0.235, rb: 0.08, rt: 0.09,
     keys: [
       [2.55, 0.40, 0.69, 0.74, 0.00, 0.80, 0.76],
@@ -221,8 +221,8 @@ const VEHICLES = {
     ],
     seams: [[1.46], [0.31], [-0.91]], handles: [0.40, 0.18],
     mirror: { x: 1.36, s: 1.15 },
-    head: { y: [0.60, 0.71], z: [0.40, 0.76] }, grille: { y: [0.45, 0.59], z: 0.40 },
-    tail: { y: [0.95, 1.08], z: [0.55, 0.88] }, plate: [0.62, 0.76],
+    head: { y: [0.60, 0.70], z: [0.40, 0.92] }, grille: { y: [0.45, 0.58], z: 0.40 },
+    tail: { y: [0.95, 1.08], z: [0.55, 0.95] }, plate: [0.62, 0.76],
     seats: [{ x: 0.25, type: 'pair' }, { x: -0.68, type: 'pair' }, { x: -1.66, type: 'bench' }], dash: 1.04, wheel: 0.80,
     rim: { spokes: 5, color: 0xb9bec6, caliper: 0x2b2e33 },
     text: { rear: 'Sliding door & quarter glass', back: 'Liftgate glass' }
@@ -333,14 +333,27 @@ function makeSectioner(v) {
   const keys = [...v.keys].sort((a, b) => a[0] - b[0]);
   const xs = keys.map(k => k[0]);
   const f = ['b', 's', 'T', 'c', 'w', 'g'].map((_, i) => monotone(xs, keys.map(k => k[i + 1])));
-  const params = x => ({ b: f[0](x), s: f[1](x), T: f[2](x), c: f[3](x), w: f[4](x), g: f[5](x) });
+  const xLo = xs[0], xHi = xs[xs.length - 1];
+  const r = v.round || {};
+  // Round both ends: over the last stretch the body narrows, the top drops and the chin tucks up
+  const params = x => {
+    const nf = clamp((x - (xHi - (r.noseLen ?? 0.5))) / (r.noseLen ?? 0.5), 0, 1) ** 2;
+    const tf = clamp(((xLo + (r.tailLen ?? 0.45)) - x) / (r.tailLen ?? 0.45), 0, 1) ** 2;
+    const k = 1 - (r.noseIn ?? 0.12) * nf - (r.tailIn ?? 0.08) * tf;
+    const T = f[2](x) - (r.noseDrop ?? 0.04) * nf - (r.tailDrop ?? 0.02) * tf;
+    return {
+      b: f[0](x) + (r.noseRise ?? 0.05) * nf + (r.tailRise ?? 0.05) * tf,
+      s: Math.min(f[1](x) - (r.noseDrop ?? 0.04) * nf * 0.8, T - 0.02),
+      T, c: f[3](x), w: f[4](x) * k, g: f[5](x) * k
+    };
+  };
   const cache = new Map();
 
   function section(x) {
     const key = Math.round(x * 2000);
     if (cache.has(key)) return cache.get(key);
     const { b, s, T, c, w, g } = params(x);
-    const wl = w - 0.035;
+    const wl = w - (v.tuck ?? 0.06);
     const rbE = Math.max(0.02, Math.min(v.rb, (s - b) * 0.45));
     const e0 = Math.max(T - c, s + 0.012);
     const rtE = Math.max(0.01, Math.min(v.rt, (e0 - s) * 0.55, g * 0.3));
@@ -351,15 +364,16 @@ function makeSectioner(v) {
       const a = -Math.PI / 2 + (Math.PI / 2) * i / 5;
       pts.push([wl - rbE + rbE * Math.cos(a), b + rbE + rbE * Math.sin(a), 'arc']);
     }
+    const roll = (v.roll ?? 0.035) * clamp((s - b - 0.2) / 0.3, 0, 1);
     for (let i = 1; i <= 10; i++) {
       const t = i / 10, y = b + rbE + (s - b - rbE) * t;
-      let z = wl + (w - wl) * (1 - (1 - t) * (1 - t));
+      let z = t < 0.65 ? w - (w - wl) * (1 - t / 0.65) ** 2 : w - roll * ((t - 0.65) / 0.35) ** 2;
       if (s - b > 0.3) z += 0.007 * Math.exp(-(((y - (s - 0.1)) / 0.022) ** 2)); // body character line
       pts.push([z, y, 'lower']);
     }
     for (let i = 1; i <= 12; i++) {
       const t = i / 12;
-      pts.push([w + (g - w) * t + 0.012 * Math.sin(Math.PI * t) * Math.min(1, (e - s) / 0.2), s + (e - s) * t, 'green']);
+      pts.push([w - roll + (g - w + roll) * t + 0.012 * Math.sin(Math.PI * t) * Math.min(1, (e - s) / 0.2), s + (e - s) * t, 'green']);
     }
     for (let i = 1; i <= 6; i++) {
       const a = (Math.PI / 2) * i / 6;
@@ -392,7 +406,27 @@ function makeSectioner(v) {
     const t = Math.min(1, Math.abs(z) / sc.hr);
     return sc.T - sc.c * t * t;
   }
-  return { section, zAt, topY, params, xMin: xs[0], xMax: xs[xs.length - 1] };
+  // Is (y, z) inside the body cross-section at x?
+  function inside(x, y, z) {
+    const sc = section(x);
+    if (y < sc.b - 1e-4 || y > sc.T) return false;
+    const az = Math.abs(z);
+    if (az > zAt(x, y)) return false;
+    return !(az <= sc.hr && y > topY(x, z));
+  }
+  // x of the front (dir 1) or rear (dir -1) surface at (y, z), so parts wrap around corners
+  function endX(y, z, dir) {
+    const xEnd = dir > 0 ? xHi : xLo;
+    if (inside(xEnd, y, z)) return xEnd;
+    let a = xEnd - dir * 1.0, b = xEnd;
+    if (!inside(a, y, z)) return a;
+    for (let i = 0; i < 22; i++) {
+      const m = (a + b) / 2;
+      if (inside(m, y, z)) a = m; else b = m;
+    }
+    return (a + b) / 2;
+  }
+  return { section, zAt, topY, params, endX, xMin: xLo, xMax: xHi };
 }
 
 // ---------------------------------------------------------------------------
@@ -852,11 +886,50 @@ function buildVehicle(v) {
   });
 
   // ---- front fascia: grille, headlights, bumper
-  const frontPatch = (y0, y1, z0, z1, off) => capFn(xFront, 1, y0, y1, [z0, z1], off);
-  const fz = y => S.zAt(xFront, y) - 0.06;
+  // Parts on the nose and tail are laid out by distance along the body surface
+  // (measured from the centerline around the corner), so they keep their shape
+  // where they wrap onto the sides. Negative distances are the driver side.
+  const outlineCache = new Map();
+  function planOutline(y, dir) {
+    const key = dir + ':' + Math.round(y * 1000);
+    if (outlineCache.has(key)) return outlineCache.get(key);
+    const xEnd = dir > 0 ? xFront : xRear;
+    const zMax = S.zAt(xEnd - dir * 0.8, y);
+    const pts = [];
+    for (let i = 0; i <= 30; i++) {
+      const z = zMax * 0.9 * i / 30;
+      pts.push([S.endX(y, z, dir), z]);
+    }
+    const x0 = pts[pts.length - 1][0];
+    for (let i = 1; i <= 70; i++) {
+      const x = x0 - dir * 0.012 * i;
+      pts.push([x, S.zAt(x, y)]);
+    }
+    const len = [0];
+    for (let i = 1; i < pts.length; i++) len.push(len[i - 1] + Math.hypot(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]));
+    const out = { pts, len, xEnd };
+    outlineCache.set(key, out);
+    return out;
+  }
+  const wrapFn = (dir, y0, y1, s0, s1, off) => (u, t) => {
+    const y = lerp(y0, y1, t), sv = lerp(s0, s1, u);
+    const o = planOutline(y, dir), sa = Math.min(Math.abs(sv), o.len[o.len.length - 1]);
+    let i = 0;
+    while (i < o.len.length - 2 && o.len[i + 1] < sa) i++;
+    const f = (sa - o.len[i]) / ((o.len[i + 1] - o.len[i]) || 1);
+    const p = o.pts[i], q = o.pts[i + 1];
+    const x = lerp(p[0], q[0], f), z = lerp(p[1], q[1], f);
+    let nx = q[1] - p[1], nz = -(q[0] - p[0]);
+    const nl = Math.hypot(nx, nz) || 1;
+    nx /= nl; nz /= nl;
+    if (nx * (x - (o.xEnd - dir)) + nz * z < 0) { nx = -nx; nz = -nz; }
+    const sign = sv < 0 ? -1 : 1;
+    return [x + nx * off, y, sign * (z + nz * off)];
+  };
+  const frontPatch = (y0, y1, z0, z1, off) => wrapFn(1, y0, y1, z0, z1, off);
   {
-    const g = v.grille, zg = g.z / fz((g.y[0] + g.y[1]) / 2);
-    group.add(new THREE.Mesh(patchGeometry(frontPatch(g.y[0], g.y[1], -zg, zg, 0.003), 6, 6), trimMat));
+    const g = v.grille, zg = g.z;
+    group.add(new THREE.Mesh(patchGeometry(frontPatch(g.y[0], g.y[1], -zg, zg, 0.003), 12, 6), trimMat));
     group.add(new THREE.Mesh(frameGeometry(frontPatch(g.y[0], g.y[1], -zg, zg, 0.005), g.chrome ? 0.05 : 0.018), g.chrome ? chromeMat : plasticMat));
     if (g.chrome) for (let i = 1; i < 4; i++) {
       const y = lerp(g.y[0], g.y[1], i / 4);
@@ -864,42 +937,28 @@ function buildVehicle(v) {
     }
   }
   [-1, 1].forEach(side => {
-    const h = v.head, zm = fz((h.y[0] + h.y[1]) / 2);
-    const z0 = side > 0 ? h.z[0] / zm : -h.z[1] / zm, z1 = side > 0 ? Math.min(1, h.z[1] / zm) : -h.z[0] / zm;
-    const za = Math.min(z0, z1), zb = Math.max(z0, z1);
-    group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[0], h.y[1], za, zb, 0.003), 6, 4), headHousingMat));
-    group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[0] + 0.015, h.y[1] - 0.012, lerp(za, zb, 0.06), lerp(za, zb, 0.94), 0.006), 6, 4), headLensMat));
-    group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[1] - 0.012, h.y[1] - 0.004, lerp(za, zb, 0.04), lerp(za, zb, 0.96), 0.008), 6, 1), drlMat));
+    const h = v.head;
+    const za = side > 0 ? h.z[0] : -h.z[1], zb = side > 0 ? h.z[1] : -h.z[0];
+    group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[0], h.y[1], za, zb, 0.003), 16, 4), headHousingMat));
+    group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[0] + 0.015, h.y[1] - 0.012, lerp(za, zb, 0.06), lerp(za, zb, 0.94), 0.006), 16, 4), headLensMat));
+    group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[1] - 0.012, h.y[1] - 0.004, lerp(za, zb, 0.04), lerp(za, zb, 0.96), 0.008), 16, 1), drlMat));
   });
   if (v.bumper) {
-    group.add(new THREE.Mesh(patchGeometry(frontPatch(v.bumper.y[0], v.bumper.y[1], -1.05, 1.05, 0.004), 8, 2), v.bumper.chrome ? chromeMat : plasticMat));
+    group.add(new THREE.Mesh(patchGeometry(frontPatch(v.bumper.y[0], v.bumper.y[1], -(halfW + 0.01), halfW + 0.01, 0.004), 24, 2), v.bumper.chrome ? chromeMat : plasticMat));
   } else {
     // lower intake and fog lights in the bumper
     const yb = S.section(xFront).b, yi0 = yb + 0.035, yi1 = Math.min(yb + 0.12, v.grille.y[0] - 0.03);
     if (yi1 > yi0 + 0.03) {
-      group.add(new THREE.Mesh(patchGeometry(frontPatch(yi0, yi1, -0.62, 0.62, 0.003), 8, 2), trimMat));
+      group.add(new THREE.Mesh(patchGeometry(frontPatch(yi0, yi1, -0.5, 0.5, 0.003), 12, 2), trimMat));
       [-1, 1].forEach(side => {
         const fog = new THREE.Mesh(new THREE.CircleGeometry(0.03, 20), headLensMat);
+        const fy = (yi0 + yi1) / 2, fzv = side * 0.6;
         fog.rotation.y = Math.PI / 2;
-        fog.position.set(xFront + 0.007, (yi0 + yi1) / 2, side * 0.72 * fz((yi0 + yi1) / 2));
+        fog.position.set(S.endX(fy, fzv, 1) + 0.007, fy, fzv);
         group.add(fog);
       });
     }
   }
-  // headlights wrap up onto the hood corners
-  [-1, 1].forEach(side => {
-    const depth = v.headWrap ?? 0.12;
-    const fn = off => (u, t) => {
-      const x = lerp(xFront - 0.005, xFront - depth, t);
-      const hr = S.section(x).hr;
-      const z0 = v.head.z[0] + 0.06 * t, z1 = Math.min(v.head.z[1], hr - 0.02) - 0.04 * t;
-      const z = side * lerp(z0, z1, u);
-      return [x, S.topY(x, z) + off, z];
-    };
-    group.add(new THREE.Mesh(patchGeometry(fn(0.003), 8, 4), headHousingMat));
-    const strip = (u, t) => fn(0.007)(u, lerp(0.05, 0.22, t));
-    group.add(new THREE.Mesh(patchGeometry(strip, 8, 1), drlMat));
-  });
   // cowl panel and wipers at the base of the windshield
   {
     const x0 = v.shield[0];
@@ -921,27 +980,26 @@ function buildVehicle(v) {
   }
 
   // ---- rear: taillights, plate, bumper
-  const rearPatch = (y0, y1, z0, z1, off) => capFn(xRear, -1, y0, y1, [z0, z1], off);
-  const rz = y => S.zAt(xRear, y) - 0.06;
+  const rearPatch = (y0, y1, z0, z1, off) => wrapFn(-1, y0, y1, z0, z1, off);
   if (v.tail) [-1, 1].forEach(side => {
-    const t = v.tail, zm = rz((t.y[0] + t.y[1]) / 2);
-    const za = side > 0 ? t.z[0] / zm : -Math.min(1.05, t.z[1] / zm), zb = side > 0 ? Math.min(1.05, t.z[1] / zm) : -t.z[0] / zm;
+    const t = v.tail;
+    const za = side > 0 ? t.z[0] : -t.z[1], zb = side > 0 ? t.z[1] : -t.z[0];
     if (t.bars) {
       for (let i = 0; i < t.bars; i++) {
         const u0 = i / t.bars + 0.04, u1 = (i + 1) / t.bars - 0.04;
-        group.add(new THREE.Mesh(patchGeometry(rearPatch(t.y[0], t.y[1], lerp(za, zb, u0), lerp(za, zb, u1), 0.004), 2, 4), tailMat));
+        group.add(new THREE.Mesh(patchGeometry(rearPatch(t.y[0], t.y[1], lerp(za, zb, u0), lerp(za, zb, u1), 0.004), 6, 4), tailMat));
       }
-      group.add(new THREE.Mesh(patchGeometry(rearPatch(t.y[0] - 0.01, t.y[1] + 0.01, za - 0.02, zb + 0.02, 0.002), 4, 4), trimMat));
+      group.add(new THREE.Mesh(patchGeometry(rearPatch(t.y[0] - 0.01, t.y[1] + 0.01, za - 0.02, zb + 0.02, 0.002), 16, 4), trimMat));
     } else {
-      group.add(new THREE.Mesh(patchGeometry(rearPatch(t.y[0], t.y[1], za, zb, 0.004), 4, 4), tailMat));
+      group.add(new THREE.Mesh(patchGeometry(rearPatch(t.y[0], t.y[1], za, zb, 0.004), 16, 4), tailMat));
     }
   });
   if (v.plate) {
-    const zp = 0.16 / rz((v.plate[0] + v.plate[1]) / 2);
+    const zp = 0.16;
     group.add(new THREE.Mesh(patchGeometry(rearPatch(v.plate[0], v.plate[1], -zp, zp, 0.004), 2, 2), plateMat));
     group.add(new THREE.Mesh(frameGeometry(rearPatch(v.plate[0], v.plate[1], -zp, zp, 0.005), 0.012), plasticMat));
   }
-  if (v.rearBumper) group.add(new THREE.Mesh(patchGeometry(rearPatch(v.rearBumper[0], v.rearBumper[1], -1.05, 1.05, 0.004), 8, 2), plasticMat));
+  if (v.rearBumper) group.add(new THREE.Mesh(patchGeometry(rearPatch(v.rearBumper[0], v.rearBumper[1], -(halfW + 0.01), halfW + 0.01, 0.004), 24, 2), plasticMat));
   if (v.rearDoorSeam) group.add(new THREE.Mesh(patchGeometry(rearPatch(v.back.y[0] - 0.95, v.back.y[1] + 0.4, -0.004, 0.004, 0.003), 1, 8), trimMat));
 
   // ---- SUV roof rails
