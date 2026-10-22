@@ -10,6 +10,7 @@
 // (driver side at -z). Units are meters.
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
 const ZONES = ['windshield', 'visor', 'front', 'rear', 'back'];
 const ZONE_LABELS = {
@@ -26,6 +27,7 @@ const ZONE_SUBS = {
 };
 const FACTORY_CLEAR = 78;     // typical untinted automotive glass VLT
 const FACTORY_PRIVACY = 22;   // typical factory privacy glass VLT (SUV / truck / minivan rear)
+const LOWER_N = 18;           // samples up the lower body side (fine enough for crisp creases)
 
 // ---------------------------------------------------------------------------
 // Vehicle library
@@ -40,12 +42,12 @@ const FACTORY_PRIVACY = 22;   // typical factory privacy glass VLT (SUV / truck 
 // ---------------------------------------------------------------------------
 const VEHICLES = {
   sedan: {
-    label: 'Sedan', badge: 'Midsize Sedan', cls: 'car', privacy: false, round: { noseIn: 0.13, tailIn: 0.09 },
+    label: 'Sedan', badge: 'Midsize Sedan', cls: 'car', privacy: false, round: { noseIn: 0.10, noseDrop: 0.01, noseRise: 0.02, tailIn: 0.05, tailDrop: 0.0, tailRise: 0.02 },
     wheelR: 0.345, wheelX: [-1.395, 1.43], tireW: 0.235, rb: 0.07, rt: 0.08,
     keys: [
-      [2.40, 0.38, 0.62, 0.66, 0.00, 0.74, 0.70],
-      [2.33, 0.31, 0.69, 0.74, 0.01, 0.85, 0.80],
-      [2.10, 0.27, 0.78, 0.83, 0.02, 0.905, 0.85],
+      [2.40, 0.33, 0.67, 0.71, 0.00, 0.78, 0.74],
+      [2.33, 0.29, 0.725, 0.765, 0.01, 0.87, 0.82],
+      [2.10, 0.27, 0.79, 0.835, 0.02, 0.91, 0.855],
       [1.40, 0.25, 0.86, 0.92, 0.03, 0.92, 0.85],
       [1.05, 0.24, 0.90, 0.965, 0.04, 0.925, 0.84],
       [0.60, 0.23, 0.93, 1.19, 0.05, 0.925, 0.79],
@@ -55,8 +57,8 @@ const VEHICLES = {
       [-1.20, 0.24, 1.015, 1.24, 0.05, 0.92, 0.78],
       [-1.70, 0.25, 1.03, 1.08, 0.04, 0.905, 0.84],
       [-2.10, 0.27, 1.03, 1.07, 0.03, 0.89, 0.85],
-      [-2.40, 0.33, 0.99, 1.04, 0.02, 0.86, 0.83],
-      [-2.50, 0.40, 0.93, 0.98, 0.01, 0.80, 0.76]
+      [-2.40, 0.31, 1.01, 1.055, 0.02, 0.87, 0.835],
+      [-2.50, 0.34, 0.99, 1.035, 0.01, 0.83, 0.79]
     ],
     shield: [1.02, 0.17],
     back: { type: 'top', x: [-1.66, -0.80] },
@@ -66,19 +68,19 @@ const VEHICLES = {
     ],
     seams: [[1.06], [-0.13], [-1.22]], handles: [0.02, -1.00],
     mirror: { x: 0.88, s: 1 },
-    head: { y: [0.56, 0.635], z: [0.40, 0.86] }, grille: { y: [0.38, 0.53], z: 0.42 }, headBar: true,
+    head: { y: [0.60, 0.68], z: [0.40, 0.88] }, grille: { y: [0.36, 0.57], z: 0.44 }, headBar: true,
     tail: { y: [0.88, 0.97], z: [0.36, 0.90] }, tailBar: true, plate: [0.56, 0.70],
     seats: [{ x: 0.04, type: 'pair' }, { x: -0.86, type: 'bench' }], dash: 0.70, wheel: 0.45,
     rim: { spokes: 5, color: 0xc9ced5, caliper: 0x2b2e33, split: true },
     text: { rear: 'Rear door windows', back: 'Rear windshield' }
   },
   coupe: {
-    label: 'Coupe', badge: 'Sports Coupe', cls: 'car', privacy: false, round: { noseIn: 0.14, tailIn: 0.08, noseDrop: 0.05 },
+    label: 'Coupe', badge: 'Sports Coupe', cls: 'car', privacy: false, round: { noseIn: 0.11, noseDrop: 0.015, noseRise: 0.02, tailIn: 0.07, tailDrop: 0.01, tailRise: 0.03 },
     wheelR: 0.36, wheelX: [-1.25, 1.47], tireW: 0.265, rb: 0.07, rt: 0.08,
     keys: [
-      [2.35, 0.35, 0.58, 0.615, 0.00, 0.76, 0.72],
-      [2.27, 0.29, 0.67, 0.71, 0.01, 0.88, 0.84],
-      [1.95, 0.25, 0.78, 0.83, 0.03, 0.95, 0.89],
+      [2.35, 0.32, 0.64, 0.68, 0.00, 0.80, 0.76],
+      [2.27, 0.28, 0.71, 0.75, 0.01, 0.90, 0.86],
+      [1.95, 0.25, 0.79, 0.845, 0.03, 0.95, 0.89],
       [1.30, 0.24, 0.86, 0.92, 0.05, 0.96, 0.88],
       [0.75, 0.23, 0.89, 0.96, 0.05, 0.96, 0.86],
       [0.35, 0.23, 0.92, 1.16, 0.05, 0.96, 0.80],
@@ -98,28 +100,28 @@ const VEHICLES = {
     ],
     seams: [[0.80], [-0.92]], handles: [-0.62],
     mirror: { x: 0.66, s: 1 },
-    head: { y: [0.52, 0.6], z: [0.40, 0.88] }, grille: { y: [0.38, 0.51], z: 0.36 },
+    head: { y: [0.57, 0.645], z: [0.40, 0.90] }, grille: { y: [0.35, 0.55], z: 0.40 },
     tail: { y: [0.77, 0.87], z: [0.34, 0.84], bars: 3 }, plate: [0.50, 0.64],
     seats: [{ x: -0.30, type: 'pair' }, { x: -1.08, type: 'bench', small: true }], dash: 0.44, wheel: 0.18,
     rim: { spokes: 5, color: 0x3a3d43, caliper: 0xb3161c, split: true, size: 0.76 },
     text: { rear: 'Rear quarter glass', back: 'Fastback glass' }
   },
   suv: {
-    label: 'SUV', badge: 'Midsize SUV', cls: 'mpv', privacy: true, flare: true, cladding: 0.14, floatRoof: true, round: { noseIn: 0.11, tailIn: 0.06, tailDrop: 0.03 },
-    wheelR: 0.37, wheelX: [-1.36, 1.33], tireW: 0.235, rb: 0.08, rt: 0.09,
+    label: 'SUV', badge: 'Midsize SUV', cls: 'mpv', privacy: true, flare: true, cladding: 0.14, floatRoof: true, round: { noseIn: 0.07, noseDrop: 0.01, noseRise: 0.02, tailIn: 0.05, tailDrop: 0.02, tailRise: 0.03 },
+    wheelR: 0.385, wheelX: [-1.36, 1.33], tireW: 0.245, rb: 0.07, rt: 0.065, roll: 0.025, archGap: 0.05,
     keys: [
-      [2.25, 0.46, 0.78, 0.83, 0.00, 0.78, 0.74],
-      [2.17, 0.41, 0.87, 0.92, 0.01, 0.88, 0.84],
-      [1.80, 0.38, 0.98, 1.04, 0.02, 0.93, 0.88],
-      [1.10, 0.37, 1.03, 1.10, 0.03, 0.93, 0.87],
-      [0.80, 0.36, 1.05, 1.13, 0.04, 0.93, 0.86],
-      [0.40, 0.36, 1.07, 1.42, 0.05, 0.93, 0.80],
-      [0.05, 0.36, 1.08, 1.68, 0.05, 0.93, 0.77],
-      [-0.60, 0.36, 1.10, 1.70, 0.05, 0.93, 0.77],
-      [-1.60, 0.37, 1.15, 1.67, 0.05, 0.93, 0.77],
-      [-2.10, 0.39, 1.17, 1.61, 0.05, 0.92, 0.78],
-      [-2.28, 0.42, 1.15, 1.55, 0.04, 0.90, 0.78],
-      [-2.35, 0.46, 1.10, 1.47, 0.03, 0.86, 0.76]
+      [2.25, 0.53, 0.82, 0.88, 0, 0.78, 0.74],
+      [2.17, 0.48, 0.91, 0.97, 0.01, 0.88, 0.84],
+      [1.8, 0.45, 1.02, 1.09, 0.02, 0.93, 0.88],
+      [1.1, 0.44, 1.03, 1.1, 0.03, 0.93, 0.87],
+      [0.8, 0.43, 1.05, 1.13, 0.04, 0.93, 0.86],
+      [0.4, 0.43, 1.07, 1.42, 0.05, 0.93, 0.8],
+      [0.05, 0.43, 1.08, 1.68, 0.05, 0.93, 0.77],
+      [-0.6, 0.43, 1.1, 1.7, 0.05, 0.93, 0.77],
+      [-1.6, 0.44, 1.15, 1.67, 0.05, 0.93, 0.77],
+      [-2.1, 0.46, 1.17, 1.61, 0.05, 0.92, 0.78],
+      [-2.28, 0.49, 1.15, 1.55, 0.04, 0.9, 0.78],
+      [-2.35, 0.53, 1.1, 1.47, 0.03, 0.86, 0.76]
     ],
     shield: [0.78, 0.10],
     back: { type: 'rear', y: [1.17, 1.41], z: [[-0.84, 0.84]] },
@@ -130,7 +132,7 @@ const VEHICLES = {
     ],
     seams: [[0.86], [-0.07], [-1.08]], handles: [0.05, -0.95],
     mirror: { x: 0.74, s: 1.1 },
-    head: { y: [0.72, 0.80], z: [0.38, 0.90] }, grille: { y: [0.47, 0.70], z: 0.46 }, headBar: true,
+    head: { y: [0.80, 0.88], z: [0.38, 0.90] }, grille: { y: [0.53, 0.78], z: 0.48 }, headBar: true,
     tail: { y: [1.02, 1.12], z: [0.40, 0.92] }, tailBar: true, plate: [0.64, 0.78],
     rails: [-1.95, 0.20],
     seats: [{ x: -0.18, type: 'pair' }, { x: -1.12, type: 'bench' }], dash: 0.52, wheel: 0.30,
@@ -138,38 +140,39 @@ const VEHICLES = {
     text: { rear: 'Rear doors & quarter glass', back: 'Liftgate glass' }
   },
   truck: {
-    label: 'Truck', badge: 'Crew Cab Pickup', cls: 'mpv', privacy: true, round: { noseIn: 0.05, noseLen: 0.35, noseDrop: 0.02, noseRise: 0.03, tailIn: 0, tailDrop: 0, tailRise: 0 },
-    wheelR: 0.42, wheelX: [-1.71, 1.97], tireW: 0.275, rb: 0.08, rt: 0.08, flare: true,
+    label: 'Truck', badge: 'Crew Cab Pickup', cls: 'mpv', privacy: true, creases: false,
+    round: { noseIn: 0.025, noseLen: 0.22, noseDrop: 0, noseRise: 0.02, tailIn: 0, tailDrop: 0, tailRise: 0 },
+    wheelR: 0.44, wheelX: [-1.71, 1.97], tireW: 0.29, rb: 0.045, rt: 0.045, tuck: 0.025, roll: 0.006, flare: true, archGap: 0.06,
     keys: [
-      [2.95, 0.52, 1.12, 1.18, 0.00, 0.92, 0.88],
-      [2.88, 0.48, 1.20, 1.26, 0.01, 0.99, 0.95],
-      [2.40, 0.46, 1.26, 1.31, 0.02, 1.01, 0.96],
-      [1.30, 0.46, 1.30, 1.35, 0.03, 1.01, 0.95],
-      [0.75, 0.46, 1.31, 1.36, 0.03, 1.01, 0.94],
-      [0.45, 0.46, 1.33, 1.60, 0.04, 1.01, 0.89],
-      [0.12, 0.46, 1.34, 1.92, 0.04, 1.01, 0.85],
-      [-0.60, 0.46, 1.34, 1.96, 0.04, 1.01, 0.85],
-      [-0.98, 0.46, 1.34, 1.94, 0.04, 1.01, 0.86],
-      [-1.04, 0.47, 1.33, 1.90, 0.03, 1.00, 0.85]
+      [2.96, 0.6, 1.19, 1.235, 0, 0.995, 0.975],
+      [2.86, 0.56, 1.22, 1.265, 0.004, 1.005, 0.985],
+      [2.3, 0.56, 1.265, 1.305, 0.008, 1.01, 0.99],
+      [1.2, 0.56, 1.305, 1.345, 0.01, 1.01, 0.99],
+      [0.8, 0.56, 1.325, 1.36, 0.01, 1.01, 0.985],
+      [0.46, 0.56, 1.36, 1.63, 0.018, 1.01, 0.93],
+      [0.12, 0.56, 1.38, 1.935, 0.02, 1.01, 0.905],
+      [-0.6, 0.56, 1.38, 1.96, 0.02, 1.01, 0.905],
+      [-0.98, 0.56, 1.38, 1.955, 0.02, 1.01, 0.905],
+      [-1.04, 0.57, 1.37, 1.93, 0.018, 1, 0.9]
     ],
-    shield: [0.73, 0.14],
-    back: { type: 'rear', y: [1.43, 1.82], z: [[-0.56, 0.56]] },
+    shield: [0.78, 0.15],
+    back: { type: 'rear', y: [1.47, 1.84], z: [[-0.58, 0.58]] },
     windows: [
-      { zone: 'front', a: [0.70, 0.14], b: [-0.06, -0.06] },
-      { zone: 'rear', a: [-0.16, -0.16], b: [-0.92, -0.92] }
+      { zone: 'front', a: [0.74, 0.16], b: [-0.07, -0.07] },
+      { zone: 'rear', a: [-0.17, -0.17], b: [-0.94, -0.94] }
     ],
-    seams: [[0.80], [-0.11], [-0.98]], handles: [0.00, -0.86],
-    mirror: { x: 0.68, s: 1.45 },
-    head: { y: [0.94, 1.12], z: [0.64, 0.97] }, grille: { y: [0.64, 1.12], z: 0.64, chrome: true },
-    bumper: { y: [0.50, 0.62], chrome: true },
-    bed: { x: [-2.94, -1.08], b: 0.50, rail: 1.30, floor: 0.93, w: 1.01, wall: 0.06 },
+    seams: [[0.84], [-0.12], [-0.99]], handles: [-0.02, -0.88],
+    mirror: { x: 0.70, s: 1.4, tall: true, black: true },
+    head: { y: [1.03, 1.21], z: [0.60, 0.99] }, grille: { y: [0.75, 1.21], z: 0.60, chrome: true },
+    bumper: { y: [0.56, 0.74], chrome: true },
+    bed: { x: [-2.94, -1.08], b: 0.60, rail: 1.33, floor: 1.0, w: 1.01, wall: 0.06 },
     runningBoard: true,
     seats: [{ x: -0.06, type: 'pair' }, { x: -0.80, type: 'bench' }], dash: 0.55, wheel: 0.32,
-    rim: { spokes: 6, color: 0xb3b8c0, caliper: 0x2b2e33, size: 0.72 },
+    rim: { spokes: 6, color: 0xb3b8c0, caliper: 0x2b2e33, size: 0.66 },
     text: { rear: 'Rear door windows', back: 'Rear cab slider' }
   },
   van: {
-    label: 'Work Van', badge: 'High-Roof Work Van', cls: 'mpv', privacy: false, noRear: true, round: { noseIn: 0.08, noseLen: 0.6, tailIn: 0.025, tailLen: 0.3, tailRise: 0.02, tailDrop: 0.01 },
+    label: 'Work Van', badge: 'High-Roof Work Van', cls: 'mpv', privacy: false, noRear: true, creases: false, round: { noseIn: 0.08, noseLen: 0.6, tailIn: 0.025, tailLen: 0.3, tailRise: 0.02, tailDrop: 0.01 },
     wheelR: 0.38, wheelX: [-1.71, 2.04], tireW: 0.235, rb: 0.08, rt: 0.12,
     keys: [
       [2.99, 0.45, 0.85, 0.95, 0.00, 0.92, 0.88],
@@ -189,7 +192,7 @@ const VEHICLES = {
       { zone: 'front', a: [1.92, 1.56], b: [1.06, 1.06], yTop: 1.98 }
     ],
     seams: [[1.99], [0.99, 2.40], [0.90, 2.40], [-0.62, 2.40]], handles: [1.10, 0.75],
-    mirror: { x: 1.90, s: 1.7 },
+    mirror: { x: 1.90, s: 1.5, tall: true, black: true },
     head: { y: [0.78, 0.92], z: [0.56, 0.95] }, grille: { y: [0.52, 0.76], z: 0.52 },
     bumper: { y: [0.45, 0.53] }, rearBumper: [0.46, 0.58], rearDoorSeam: true,
     tail: { y: [0.95, 1.45], z: [0.88, 0.965] }, plate: [0.62, 0.76],
@@ -198,8 +201,8 @@ const VEHICLES = {
     text: { rear: 'Cargo area has no side glass', back: 'Rear door windows' }
   },
   minivan: {
-    label: 'Minivan', badge: 'Minivan', cls: 'mpv', privacy: true, floatRoof: true, round: { noseIn: 0.12, tailIn: 0.06, tailDrop: 0.03 },
-    wheelR: 0.36, wheelX: [-1.52, 1.57], tireW: 0.235, rb: 0.08, rt: 0.09,
+    label: 'Minivan', badge: 'Minivan', cls: 'mpv', privacy: true, floatRoof: true, round: { noseIn: 0.09, noseDrop: 0.015, noseRise: 0.02, tailIn: 0.05, tailDrop: 0.02, tailRise: 0.03 },
+    wheelR: 0.36, wheelX: [-1.52, 1.57], tireW: 0.235, rb: 0.07, rt: 0.07, roll: 0.025,
     keys: [
       [2.55, 0.40, 0.69, 0.74, 0.00, 0.80, 0.76],
       [2.47, 0.35, 0.80, 0.85, 0.01, 0.92, 0.88],
@@ -264,6 +267,32 @@ const tailMat = new THREE.MeshPhysicalMaterial({ color: 0x5c0609, emissive: 0xc0
 const plateMat = new THREE.MeshStandardMaterial({ color: 0xf1f2f0, roughness: 0.5, side: THREE.DoubleSide });
 const seatMat = new THREE.MeshStandardMaterial({ color: 0x26282c, roughness: 0.85 });
 const dashMat = new THREE.MeshStandardMaterial({ color: 0x18191c, roughness: 0.7 });
+// Honeycomb mesh for grilles and intakes
+const grilleMat = (() => {
+  const c = document.createElement('canvas');
+  c.width = c.height = 128;
+  const g = c.getContext('2d');
+  g.fillStyle = '#050506';
+  g.fillRect(0, 0, 128, 128);
+  g.strokeStyle = '#3a3d44';
+  g.lineWidth = 5;
+  const r = 16, h = r * Math.sqrt(3);
+  for (let row = -1; row < 5; row++) for (let col = -1; col < 6; col++) {
+    const cx = col * r * 3 + (row % 2 ? r * 1.5 : 0), cy = row * h / 2;
+    g.beginPath();
+    for (let k = 0; k < 6; k++) {
+      const a = Math.PI / 3 * k;
+      g.lineTo(cx + r * Math.cos(a), cy + r * Math.sin(a));
+    }
+    g.closePath();
+    g.stroke();
+  }
+  const tex = new THREE.CanvasTexture(c);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.repeat.set(9, 3);
+  return new THREE.MeshStandardMaterial({ map: tex, roughness: 0.45, metalness: 0.4, side: THREE.DoubleSide });
+})();
 const outlineMat = new THREE.LineBasicMaterial({ color: 0xffd000, transparent: true, opacity: 0.95 });
 
 // Glass is two layers: a dark filter whose opacity is the tint (light that does
@@ -366,10 +395,17 @@ function makeSectioner(v) {
       pts.push([wl - rbE + rbE * Math.cos(a), b + rbE + rbE * Math.sin(a), 'arc']);
     }
     const roll = (v.roll ?? 0.035) * clamp((s - b - 0.2) / 0.3, 0, 1);
-    for (let i = 1; i <= 10; i++) {
-      const t = i / 10, y = b + rbE + (s - b - rbE) * t;
+    // Modern feature lines: a crisp shoulder crease and a sculpted lower-door scoop,
+    // both rising slightly toward the rear. Faded out over the nose and tail.
+    const lines = v.creases === false ? 0 : clamp((s - b - 0.3) / 0.15, 0, 1) * clamp(Math.min(xHi - x, x - xLo) / 0.4, 0, 1);
+    const rise = -x / 2.4;
+    const yc1 = s - 0.12 + 0.025 * rise;
+    const yc2 = b + rbE + (s - b - rbE) * 0.3 + 0.05 * rise;
+    for (let i = 1; i <= LOWER_N; i++) {
+      const t = i / LOWER_N, y = b + rbE + (s - b - rbE) * t;
       let z = t < 0.65 ? w - (w - wl) * (1 - t / 0.65) ** 2 : w - roll * ((t - 0.65) / 0.35) ** 2;
-      if (s - b > 0.3) z += 0.007 * Math.exp(-(((y - (s - 0.1)) / 0.022) ** 2)); // body character line
+      z += lines * 0.011 * Math.max(0, 1 - Math.abs(y - yc1) / 0.03);
+      z -= lines * 0.013 * Math.max(0, 1 - Math.abs(y - yc2) / 0.09) * (y < yc2 ? 0.6 : 1);
       pts.push([z, y, 'lower']);
     }
     for (let i = 1; i <= 12; i++) {
@@ -392,7 +428,7 @@ function makeSectioner(v) {
   // Half width of the body side at height y
   function zAt(x, y) {
     const { pts } = section(x);
-    let lo = 4, hi = 36;
+    const lo = 4, hi = 4 + 5 + LOWER_N + 12 + 6 - 1;   // arc start .. end of roof corner
     if (y <= pts[lo][1]) return pts[lo][0];
     if (y >= pts[hi][1]) return pts[hi][0];
     for (let i = lo; i < hi; i++) {
@@ -434,8 +470,8 @@ function makeSectioner(v) {
 // Parametric patches laid onto the body (glass, lights, trim)
 // ---------------------------------------------------------------------------
 function patchGeometry(fn, nu, nv) {
-  const pos = [], idx = [];
-  for (let j = 0; j <= nv; j++) for (let i = 0; i <= nu; i++) pos.push(...fn(i / nu, j / nv));
+  const pos = [], idx = [], uv = [];
+  for (let j = 0; j <= nv; j++) for (let i = 0; i <= nu; i++) { pos.push(...fn(i / nu, j / nv)); uv.push(i / nu, j / nv); }
   const row = nu + 1;
   for (let j = 0; j < nv; j++) for (let i = 0; i < nu; i++) {
     const a = j * row + i;
@@ -443,6 +479,7 @@ function patchGeometry(fn, nu, nv) {
   }
   const geo = new THREE.BufferGeometry();
   geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  geo.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
   geo.setIndex(idx);
   geo.computeVertexNormals();
   return geo;
@@ -877,20 +914,25 @@ function buildVehicle(v) {
 
   // ---- mirrors
   [-1, 1].forEach(side => {
-    const s = v.mirror.s, x = v.mirror.x, y = S.section(x).s + 0.07;
+    const m = v.mirror, s = m.s, x = m.x, y = S.section(x).s + 0.05;
     const zb = S.zAt(x, y);
-    const housing = new THREE.Mesh(new THREE.SphereGeometry(1, 24, 16), paintMat);
-    housing.scale.set(0.075 * s, 0.065 * s, 0.11 * s);
-    housing.position.set(x - 0.02, y + 0.02 * s, side * (zb + 0.13 * s));
-    group.add(housing);
-    const glassFace = new THREE.Mesh(new THREE.CircleGeometry(1, 24), fritMat);
-    glassFace.scale.set(0.058 * s, 0.1 * s, 1);
-    glassFace.rotation.y = -Math.PI / 2;
-    glassFace.position.set(x - 0.02 - 0.072 * s, y + 0.02 * s, side * (zb + 0.13 * s));
-    group.add(glassFace);
-    const arm = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.03, 0.1 * s), trimMat);
-    arm.position.set(x, y - 0.01, side * (zb + 0.04 * s));
+    const hh = (m.tall ? 0.2 : 0.11) * s / (m.tall ? 1.45 : 1), hd = 0.2 * s, hw = 0.1 * s;
+    const sail = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.07, 0.03), trimMat);
+    sail.position.set(x + 0.02, y - 0.01, side * (zb + 0.01));
+    group.add(sail);
+    const arm = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.035, 0.08 * s), trimMat);
+    arm.position.set(x, y + 0.005, side * (zb + 0.04 * s));
     group.add(arm);
+    const mirror = new THREE.Group();
+    const housing = new THREE.Mesh(new RoundedBoxGeometry(hw, hh, hd, 3, Math.min(hw, hh) * 0.32), m.black ? trimMat : paintMat);
+    mirror.add(housing);
+    const face = new THREE.Mesh(new THREE.PlaneGeometry(hd * 0.84, hh * 0.78), fritMat);
+    face.rotation.y = -Math.PI / 2;
+    face.position.x = -hw / 2 - 0.002;
+    mirror.add(face);
+    mirror.position.set(x - 0.01, y + hh * 0.35, side * (zb + 0.07 * s + hd / 2));
+    mirror.rotation.y = side * 0.1;
+    group.add(mirror);
   });
 
   // ---- front fascia: grille, headlights, bumper
@@ -919,8 +961,7 @@ function buildVehicle(v) {
     outlineCache.set(key, out);
     return out;
   }
-  const wrapFn = (dir, y0, y1, s0, s1, off) => (u, t) => {
-    const y = lerp(y0, y1, t), sv = lerp(s0, s1, u);
+  const wrapPoint = (dir, y, sv, off) => {
     const o = planOutline(y, dir), sa = Math.min(Math.abs(sv), o.len[o.len.length - 1]);
     let i = 0;
     while (i < o.len.length - 2 && o.len[i + 1] < sa) i++;
@@ -934,22 +975,46 @@ function buildVehicle(v) {
     const sign = sv < 0 ? -1 : 1;
     return [x + nx * off, y, sign * (z + nz * off)];
   };
+  const wrapFn = (dir, y0, y1, s0, s1, off) => (u, t) => wrapPoint(dir, lerp(y0, y1, t), lerp(s0, s1, u), off);
+  // Four-corner shape on the nose/tail surface; corners are [distance along surface, height]
+  const quadFn = (dir, bl, br, tl, tr, off) => (u, t) => {
+    const sb = lerp(bl[0], br[0], u), yb = lerp(bl[1], br[1], u);
+    const st = lerp(tl[0], tr[0], u), yt = lerp(tl[1], tr[1], u);
+    return wrapPoint(dir, lerp(yb, yt, t), lerp(sb, st, t), off);
+  };
+  const mirrorQuad = (side, bl, br, tl, tr) => side > 0 ? [bl, br, tl, tr]
+    : [[-br[0], br[1]], [-bl[0], bl[1]], [-tr[0], tr[1]], [-tl[0], tl[1]]];
   const frontPatch = (y0, y1, z0, z1, off) => wrapFn(1, y0, y1, z0, z1, off);
+  const yFrontB = S.section(xFront).b;
+
+  // Grille: trapezoid with honeycomb mesh and a frame (chrome bars on the pickup)
   {
-    const g = v.grille, zg = g.z;
-    group.add(new THREE.Mesh(patchGeometry(frontPatch(g.y[0], g.y[1], -zg, zg, 0.003), 12, 6), trimMat));
-    group.add(new THREE.Mesh(frameGeometry(frontPatch(g.y[0], g.y[1], -zg, zg, 0.005), g.chrome ? 0.05 : 0.018), g.chrome ? chromeMat : plasticMat));
-    if (g.chrome) for (let i = 1; i < 4; i++) {
-      const y = lerp(g.y[0], g.y[1], i / 4);
-      group.add(new THREE.Mesh(patchGeometry(frontPatch(y - 0.008, y + 0.008, -zg * 0.92, zg * 0.92, 0.006), 4, 1), chromeMat));
+    const g = v.grille, zg = g.z, top = g.trap ?? (g.chrome ? 1 : 0.86);
+    const fn = off => quadFn(1, [-zg, g.y[0]], [zg, g.y[0]], [-zg * top, g.y[1]], [zg * top, g.y[1]], off);
+    group.add(new THREE.Mesh(patchGeometry(fn(0.003), 16, 8), grilleMat));
+    group.add(new THREE.Mesh(frameGeometry(fn(0.005), g.chrome ? 0.05 : 0.018), g.chrome ? chromeMat : trimMat));
+    if (g.chrome) for (let i = 1; i < 3; i++) {
+      const y = lerp(g.y[0], g.y[1], i / 3);
+      group.add(new THREE.Mesh(patchGeometry(frontPatch(y - 0.012, y + 0.012, -zg * 0.95, zg * 0.95, 0.007), 12, 1), chromeMat));
     }
   }
+
+  // Headlights: angular units sweeping up and back, projector lenses, LED strip on top
   [-1, 1].forEach(side => {
-    const h = v.head;
-    const za = side > 0 ? h.z[0] : -h.z[1], zb = side > 0 ? h.z[1] : -h.z[0];
-    group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[0], h.y[1], za, zb, 0.003), 16, 4), headHousingMat));
-    group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[0] + 0.015, h.y[1] - 0.012, lerp(za, zb, 0.06), lerp(za, zb, 0.94), 0.006), 16, 4), headLensMat));
-    group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[1] - 0.012, h.y[1] - 0.004, lerp(za, zb, 0.04), lerp(za, zb, 0.96), 0.008), 16, 1), drlMat));
+    const h = v.head, hgt = h.y[1] - h.y[0], sweep = hgt * 0.55;
+    const q = mirrorQuad(side, [h.z[0] + 0.03, h.y[0]], [h.z[1], h.y[0] + sweep], [h.z[0], h.y[1]], [h.z[1] + 0.02, h.y[1] + sweep * 0.7]);
+    const fn = off => quadFn(1, ...q, off);
+    group.add(new THREE.Mesh(patchGeometry(fn(0.003), 16, 4), headHousingMat));
+    group.add(new THREE.Mesh(patchGeometry((u, t) => fn(0.006)(lerp(0.04, 0.96, u), lerp(0.12, 0.8, t)), 16, 4), headLensMat));
+    group.add(new THREE.Mesh(patchGeometry((u, t) => fn(0.009)(u, lerp(0.84, 0.97, t)), 16, 1), drlMat));
+    [0.32, 0.62].forEach(u => {
+      const p0 = new THREE.Vector3(...fn(0.006)(side > 0 ? u : 1 - u, 0.45));
+      const p1 = new THREE.Vector3(...fn(0.03)(side > 0 ? u : 1 - u, 0.45));
+      const r = Math.min(0.03, hgt * 0.28);
+      const ring = new THREE.Mesh(new THREE.RingGeometry(r * 0.7, r, 24), chromeMat);
+      const lens = new THREE.Mesh(new THREE.CircleGeometry(r * 0.7, 24), headLensMat);
+      [ring, lens].forEach(m => { m.position.copy(p0); m.lookAt(p1); group.add(m); });
+    });
   });
   if (v.headBar) {
     const h = v.head;
@@ -959,18 +1024,15 @@ function buildVehicle(v) {
   if (v.bumper) {
     group.add(new THREE.Mesh(patchGeometry(frontPatch(v.bumper.y[0], v.bumper.y[1], -(halfW + 0.01), halfW + 0.01, 0.004), 24, 2), v.bumper.chrome ? chromeMat : plasticMat));
   } else {
-    // lower intake and fog lights in the bumper
-    const yb = S.section(xFront).b, yi0 = yb + 0.035, yi1 = Math.min(yb + 0.12, v.grille.y[0] - 0.03);
-    if (yi1 > yi0 + 0.03) {
-      group.add(new THREE.Mesh(patchGeometry(frontPatch(yi0, yi1, -0.5, 0.5, 0.003), 12, 2), trimMat));
-      [-1, 1].forEach(side => {
-        const fog = new THREE.Mesh(new THREE.CircleGeometry(0.03, 20), headLensMat);
-        const fy = (yi0 + yi1) / 2, fzv = side * 0.6;
-        fog.rotation.y = Math.PI / 2;
-        fog.position.set(S.endX(fy, fzv, 1) + 0.007, fy, fzv);
-        group.add(fog);
-      });
-    }
+    // corner intakes and a black lower lip
+    const g = v.grille, y0 = yFrontB + 0.06, y1 = Math.min(g.y[0] + 0.14, v.head.y[0] - 0.04);
+    const si = g.z + 0.08, so = Math.min(g.z + 0.24, halfW - 0.12);
+    if (so > si + 0.06 && y1 > y0 + 0.05) [-1, 1].forEach(side => {
+      const q = mirrorQuad(side, [si + 0.03, y0], [so, y0 + 0.02], [si, y1], [so - 0.04, y1 + 0.03]);
+      group.add(new THREE.Mesh(patchGeometry(quadFn(1, ...q, 0.003), 8, 4), grilleMat));
+      group.add(new THREE.Mesh(frameGeometry(quadFn(1, ...q, 0.005), 0.012), trimMat));
+    });
+    group.add(new THREE.Mesh(patchGeometry(frontPatch(yFrontB + 0.004, yFrontB + 0.035, -(halfW - 0.1), halfW - 0.1, 0.004), 24, 1), trimMat));
   }
   // cowl panel and wipers at the base of the windshield
   {
@@ -1015,6 +1077,10 @@ function buildVehicle(v) {
     const zp = 0.16;
     group.add(new THREE.Mesh(patchGeometry(rearPatch(v.plate[0], v.plate[1], -zp, zp, 0.004), 2, 2), plateMat));
     group.add(new THREE.Mesh(frameGeometry(rearPatch(v.plate[0], v.plate[1], -zp, zp, 0.005), 0.012), plasticMat));
+  }
+  if (!v.rearBumper && !v.bed) {
+    const yb = S.section(xRear).b;
+    group.add(new THREE.Mesh(patchGeometry(rearPatch(yb + 0.004, yb + 0.075, -(halfW - 0.14), halfW - 0.14, 0.004), 24, 2), trimMat));
   }
   if (v.rearBumper) group.add(new THREE.Mesh(patchGeometry(rearPatch(v.rearBumper[0], v.rearBumper[1], -(halfW + 0.01), halfW + 0.01, 0.004), 24, 2), plasticMat));
   if (v.rearDoorSeam) group.add(new THREE.Mesh(patchGeometry(rearPatch(v.back.y[0] - 0.95, v.back.y[1] + 0.4, -0.004, 0.004, 0.003), 1, 8), trimMat));
