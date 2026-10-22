@@ -610,61 +610,61 @@
   </section>
 
   <!-- ================= 3D TINT STUDIO (vehicle tint simulator, logic in js/tint-studio.js) ================= -->
-  <section id="tint-simulator" class="relative overflow-hidden py-16 sm:py-20 text-white bg-[#04060c] border-t border-zinc-800">
+  <section id="tint-simulator" class="relative overflow-hidden py-10 sm:py-12 text-white bg-[#04060c] border-t border-zinc-800">
     <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(60% 45% at 50% 0%, rgba(13,98,217,0.32), transparent 70%), radial-gradient(35% 30% at 90% 95%, rgba(255,208,0,0.07), transparent 70%);"></div>
     <div class="absolute inset-0 pointer-events-none opacity-[0.06]" style="background-image: linear-gradient(rgba(255,255,255,.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.7) 1px, transparent 1px); background-size: 44px 44px; -webkit-mask-image: radial-gradient(ellipse at center, #000 25%, transparent 75%); mask-image: radial-gradient(ellipse at center, #000 25%, transparent 75%);"></div>
 
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
       <!-- Header -->
-      <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
+      <div class="text-center max-w-2xl mx-auto mb-5 sm:mb-6">
         <div class="inline-flex items-center gap-2 rounded-full border border-brand-yellow/40 bg-brand-yellow/10 px-3 py-1 font-racing font-bold text-xs sm:text-sm tracking-[0.2em] text-brand-yellow">
           <span class="w-1.5 h-1.5 rounded-full bg-brand-yellow animate-pulse"></span>
           SOLARSHIELD TINT STUDIO
         </div>
-        <h2 class="font-racing font-black text-4xl sm:text-6xl text-white mt-3 leading-none">
+        <h2 class="font-racing font-black text-3xl sm:text-5xl text-white mt-2 leading-none">
           SEE YOUR TINT <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-yellow to-amber-300">IN 3D</span>
         </h2>
-        <p class="text-zinc-400 mt-3 text-sm sm:text-base">
-          Pick your vehicle, tap any window, and dial in the shade. Spin it around to see the look from every angle before we ever show up.
+        <p class="text-zinc-400 mt-2 text-sm">
+          Pick your vehicle, tap a window, and dial in the shade.
         </p>
       </div>
 
-      <div class="rounded-3xl border border-white/10 bg-white/[0.03] shadow-2xl shadow-black/60 p-3 sm:p-5">
+      <div class="rounded-2xl border border-white/10 bg-white/[0.03] shadow-2xl shadow-black/60 p-2.5 sm:p-4">
 
         <!-- Vehicle type picker -->
-        <div class="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-3 sm:mb-4">
-          <button type="button" data-ts-vehicle="sedan" class="flex flex-col items-center gap-1 rounded-xl border border-white/10 bg-black/40 px-2 py-2 text-zinc-400 hover:text-white hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 data-[active=true]:text-brand-yellow">
-            <svg viewBox="0 0 64 28" class="w-12 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 20H2v-5l8-2 9-6h20l9 6 12 1.5V20h-8M20 20h24"/><circle cx="16" cy="20" r="4"/><circle cx="48" cy="20" r="4"/></svg>
-            <span class="font-racing font-bold text-sm tracking-wider">SEDAN</span>
+        <div class="grid grid-cols-6 gap-1.5 mb-2.5 sm:mb-3">
+          <button type="button" data-ts-vehicle="sedan" class="flex flex-col items-center gap-0.5 rounded-lg border border-white/10 bg-black/40 px-1 py-1.5 text-zinc-400 hover:text-white hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 data-[active=true]:text-brand-yellow">
+            <svg viewBox="0 0 64 28" class="w-8 h-4 sm:w-10 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 20H2v-5l8-2 9-6h20l9 6 12 1.5V20h-8M20 20h24"/><circle cx="16" cy="20" r="4"/><circle cx="48" cy="20" r="4"/></svg>
+            <span class="font-racing font-bold text-[10px] sm:text-xs tracking-wider whitespace-nowrap">SEDAN</span>
           </button>
-          <button type="button" data-ts-vehicle="coupe" class="flex flex-col items-center gap-1 rounded-xl border border-white/10 bg-black/40 px-2 py-2 text-zinc-400 hover:text-white hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 data-[active=true]:text-brand-yellow">
-            <svg viewBox="0 0 64 28" class="w-12 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 20H2v-4l10-3 12-6h11l11 6 14 2.5V20h-8M20 20h24"/><circle cx="16" cy="20" r="4"/><circle cx="48" cy="20" r="4"/></svg>
-            <span class="font-racing font-bold text-sm tracking-wider">COUPE</span>
+          <button type="button" data-ts-vehicle="coupe" class="flex flex-col items-center gap-0.5 rounded-lg border border-white/10 bg-black/40 px-1 py-1.5 text-zinc-400 hover:text-white hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 data-[active=true]:text-brand-yellow">
+            <svg viewBox="0 0 64 28" class="w-8 h-4 sm:w-10 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 20H2v-4l10-3 12-6h11l11 6 14 2.5V20h-8M20 20h24"/><circle cx="16" cy="20" r="4"/><circle cx="48" cy="20" r="4"/></svg>
+            <span class="font-racing font-bold text-[10px] sm:text-xs tracking-wider whitespace-nowrap">COUPE</span>
           </button>
-          <button type="button" data-ts-vehicle="suv" class="flex flex-col items-center gap-1 rounded-xl border border-white/10 bg-black/40 px-2 py-2 text-zinc-400 hover:text-white hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 data-[active=true]:text-brand-yellow">
-            <svg viewBox="0 0 64 28" class="w-12 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 20H2V8l3-3h35l8 7 12 1.5V20h-8M20 20h24"/><circle cx="16" cy="20" r="4"/><circle cx="48" cy="20" r="4"/></svg>
-            <span class="font-racing font-bold text-sm tracking-wider">SUV</span>
+          <button type="button" data-ts-vehicle="suv" class="flex flex-col items-center gap-0.5 rounded-lg border border-white/10 bg-black/40 px-1 py-1.5 text-zinc-400 hover:text-white hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 data-[active=true]:text-brand-yellow">
+            <svg viewBox="0 0 64 28" class="w-8 h-4 sm:w-10 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 20H2V8l3-3h35l8 7 12 1.5V20h-8M20 20h24"/><circle cx="16" cy="20" r="4"/><circle cx="48" cy="20" r="4"/></svg>
+            <span class="font-racing font-bold text-[10px] sm:text-xs tracking-wider whitespace-nowrap">SUV</span>
           </button>
-          <button type="button" data-ts-vehicle="truck" class="flex flex-col items-center gap-1 rounded-xl border border-white/10 bg-black/40 px-2 py-2 text-zinc-400 hover:text-white hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 data-[active=true]:text-brand-yellow">
-            <svg viewBox="0 0 64 28" class="w-12 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 20H2v-8h26V4h13l6 7 14 1.5V20h-9M20 20h24"/><circle cx="16" cy="20" r="4"/><circle cx="48" cy="20" r="4"/></svg>
-            <span class="font-racing font-bold text-sm tracking-wider">TRUCK</span>
+          <button type="button" data-ts-vehicle="truck" class="flex flex-col items-center gap-0.5 rounded-lg border border-white/10 bg-black/40 px-1 py-1.5 text-zinc-400 hover:text-white hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 data-[active=true]:text-brand-yellow">
+            <svg viewBox="0 0 64 28" class="w-8 h-4 sm:w-10 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 20H2v-8h26V4h13l6 7 14 1.5V20h-9M20 20h24"/><circle cx="16" cy="20" r="4"/><circle cx="48" cy="20" r="4"/></svg>
+            <span class="font-racing font-bold text-[10px] sm:text-xs tracking-wider whitespace-nowrap">TRUCK</span>
           </button>
-          <button type="button" data-ts-vehicle="van" class="flex flex-col items-center gap-1 rounded-xl border border-white/10 bg-black/40 px-2 py-2 text-zinc-400 hover:text-white hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 data-[active=true]:text-brand-yellow">
-            <svg viewBox="0 0 64 28" class="w-12 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 20H2V2h44l5 9 10 2V20h-9M20 20h24"/><circle cx="16" cy="20" r="4"/><circle cx="48" cy="20" r="4"/></svg>
-            <span class="font-racing font-bold text-sm tracking-wider">WORK VAN</span>
+          <button type="button" data-ts-vehicle="van" class="flex flex-col items-center gap-0.5 rounded-lg border border-white/10 bg-black/40 px-1 py-1.5 text-zinc-400 hover:text-white hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 data-[active=true]:text-brand-yellow">
+            <svg viewBox="0 0 64 28" class="w-8 h-4 sm:w-10 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 20H2V2h44l5 9 10 2V20h-9M20 20h24"/><circle cx="16" cy="20" r="4"/><circle cx="48" cy="20" r="4"/></svg>
+            <span class="font-racing font-bold text-[10px] sm:text-xs tracking-wider whitespace-nowrap">WORK VAN</span>
           </button>
-          <button type="button" data-ts-vehicle="minivan" class="flex flex-col items-center gap-1 rounded-xl border border-white/10 bg-black/40 px-2 py-2 text-zinc-400 hover:text-white hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 data-[active=true]:text-brand-yellow">
-            <svg viewBox="0 0 64 28" class="w-12 h-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 20H2V8l4-3h36l10 7 9 2V20h-9M20 20h24"/><circle cx="16" cy="20" r="4"/><circle cx="48" cy="20" r="4"/></svg>
-            <span class="font-racing font-bold text-sm tracking-wider">MINIVAN</span>
+          <button type="button" data-ts-vehicle="minivan" class="flex flex-col items-center gap-0.5 rounded-lg border border-white/10 bg-black/40 px-1 py-1.5 text-zinc-400 hover:text-white hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 data-[active=true]:text-brand-yellow">
+            <svg viewBox="0 0 64 28" class="w-8 h-4 sm:w-10 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M12 20H2V8l4-3h36l10 7 9 2V20h-9M20 20h24"/><circle cx="16" cy="20" r="4"/><circle cx="48" cy="20" r="4"/></svg>
+            <span class="font-racing font-bold text-[10px] sm:text-xs tracking-wider whitespace-nowrap">MINIVAN</span>
           </button>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-3 sm:gap-4">
 
           <!-- 3D stage -->
           <div class="lg:col-span-8 lg:sticky lg:top-24 self-start">
-            <div id="ts-stage" class="relative w-full aspect-[4/3] sm:aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-[radial-gradient(ellipse_at_50%_30%,#17264a_0%,#070b14_58%,#020306_100%)]">
+            <div id="ts-stage" class="relative w-full aspect-[16/11] sm:aspect-[16/9] lg:aspect-[16/10] rounded-xl overflow-hidden border border-white/10 bg-[radial-gradient(ellipse_at_50%_30%,#17264a_0%,#070b14_58%,#020306_100%)]">
               <canvas id="ts-canvas" class="absolute inset-0 w-full h-full block cursor-grab active:cursor-grabbing" aria-label="3D vehicle tint preview. Drag to rotate, tap a window to select it."></canvas>
 
               <div id="ts-loading" class="absolute inset-0 flex flex-col items-center justify-center gap-3 text-zinc-400 pointer-events-none">
@@ -703,93 +703,93 @@
           </div>
 
           <!-- Controls -->
-          <div class="lg:col-span-4 space-y-4">
+          <div class="lg:col-span-4 space-y-2.5">
 
             <div>
-              <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center justify-between mb-1">
                 <span class="text-xs uppercase font-racing tracking-[0.2em] text-zinc-400">Windows</span>
                 <span class="text-[11px] text-zinc-500">Tap to adjust</span>
               </div>
-              <div class="space-y-1.5">
-                <button type="button" data-ts-zone="windshield" class="w-full flex items-center gap-3 rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-left hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 disabled:opacity-40 disabled:cursor-not-allowed">
-                  <span data-ts-zone-swatch class="w-8 h-6 rounded-md border border-white/20 shrink-0"></span>
-                  <span class="flex-1 min-w-0"><span class="block font-racing font-bold tracking-wide text-white leading-tight">WINDSHIELD</span><span data-ts-zone-sub class="block text-[11px] text-zinc-400 truncate"></span></span>
-                  <span data-ts-zone-value class="font-racing font-black text-xl text-brand-yellow">OFF</span>
+              <div class="space-y-1">
+                <button type="button" data-ts-zone="windshield" class="w-full flex items-center gap-2.5 rounded-lg border border-white/10 bg-black/40 px-2.5 py-1 text-left hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 disabled:opacity-40 disabled:cursor-not-allowed">
+                  <span data-ts-zone-swatch class="w-6 h-5 rounded border border-white/20 shrink-0"></span>
+                  <span class="flex-1 min-w-0"><span class="block font-racing font-bold text-sm tracking-wide text-white leading-tight">WINDSHIELD</span><span data-ts-zone-sub class="block text-[10px] text-zinc-400 truncate leading-tight"></span></span>
+                  <span data-ts-zone-value class="font-racing font-black text-lg text-brand-yellow">OFF</span>
                 </button>
-                <button type="button" data-ts-zone="visor" class="w-full flex items-center gap-3 rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-left hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 disabled:opacity-40 disabled:cursor-not-allowed">
-                  <span data-ts-zone-swatch class="w-8 h-6 rounded-md border border-white/20 shrink-0"></span>
-                  <span class="flex-1 min-w-0"><span class="block font-racing font-bold tracking-wide text-white leading-tight">VISOR STRIP</span><span data-ts-zone-sub class="block text-[11px] text-zinc-400 truncate"></span></span>
-                  <span data-ts-zone-value class="font-racing font-black text-xl text-brand-yellow">OFF</span>
+                <button type="button" data-ts-zone="visor" class="w-full flex items-center gap-2.5 rounded-lg border border-white/10 bg-black/40 px-2.5 py-1 text-left hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 disabled:opacity-40 disabled:cursor-not-allowed">
+                  <span data-ts-zone-swatch class="w-6 h-5 rounded border border-white/20 shrink-0"></span>
+                  <span class="flex-1 min-w-0"><span class="block font-racing font-bold text-sm tracking-wide text-white leading-tight">VISOR STRIP</span><span data-ts-zone-sub class="block text-[10px] text-zinc-400 truncate leading-tight"></span></span>
+                  <span data-ts-zone-value class="font-racing font-black text-lg text-brand-yellow">OFF</span>
                 </button>
-                <button type="button" data-ts-zone="front" class="w-full flex items-center gap-3 rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-left hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 disabled:opacity-40 disabled:cursor-not-allowed">
-                  <span data-ts-zone-swatch class="w-8 h-6 rounded-md border border-white/20 shrink-0"></span>
-                  <span class="flex-1 min-w-0"><span class="block font-racing font-bold tracking-wide text-white leading-tight">FRONT SIDES</span><span data-ts-zone-sub class="block text-[11px] text-zinc-400 truncate"></span></span>
-                  <span data-ts-zone-value class="font-racing font-black text-xl text-brand-yellow">30%</span>
+                <button type="button" data-ts-zone="front" class="w-full flex items-center gap-2.5 rounded-lg border border-white/10 bg-black/40 px-2.5 py-1 text-left hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 disabled:opacity-40 disabled:cursor-not-allowed">
+                  <span data-ts-zone-swatch class="w-6 h-5 rounded border border-white/20 shrink-0"></span>
+                  <span class="flex-1 min-w-0"><span class="block font-racing font-bold text-sm tracking-wide text-white leading-tight">FRONT SIDES</span><span data-ts-zone-sub class="block text-[10px] text-zinc-400 truncate leading-tight"></span></span>
+                  <span data-ts-zone-value class="font-racing font-black text-lg text-brand-yellow">30%</span>
                 </button>
-                <button type="button" data-ts-zone="rear" class="w-full flex items-center gap-3 rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-left hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 disabled:opacity-40 disabled:cursor-not-allowed">
-                  <span data-ts-zone-swatch class="w-8 h-6 rounded-md border border-white/20 shrink-0"></span>
-                  <span class="flex-1 min-w-0"><span class="block font-racing font-bold tracking-wide text-white leading-tight">REAR SIDES</span><span data-ts-zone-sub class="block text-[11px] text-zinc-400 truncate"></span></span>
-                  <span data-ts-zone-value class="font-racing font-black text-xl text-brand-yellow">15%</span>
+                <button type="button" data-ts-zone="rear" class="w-full flex items-center gap-2.5 rounded-lg border border-white/10 bg-black/40 px-2.5 py-1 text-left hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 disabled:opacity-40 disabled:cursor-not-allowed">
+                  <span data-ts-zone-swatch class="w-6 h-5 rounded border border-white/20 shrink-0"></span>
+                  <span class="flex-1 min-w-0"><span class="block font-racing font-bold text-sm tracking-wide text-white leading-tight">REAR SIDES</span><span data-ts-zone-sub class="block text-[10px] text-zinc-400 truncate leading-tight"></span></span>
+                  <span data-ts-zone-value class="font-racing font-black text-lg text-brand-yellow">15%</span>
                 </button>
-                <button type="button" data-ts-zone="back" class="w-full flex items-center gap-3 rounded-xl border border-white/10 bg-black/40 px-3 py-2 text-left hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 disabled:opacity-40 disabled:cursor-not-allowed">
-                  <span data-ts-zone-swatch class="w-8 h-6 rounded-md border border-white/20 shrink-0"></span>
-                  <span class="flex-1 min-w-0"><span class="block font-racing font-bold tracking-wide text-white leading-tight">BACK GLASS</span><span data-ts-zone-sub class="block text-[11px] text-zinc-400 truncate"></span></span>
-                  <span data-ts-zone-value class="font-racing font-black text-xl text-brand-yellow">15%</span>
+                <button type="button" data-ts-zone="back" class="w-full flex items-center gap-2.5 rounded-lg border border-white/10 bg-black/40 px-2.5 py-1 text-left hover:border-white/30 transition data-[active=true]:border-brand-yellow data-[active=true]:bg-brand-yellow/10 disabled:opacity-40 disabled:cursor-not-allowed">
+                  <span data-ts-zone-swatch class="w-6 h-5 rounded border border-white/20 shrink-0"></span>
+                  <span class="flex-1 min-w-0"><span class="block font-racing font-bold text-sm tracking-wide text-white leading-tight">BACK GLASS</span><span data-ts-zone-sub class="block text-[10px] text-zinc-400 truncate leading-tight"></span></span>
+                  <span data-ts-zone-value class="font-racing font-black text-lg text-brand-yellow">15%</span>
                 </button>
               </div>
             </div>
 
             <div>
-              <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center justify-between mb-1">
                 <span class="text-xs uppercase font-racing tracking-[0.2em] text-zinc-400">Film Shade</span>
                 <span id="ts-zone-name" class="text-[11px] font-racing font-bold tracking-[0.18em] text-brand-yellow uppercase">Front Sides</span>
               </div>
-              <div class="grid grid-cols-4 gap-1.5">
-                <button type="button" data-ts-shade="off" class="rounded-lg border border-white/10 bg-black/40 py-1.5 font-racing font-bold text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">OFF<span class="block text-[9px] font-normal tracking-wider opacity-70">NO FILM</span></button>
-                <button type="button" data-ts-shade="70" class="rounded-lg border border-white/10 bg-black/40 py-1.5 font-racing font-bold text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">70%<span class="block text-[9px] font-normal tracking-wider opacity-70">CLEAR IR</span></button>
-                <button type="button" data-ts-shade="50" class="rounded-lg border border-white/10 bg-black/40 py-1.5 font-racing font-bold text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">50%<span class="block text-[9px] font-normal tracking-wider opacity-70">LIGHT</span></button>
-                <button type="button" data-ts-shade="35" class="rounded-lg border border-white/10 bg-black/40 py-1.5 font-racing font-bold text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">35%<span class="block text-[9px] font-normal tracking-wider opacity-70">MEDIUM</span></button>
-                <button type="button" data-ts-shade="30" class="rounded-lg border border-white/10 bg-black/40 py-1.5 font-racing font-bold text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">30%<span class="block text-[9px] font-normal tracking-wider opacity-70">FL FRONT</span></button>
-                <button type="button" data-ts-shade="20" class="rounded-lg border border-white/10 bg-black/40 py-1.5 font-racing font-bold text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">20%<span class="block text-[9px] font-normal tracking-wider opacity-70">FACTORY</span></button>
-                <button type="button" data-ts-shade="15" class="rounded-lg border border-white/10 bg-black/40 py-1.5 font-racing font-bold text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">15%<span class="block text-[9px] font-normal tracking-wider opacity-70">DARK</span></button>
-                <button type="button" data-ts-shade="5" class="rounded-lg border border-white/10 bg-black/40 py-1.5 font-racing font-bold text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">5%<span class="block text-[9px] font-normal tracking-wider opacity-70">LIMO</span></button>
+              <div class="grid grid-cols-8 lg:grid-cols-4 gap-1">
+                <button type="button" data-ts-shade="off" class="rounded-md border border-white/10 bg-black/40 py-1 font-racing font-bold text-sm text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">OFF<span class="block text-[9px] font-normal tracking-wider opacity-70">NO FILM</span></button>
+                <button type="button" data-ts-shade="70" class="rounded-md border border-white/10 bg-black/40 py-1 font-racing font-bold text-sm text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">70%<span class="block text-[9px] font-normal tracking-wider opacity-70">CLEAR IR</span></button>
+                <button type="button" data-ts-shade="50" class="rounded-md border border-white/10 bg-black/40 py-1 font-racing font-bold text-sm text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">50%<span class="block text-[9px] font-normal tracking-wider opacity-70">LIGHT</span></button>
+                <button type="button" data-ts-shade="35" class="rounded-md border border-white/10 bg-black/40 py-1 font-racing font-bold text-sm text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">35%<span class="block text-[9px] font-normal tracking-wider opacity-70">MEDIUM</span></button>
+                <button type="button" data-ts-shade="30" class="rounded-md border border-white/10 bg-black/40 py-1 font-racing font-bold text-sm text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">30%<span class="block text-[9px] font-normal tracking-wider opacity-70">FL FRONT</span></button>
+                <button type="button" data-ts-shade="20" class="rounded-md border border-white/10 bg-black/40 py-1 font-racing font-bold text-sm text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">20%<span class="block text-[9px] font-normal tracking-wider opacity-70">FACTORY</span></button>
+                <button type="button" data-ts-shade="15" class="rounded-md border border-white/10 bg-black/40 py-1 font-racing font-bold text-sm text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">15%<span class="block text-[9px] font-normal tracking-wider opacity-70">DARK</span></button>
+                <button type="button" data-ts-shade="5" class="rounded-md border border-white/10 bg-black/40 py-1 font-racing font-bold text-sm text-white hover:border-white/30 transition data-[active=true]:bg-brand-yellow data-[active=true]:text-black data-[active=true]:border-brand-yellow">5%<span class="block text-[9px] font-normal tracking-wider opacity-70">LIMO</span></button>
               </div>
-              <div class="mt-3">
+              <div class="mt-2">
                 <input id="ts-slider" type="range" min="5" max="70" step="5" value="30" class="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gradient-to-r from-black via-zinc-600 to-sky-200 accent-brand-yellow data-[off=true]:opacity-40" aria-label="Tint darkness (VLT %)">
                 <div class="flex justify-between text-[10px] font-racing tracking-wider text-zinc-500 mt-1"><span>DARKER</span><span>LIGHTER</span></div>
               </div>
             </div>
 
-            <div class="grid grid-cols-3 gap-1.5 font-racing font-bold text-[11px] sm:text-xs tracking-wider">
-              <button type="button" data-ts-preset="legal" class="rounded-lg border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 py-2 hover:bg-emerald-500/20 transition">FL LEGAL 30/15</button>
-              <button type="button" data-ts-preset="match" class="rounded-lg border border-white/10 bg-black/40 text-zinc-200 py-2 hover:border-white/30 transition">MATCH ALL</button>
-              <button type="button" data-ts-preset="clear" class="rounded-lg border border-white/10 bg-black/40 text-zinc-200 py-2 hover:border-white/30 transition">CLEAR ALL</button>
+            <div class="grid grid-cols-3 gap-1 font-racing font-bold text-[11px] tracking-wider">
+              <button type="button" data-ts-preset="legal" class="rounded-lg border border-emerald-500/40 bg-emerald-500/10 text-emerald-300 py-1.5 hover:bg-emerald-500/20 transition">FL LEGAL 30/15</button>
+              <button type="button" data-ts-preset="match" class="rounded-lg border border-white/10 bg-black/40 text-zinc-200 py-1.5 hover:border-white/30 transition">MATCH ALL</button>
+              <button type="button" data-ts-preset="clear" class="rounded-lg border border-white/10 bg-black/40 text-zinc-200 py-1.5 hover:border-white/30 transition">CLEAR ALL</button>
             </div>
 
-            <div id="ts-legal" data-state="ok" class="group rounded-xl border p-3 flex items-start gap-3 border-emerald-500/40 bg-emerald-950/30 data-[state=warn]:border-amber-500/60 data-[state=warn]:bg-amber-950/30">
+            <div id="ts-legal" data-state="ok" class="group rounded-lg border p-2 flex items-start gap-2 border-emerald-500/40 bg-emerald-950/30 data-[state=warn]:border-amber-500/60 data-[state=warn]:bg-amber-950/30">
               <span id="ts-legal-icon" class="w-6 h-6 rounded-full flex items-center justify-center shrink-0 font-black text-sm bg-emerald-500 text-black group-data-[state=warn]:bg-amber-400">✓</span>
               <div class="min-w-0">
                 <div id="ts-legal-title" class="font-racing font-bold text-sm tracking-wide text-emerald-300 group-data-[state=warn]:text-amber-300">FLORIDA LEGAL SETUP</div>
-                <ul id="ts-legal-list" class="mt-1 space-y-1 text-xs text-zinc-300 leading-snug"></ul>
+                <ul id="ts-legal-list" class="mt-0.5 space-y-0.5 text-[11px] text-zinc-300 leading-snug"></ul>
               </div>
             </div>
 
-            <div class="grid grid-cols-3 gap-2 text-center">
-              <div class="rounded-xl border border-white/10 bg-black/40 p-2.5">
-                <span id="ts-spec-vlt" class="block font-racing font-black text-2xl text-white">30%</span>
+            <div class="grid grid-cols-3 gap-1.5 text-center">
+              <div class="rounded-lg border border-white/10 bg-black/40 py-1.5 px-2">
+                <span id="ts-spec-vlt" class="block font-racing font-black text-lg leading-tight text-white">30%</span>
                 <span class="text-[10px] uppercase font-racing tracking-wider text-zinc-400">Light Through</span>
               </div>
-              <div class="rounded-xl border border-white/10 bg-black/40 p-2.5">
-                <span id="ts-spec-heat" class="block font-racing font-black text-2xl text-brand-yellow">89%</span>
+              <div class="rounded-lg border border-white/10 bg-black/40 py-1.5 px-2">
+                <span id="ts-spec-heat" class="block font-racing font-black text-lg leading-tight text-brand-yellow">89%</span>
                 <span class="text-[10px] uppercase font-racing tracking-wider text-zinc-400">IR Heat Cut</span>
               </div>
-              <div class="rounded-xl border border-white/10 bg-black/40 p-2.5">
-                <span id="ts-spec-glare" class="block font-racing font-black text-2xl text-brand-yellow">72%</span>
+              <div class="rounded-lg border border-white/10 bg-black/40 py-1.5 px-2">
+                <span id="ts-spec-glare" class="block font-racing font-black text-lg leading-tight text-brand-yellow">72%</span>
                 <span class="text-[10px] uppercase font-racing tracking-wider text-zinc-400">Glare Cut</span>
               </div>
             </div>
 
-            <a id="ts-quote" href="contact.html?service=automotive" class="w-full flex items-center justify-center gap-2 bg-brand-yellow hover:bg-brand-yellowHover text-black font-racing font-black text-xl py-3.5 rounded-xl transition-all shadow-lg shadow-brand-yellow/20">
+            <a id="ts-quote" href="contact.html?service=automotive" class="w-full flex items-center justify-center gap-2 bg-brand-yellow hover:bg-brand-yellowHover text-black font-racing font-black text-lg py-2.5 rounded-lg transition-all shadow-lg shadow-brand-yellow/20">
               <span>GET A QUOTE FOR THIS SETUP</span>
               <svg class="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>

@@ -291,9 +291,10 @@ function studioEnvironment() {
   panel(26, 14, 0.75, [0, 11, 0]);               // broad, soft overhead
   panel(18, 3, 1.3, [0, 4.5, 11]);                // side strip (passenger)
   panel(18, 3, 1.3, [0, 4.5, -11]);               // side strip (driver)
-  panel(3, 9, 1.1, [12, 3.5, -5]);                // front corner
-  panel(10, 5, 0.7, [13, 2.2, 4]);                // front fill
-  panel(10, 5, 0.8, [-13, 3, 2], 0x7fb0ff);       // cool rim from behind
+  panel(3, 9, 0.9, [12, 3.5, -5]);                // front corners
+  panel(3, 9, 0.9, [12, 3.5, 5]);
+  panel(10, 5, 0.7, [13, 2.2, 0]);                // front fill
+  panel(10, 5, 0.8, [-13, 3, 0], 0x7fb0ff);       // cool rim from behind
   panel(40, 40, 0.16, [0, -1.5, 0], 0x8f9bb0);    // floor bounce lifts the lower body
   return env;
 }
@@ -581,7 +582,8 @@ function buildVehicle(v) {
   // ---- glass regions (shared by the glass patches and the cutouts in the body)
   const winBounds = (win, x) => {
     const sc = S.section(x);
-    return [sc.s + 0.025, Math.min(sc.e - 0.03, win.yTop ?? 9)];
+    // glass runs up into the rounded roof edge, leaving only a thin roof rail
+    return [sc.s + 0.022, Math.min(sc.e0 - 0.035, win.yTop ?? 9)];
   };
   const sideFn = (win, side, off) => (u, t) => {
     const x = lerp(lerp(win.a[0], win.b[0], u), lerp(win.a[1], win.b[1], u), t);
@@ -589,11 +591,11 @@ function buildVehicle(v) {
     const y = lerp(y0, y1, t);
     return [x, y, side * (S.zAt(x, y) + off)];
   };
-  const pillar = 0.065;
+  const pillar = 0.05;
   // Glass half width: roof width at the top edge, flaring slightly toward the base
   const glassHW = (x, x0, x1) => {
     const frac = clamp((x - x1) / (x0 - x1), 0, 1);
-    return Math.min(S.section(x).hr - pillar, S.section(x1).hr - pillar + 0.09 * frac);
+    return Math.min(S.section(x).hr - pillar, S.section(x1).hr - pillar + 0.16 * frac + 0.02);
   };
   const topFn = (x0, x1, off, v0 = 0, v1 = 1) => (u, t) => {
     const x = lerp(x0, x1, lerp(v0, v1, t));
@@ -610,7 +612,7 @@ function buildVehicle(v) {
 
   function inGlass(x, y, z, kind) {
     const m = 0.035;
-    if (kind === 'green' || kind === 'lower') {
+    if (kind === 'green' || kind === 'lower' || kind === 'corner') {
       for (const win of v.windows) {
         const [y0, y1] = winBounds(win, x);
         const t = (y - y0) / (y1 - y0);
@@ -668,7 +670,7 @@ function buildVehicle(v) {
       const jn = (j + 1) % ring;
       const a = i * ring + j, b = (i + 1) * ring + j, c = (i + 1) * ring + jn, d = i * ring + jn;
       const ka = kinds[j], kb = kinds[jn];
-      const k = ka === kb ? ka : (ka === 'roof' || kb === 'roof' ? 'roof' : ka === 'green' || kb === 'green' ? 'green' : ka);
+      const k = ka === kb ? ka : (ka === 'roof' || kb === 'roof' ? 'roof' : ka === 'green' || kb === 'green' ? 'green' : ka === 'corner' || kb === 'corner' ? 'corner' : ka);
       const cx = (pos[a * 3] + pos[c * 3]) / 2, cy = (pos[a * 3 + 1] + pos[c * 3 + 1]) / 2, cz = (pos[a * 3 + 2] + pos[c * 3 + 2]) / 2;
       if (inGlass(cx, cy, cz, k)) continue;
       if (inArch(cx, cy, cz)) continue;
@@ -820,13 +822,13 @@ function buildVehicle(v) {
     const w0 = sorted[i], w1 = sorted[i + 1];
     const x0 = Math.min(w0.b[0], w0.b[1]) + 0.02, x1 = Math.max(w1.a[0], w1.a[1]) - 0.02;
     [-1, 1].forEach(side => group.add(new THREE.Mesh(patchGeometry(sidePatch(x0, x1,
-      x => S.section(x).s + 0.015, x => Math.min(S.section(x).e - 0.02, w0.yTop ?? 9), side, 0.0025), 4, 6), trimMat)));
+      x => S.section(x).s + 0.015, x => Math.min(S.section(x).e0 - 0.025, w0.yTop ?? 9), side, 0.0025), 4, 8), trimMat)));
   }
   if (v.floatRoof) {
     const last = sorted[sorted.length - 1];
     const x1 = Math.min(last.b[0], last.b[1]) + 0.02, x0 = xRear + 0.2;
     [-1, 1].forEach(side => group.add(new THREE.Mesh(patchGeometry(sidePatch(x0, x1,
-      x => S.section(x).s + 0.015, x => S.section(x).e - 0.02, side, 0.0025), 10, 6), trimMat)));
+      x => S.section(x).s + 0.015, x => S.section(x).e0 - 0.025, side, 0.0025), 10, 8), trimMat)));
   }
   {
     const xs = v.windows.flatMap(w => [...w.a, ...w.b]);
@@ -1113,7 +1115,7 @@ function buildVehicle(v) {
   v.wheelX.forEach(x => [-1, 1].forEach(side => {
     const wh = wheel(v.wheelR, v.tireW, v.rim);
     wh.position.set(x, v.wheelR, side * (halfW - v.tireW / 2 - 0.035));
-    if (side < 0) wh.rotation.y = Math.PI;
+    if (side < 0) wh.scale.z = -1;
     group.add(wh);
   }));
 
@@ -1273,10 +1275,10 @@ export function initTintStudio() {
   controls.autoRotateSpeed = 0.6;
 
   const key = new THREE.DirectionalLight(0xffffff, 1.1);
-  key.position.set(5, 7, -6);
+  key.position.set(5, 8, 0);
   scene.add(key);
   const fill = new THREE.DirectionalLight(0xdfe8ff, 0.5);
-  fill.position.set(-4, 3, 6);
+  fill.position.set(-5, 3, 0);
   scene.add(fill);
   scene.add(new THREE.HemisphereLight(0xe6eeff, 0x1a2030, 0.55));
 
@@ -1312,7 +1314,7 @@ export function initTintStudio() {
   function viewDistance() {
     const vFov = THREE.MathUtils.degToRad(camera.fov);
     const hFov = 2 * Math.atan(Math.tan(vFov / 2) * camera.aspect);
-    return fit.radius / Math.sin(Math.min(vFov, hFov) / 2) * 0.8;
+    return fit.radius / Math.sin(Math.min(vFov, hFov) / 2) * 0.92;
   }
 
   function goToView(name, instant) {
