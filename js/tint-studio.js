@@ -41,40 +41,40 @@ const FACTORY_PRIVACY = 22;   // typical factory privacy glass VLT (SUV / truck 
 const VEHICLES = {
   sedan: {
     label: 'Sedan', badge: 'Midsize Sedan', cls: 'car', privacy: false, round: { noseIn: 0.13, tailIn: 0.09 },
-    wheelR: 0.335, wheelX: [-1.395, 1.43], tireW: 0.235, rb: 0.07, rt: 0.08,
+    wheelR: 0.345, wheelX: [-1.395, 1.43], tireW: 0.235, rb: 0.07, rt: 0.08,
     keys: [
-      [2.40, 0.38, 0.60, 0.635, 0.00, 0.74, 0.70],
-      [2.33, 0.31, 0.68, 0.72, 0.01, 0.85, 0.80],
-      [2.10, 0.27, 0.78, 0.82, 0.02, 0.905, 0.85],
-      [1.40, 0.25, 0.86, 0.93, 0.03, 0.92, 0.85],
-      [0.95, 0.24, 0.90, 0.985, 0.04, 0.92, 0.84],
-      [0.55, 0.23, 0.93, 1.20, 0.05, 0.92, 0.80],
-      [0.20, 0.23, 0.95, 1.40, 0.06, 0.92, 0.75],
-      [-0.30, 0.23, 0.97, 1.445, 0.06, 0.92, 0.74],
-      [-0.85, 0.23, 0.995, 1.415, 0.06, 0.92, 0.745],
-      [-1.25, 0.24, 1.01, 1.27, 0.05, 0.915, 0.77],
-      [-1.60, 0.25, 1.02, 1.085, 0.04, 0.90, 0.83],
-      [-2.05, 0.27, 1.01, 1.06, 0.03, 0.89, 0.84],
-      [-2.38, 0.32, 0.96, 1.01, 0.02, 0.86, 0.82],
-      [-2.48, 0.38, 0.90, 0.95, 0.01, 0.80, 0.76]
+      [2.40, 0.38, 0.62, 0.66, 0.00, 0.74, 0.70],
+      [2.33, 0.31, 0.69, 0.74, 0.01, 0.85, 0.80],
+      [2.10, 0.27, 0.78, 0.83, 0.02, 0.905, 0.85],
+      [1.40, 0.25, 0.86, 0.92, 0.03, 0.92, 0.85],
+      [1.05, 0.24, 0.90, 0.965, 0.04, 0.925, 0.84],
+      [0.60, 0.23, 0.93, 1.19, 0.05, 0.925, 0.79],
+      [0.15, 0.23, 0.95, 1.41, 0.06, 0.925, 0.74],
+      [-0.35, 0.23, 0.975, 1.445, 0.06, 0.925, 0.73],
+      [-0.75, 0.23, 0.995, 1.40, 0.06, 0.925, 0.74],
+      [-1.20, 0.24, 1.015, 1.24, 0.05, 0.92, 0.78],
+      [-1.70, 0.25, 1.03, 1.08, 0.04, 0.905, 0.84],
+      [-2.10, 0.27, 1.03, 1.07, 0.03, 0.89, 0.85],
+      [-2.40, 0.33, 0.99, 1.04, 0.02, 0.86, 0.83],
+      [-2.50, 0.40, 0.93, 0.98, 0.01, 0.80, 0.76]
     ],
-    shield: [0.93, 0.24],
-    back: { type: 'top', x: [-1.56, -0.90] },
+    shield: [1.02, 0.17],
+    back: { type: 'top', x: [-1.66, -0.80] },
     windows: [
-      { zone: 'front', a: [0.88, 0.30], b: [-0.04, -0.04] },
-      { zone: 'rear', a: [-0.15, -0.15], b: [-1.42, -1.02] }
+      { zone: 'front', a: [0.96, 0.24], b: [-0.08, -0.08] },
+      { zone: 'rear', a: [-0.18, -0.18], b: [-1.40, -0.92] }
     ],
-    seams: [[1.00], [-0.10], [-1.24]], handles: [0.05, -1.00],
-    mirror: { x: 0.80, s: 1 },
-    head: { y: [0.54, 0.625], z: [0.38, 0.86] }, grille: { y: [0.41, 0.53], z: 0.34 },
-    tail: { y: [0.82, 0.92], z: [0.40, 0.90] }, plate: [0.54, 0.68],
-    seats: [{ x: 0.02, type: 'pair' }, { x: -0.86, type: 'bench' }], dash: 0.62, wheel: 0.36,
-    rim: { spokes: 5, color: 0xc4c9d0, caliper: 0x2b2e33 },
+    seams: [[1.06], [-0.13], [-1.22]], handles: [0.02, -1.00],
+    mirror: { x: 0.88, s: 1 },
+    head: { y: [0.56, 0.635], z: [0.40, 0.86] }, grille: { y: [0.38, 0.53], z: 0.42 }, headBar: true,
+    tail: { y: [0.88, 0.97], z: [0.36, 0.90] }, tailBar: true, plate: [0.56, 0.70],
+    seats: [{ x: 0.04, type: 'pair' }, { x: -0.86, type: 'bench' }], dash: 0.70, wheel: 0.45,
+    rim: { spokes: 5, color: 0xc9ced5, caliper: 0x2b2e33, split: true },
     text: { rear: 'Rear door windows', back: 'Rear windshield' }
   },
   coupe: {
     label: 'Coupe', badge: 'Sports Coupe', cls: 'car', privacy: false, round: { noseIn: 0.14, tailIn: 0.08, noseDrop: 0.05 },
-    wheelR: 0.355, wheelX: [-1.25, 1.47], tireW: 0.265, rb: 0.07, rt: 0.08,
+    wheelR: 0.36, wheelX: [-1.25, 1.47], tireW: 0.265, rb: 0.07, rt: 0.08,
     keys: [
       [2.35, 0.35, 0.58, 0.615, 0.00, 0.76, 0.72],
       [2.27, 0.29, 0.67, 0.71, 0.01, 0.88, 0.84],
@@ -101,11 +101,11 @@ const VEHICLES = {
     head: { y: [0.52, 0.6], z: [0.40, 0.88] }, grille: { y: [0.38, 0.51], z: 0.36 },
     tail: { y: [0.77, 0.87], z: [0.34, 0.84], bars: 3 }, plate: [0.50, 0.64],
     seats: [{ x: -0.30, type: 'pair' }, { x: -1.08, type: 'bench', small: true }], dash: 0.44, wheel: 0.18,
-    rim: { spokes: 5, color: 0x3a3d43, caliper: 0xb3161c, split: true },
+    rim: { spokes: 5, color: 0x3a3d43, caliper: 0xb3161c, split: true, size: 0.76 },
     text: { rear: 'Rear quarter glass', back: 'Fastback glass' }
   },
   suv: {
-    label: 'SUV', badge: 'Midsize SUV', cls: 'mpv', privacy: true, round: { noseIn: 0.11, tailIn: 0.06, tailDrop: 0.03 },
+    label: 'SUV', badge: 'Midsize SUV', cls: 'mpv', privacy: true, flare: true, cladding: 0.14, floatRoof: true, round: { noseIn: 0.11, tailIn: 0.06, tailDrop: 0.03 },
     wheelR: 0.37, wheelX: [-1.36, 1.33], tireW: 0.235, rb: 0.08, rt: 0.09,
     keys: [
       [2.25, 0.46, 0.78, 0.83, 0.00, 0.78, 0.74],
@@ -130,21 +130,21 @@ const VEHICLES = {
     ],
     seams: [[0.86], [-0.07], [-1.08]], handles: [0.05, -0.95],
     mirror: { x: 0.74, s: 1.1 },
-    head: { y: [0.70, 0.80], z: [0.40, 0.90] }, grille: { y: [0.49, 0.68], z: 0.40 },
-    tail: { y: [1.02, 1.12], z: [0.46, 0.92] }, plate: [0.64, 0.78],
+    head: { y: [0.72, 0.80], z: [0.38, 0.90] }, grille: { y: [0.47, 0.70], z: 0.46 }, headBar: true,
+    tail: { y: [1.02, 1.12], z: [0.40, 0.92] }, tailBar: true, plate: [0.64, 0.78],
     rails: [-1.95, 0.20],
     seats: [{ x: -0.18, type: 'pair' }, { x: -1.12, type: 'bench' }], dash: 0.52, wheel: 0.30,
-    rim: { spokes: 6, color: 0xb9bec6, caliper: 0x2b2e33 },
+    rim: { spokes: 6, color: 0x2e3136, caliper: 0x2b2e33, size: 0.73 },
     text: { rear: 'Rear doors & quarter glass', back: 'Liftgate glass' }
   },
   truck: {
     label: 'Truck', badge: 'Crew Cab Pickup', cls: 'mpv', privacy: true, round: { noseIn: 0.05, noseLen: 0.35, noseDrop: 0.02, noseRise: 0.03, tailIn: 0, tailDrop: 0, tailRise: 0 },
     wheelR: 0.42, wheelX: [-1.71, 1.97], tireW: 0.275, rb: 0.08, rt: 0.08, flare: true,
     keys: [
-      [2.95, 0.52, 1.00, 1.08, 0.00, 0.90, 0.86],
-      [2.88, 0.48, 1.12, 1.20, 0.01, 0.98, 0.94],
-      [2.40, 0.46, 1.20, 1.26, 0.02, 1.00, 0.95],
-      [1.30, 0.46, 1.28, 1.33, 0.03, 1.01, 0.95],
+      [2.95, 0.52, 1.12, 1.18, 0.00, 0.92, 0.88],
+      [2.88, 0.48, 1.20, 1.26, 0.01, 0.99, 0.95],
+      [2.40, 0.46, 1.26, 1.31, 0.02, 1.01, 0.96],
+      [1.30, 0.46, 1.30, 1.35, 0.03, 1.01, 0.95],
       [0.75, 0.46, 1.31, 1.36, 0.03, 1.01, 0.94],
       [0.45, 0.46, 1.33, 1.60, 0.04, 1.01, 0.89],
       [0.12, 0.46, 1.34, 1.92, 0.04, 1.01, 0.85],
@@ -160,12 +160,12 @@ const VEHICLES = {
     ],
     seams: [[0.80], [-0.11], [-0.98]], handles: [0.00, -0.86],
     mirror: { x: 0.68, s: 1.45 },
-    head: { y: [0.90, 1.03], z: [0.64, 0.95] }, grille: { y: [0.62, 1.00], z: 0.60, chrome: true },
+    head: { y: [0.94, 1.12], z: [0.64, 0.97] }, grille: { y: [0.64, 1.12], z: 0.64, chrome: true },
     bumper: { y: [0.50, 0.62], chrome: true },
     bed: { x: [-2.94, -1.08], b: 0.50, rail: 1.30, floor: 0.93, w: 1.01, wall: 0.06 },
     runningBoard: true,
     seats: [{ x: -0.06, type: 'pair' }, { x: -0.80, type: 'bench' }], dash: 0.55, wheel: 0.32,
-    rim: { spokes: 6, color: 0x9ea4ad, caliper: 0x2b2e33 },
+    rim: { spokes: 6, color: 0xb3b8c0, caliper: 0x2b2e33, size: 0.72 },
     text: { rear: 'Rear door windows', back: 'Rear cab slider' }
   },
   van: {
@@ -198,7 +198,7 @@ const VEHICLES = {
     text: { rear: 'Cargo area has no side glass', back: 'Rear door windows' }
   },
   minivan: {
-    label: 'Minivan', badge: 'Minivan', cls: 'mpv', privacy: true, round: { noseIn: 0.12, tailIn: 0.06, tailDrop: 0.03 },
+    label: 'Minivan', badge: 'Minivan', cls: 'mpv', privacy: true, floatRoof: true, round: { noseIn: 0.12, tailIn: 0.06, tailDrop: 0.03 },
     wheelR: 0.36, wheelX: [-1.52, 1.57], tireW: 0.235, rb: 0.08, rt: 0.09,
     keys: [
       [2.55, 0.40, 0.69, 0.74, 0.00, 0.80, 0.76],
@@ -221,8 +221,8 @@ const VEHICLES = {
     ],
     seams: [[1.46], [0.31], [-0.91]], handles: [0.40, 0.18],
     mirror: { x: 1.36, s: 1.15 },
-    head: { y: [0.60, 0.70], z: [0.40, 0.92] }, grille: { y: [0.45, 0.58], z: 0.40 },
-    tail: { y: [0.95, 1.08], z: [0.55, 0.95] }, plate: [0.62, 0.76],
+    head: { y: [0.62, 0.70], z: [0.38, 0.92] }, grille: { y: [0.43, 0.59], z: 0.46 }, headBar: true,
+    tail: { y: [0.98, 1.08], z: [0.45, 0.95] }, tailBar: true, plate: [0.62, 0.76],
     seats: [{ x: 0.25, type: 'pair' }, { x: -0.68, type: 'pair' }, { x: -1.66, type: 'bench' }], dash: 1.04, wheel: 0.80,
     rim: { spokes: 5, color: 0xb9bec6, caliper: 0x2b2e33 },
     text: { rear: 'Sliding door & quarter glass', back: 'Liftgate glass' }
@@ -240,7 +240,7 @@ const VIEWS = {
 // Materials
 // ---------------------------------------------------------------------------
 const paintMat = new THREE.MeshPhysicalMaterial({
-  color: 0xf2f4f7, metalness: 0.45, roughness: 0.3, clearcoat: 1, clearcoatRoughness: 0.03,
+  color: 0xf2f4f7, metalness: 0.35, roughness: 0.38, clearcoat: 0.8, clearcoatRoughness: 0.12,
   vertexColors: true, side: THREE.DoubleSide
 });
 // Inside faces of the body (seen through the glass) read as dark trim, not paint
@@ -288,13 +288,13 @@ function studioEnvironment() {
     m.lookAt(0, 0.8, 0);
     env.add(m);
   };
-  panel(16, 6, 2.6, [0, 10, 0]);                 // overhead softbox
-  panel(14, 1.3, 4.5, [0, 4.2, 10]);              // long side strip (passenger)
-  panel(14, 1.3, 4.5, [0, 4.2, -10]);             // long side strip (driver)
-  panel(1.3, 9, 3.0, [11, 3.5, -4]);              // front corner strip
-  panel(6, 3, 1.4, [12, 1.8, 3]);                 // front fill
-  panel(7, 3, 1.6, [-12, 3, 2], 0x5d9bff);        // cool rim from behind
-  panel(40, 40, 0.06, [0, -1.5, 0], 0x8090a8);    // faint floor bounce
+  panel(26, 14, 0.75, [0, 11, 0]);               // broad, soft overhead
+  panel(18, 3, 1.3, [0, 4.5, 11]);                // side strip (passenger)
+  panel(18, 3, 1.3, [0, 4.5, -11]);               // side strip (driver)
+  panel(3, 9, 1.1, [12, 3.5, -5]);                // front corner
+  panel(10, 5, 0.7, [13, 2.2, 4]);                // front fill
+  panel(10, 5, 0.8, [-13, 3, 2], 0x7fb0ff);       // cool rim from behind
+  panel(40, 40, 0.16, [0, -1.5, 0], 0x8f9bb0);    // floor bounce lifts the lower body
   return env;
 }
 
@@ -490,9 +490,9 @@ function frameGeometry(fn, width, n = 24) {
 // ---------------------------------------------------------------------------
 const wheelCache = new Map();
 function wheelParts(R, w, rim) {
-  const key = [R, w, rim.spokes, rim.color, rim.caliper, rim.split, rim.steel].join('|');
+  const key = [R, w, rim.spokes, rim.color, rim.caliper, rim.split, rim.steel, rim.size].join('|');
   if (wheelCache.has(key)) return wheelCache.get(key);
-  const rimR = R * 0.69;
+  const rimR = R * (rim.size ?? 0.74);
   const faceMat = new THREE.MeshPhysicalMaterial({ color: rim.color, roughness: rim.steel ? 0.5 : 0.22, metalness: 0.85, clearcoat: rim.steel ? 0 : 0.8 });
   const parts = [];
   const prof = [
@@ -575,7 +575,7 @@ function buildVehicle(v) {
   const outlines = Object.fromEntries(ZONES.map(z => [z, new THREE.Group()]));
   const halfW = Math.max(...v.keys.map(k => k[5]));
   const zIn = halfW - v.tireW - 0.07;
-  const archR = v.wheelR + 0.055;
+  const archR = v.wheelR + (v.archGap ?? 0.04);
   const GLASS_OFF = 0.004;
 
   // ---- glass regions (shared by the glass patches and the cutouts in the body)
@@ -822,6 +822,12 @@ function buildVehicle(v) {
     [-1, 1].forEach(side => group.add(new THREE.Mesh(patchGeometry(sidePatch(x0, x1,
       x => S.section(x).s + 0.015, x => Math.min(S.section(x).e - 0.02, w0.yTop ?? 9), side, 0.0025), 4, 6), trimMat)));
   }
+  if (v.floatRoof) {
+    const last = sorted[sorted.length - 1];
+    const x1 = Math.min(last.b[0], last.b[1]) + 0.02, x0 = xRear + 0.2;
+    [-1, 1].forEach(side => group.add(new THREE.Mesh(patchGeometry(sidePatch(x0, x1,
+      x => S.section(x).s + 0.015, x => S.section(x).e - 0.02, side, 0.0025), 10, 6), trimMat)));
+  }
   {
     const xs = v.windows.flatMap(w => [...w.a, ...w.b]);
     const x0 = Math.min(...xs) - 0.02, x1 = Math.max(...xs) + 0.02;
@@ -857,7 +863,7 @@ function buildVehicle(v) {
   {
     const x0 = v.wheelX[0] + archR + 0.05, x1 = v.wheelX[1] - archR - 0.05;
     [-1, 1].forEach(side => group.add(new THREE.Mesh(patchGeometry(sidePatch(x0, x1,
-      x => S.section(x).b + S.section(x).rbE * 0.3, x => S.section(x).b + S.section(x).rbE + 0.05, side, 0.002), 30, 3), plasticMat)));
+      x => S.section(x).b + S.section(x).rbE * 0.3, x => S.section(x).b + S.section(x).rbE + (v.cladding ?? 0.05), side, 0.002), 30, 3), plasticMat)));
     if (v.runningBoard) {
       [-1, 1].forEach(side => {
         const rb = new THREE.Mesh(new THREE.BoxGeometry(x1 - x0 - 0.1, 0.035, 0.17), plasticMat);
@@ -943,6 +949,11 @@ function buildVehicle(v) {
     group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[0] + 0.015, h.y[1] - 0.012, lerp(za, zb, 0.06), lerp(za, zb, 0.94), 0.006), 16, 4), headLensMat));
     group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[1] - 0.012, h.y[1] - 0.004, lerp(za, zb, 0.04), lerp(za, zb, 0.96), 0.008), 16, 1), drlMat));
   });
+  if (v.headBar) {
+    const h = v.head;
+    group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[0] + 0.012, h.y[1] - 0.006, -h.z[0] - 0.01, h.z[0] + 0.01, 0.002), 16, 2), trimMat));
+    group.add(new THREE.Mesh(patchGeometry(frontPatch(h.y[1] - 0.016, h.y[1] - 0.009, -h.z[0], h.z[0], 0.004), 16, 1), drlMat));
+  }
   if (v.bumper) {
     group.add(new THREE.Mesh(patchGeometry(frontPatch(v.bumper.y[0], v.bumper.y[1], -(halfW + 0.01), halfW + 0.01, 0.004), 24, 2), v.bumper.chrome ? chromeMat : plasticMat));
   } else {
@@ -994,6 +1005,10 @@ function buildVehicle(v) {
       group.add(new THREE.Mesh(patchGeometry(rearPatch(t.y[0], t.y[1], za, zb, 0.004), 16, 4), tailMat));
     }
   });
+  if (v.tailBar && v.tail) {
+    const t = v.tail;
+    group.add(new THREE.Mesh(patchGeometry(rearPatch(t.y[1] - 0.03, t.y[1] - 0.01, -t.z[0] - 0.02, t.z[0] + 0.02, 0.004), 20, 1), tailMat));
+  }
   if (v.plate) {
     const zp = 0.16;
     group.add(new THREE.Mesh(patchGeometry(rearPatch(v.plate[0], v.plate[1], -zp, zp, 0.004), 2, 2), plateMat));
@@ -1114,8 +1129,9 @@ function buildVehicle(v) {
     floorM.position.set((cx0 + cx1) / 2, flY, 0);
     interior.add(floorM);
     const seat = (x, z, wdt, small) => {
-      const sc = S.section(x);
-      const room = clamp((sc.T - flY - 0.15) / 1.0, 0.75, 1.05) * (small ? 0.85 : 1);
+      // headroom is measured where the headrest sits, behind the cushion
+      const roof = Math.min(S.section(x).T, S.section(x - 0.35).T) - 0.06;
+      const room = clamp((roof - flY - 0.12) / 1.0, 0.6, 1.05) * (small ? 0.85 : 1);
       const g = new THREE.Group();
       const cush = new THREE.Mesh(new THREE.BoxGeometry(0.48, 0.13, wdt), seatMat);
       cush.position.set(0, 0.3 * room, 0);
@@ -1239,7 +1255,7 @@ export function initTintStudio() {
   }
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
+  renderer.toneMappingExposure = 1.15;
 
   const scene = new THREE.Scene();
   const pmrem = new THREE.PMREMGenerator(renderer);
@@ -1256,10 +1272,13 @@ export function initTintStudio() {
   controls.autoRotate = !reduceMotion;
   controls.autoRotateSpeed = 0.6;
 
-  const key = new THREE.DirectionalLight(0xffffff, 0.9);
-  key.position.set(4, 9, -5);
+  const key = new THREE.DirectionalLight(0xffffff, 1.1);
+  key.position.set(5, 7, -6);
   scene.add(key);
-  scene.add(new THREE.HemisphereLight(0xdde8ff, 0x0a0d14, 0.25));
+  const fill = new THREE.DirectionalLight(0xdfe8ff, 0.5);
+  fill.position.set(-4, 3, 6);
+  scene.add(fill);
+  scene.add(new THREE.HemisphereLight(0xe6eeff, 0x1a2030, 0.55));
 
   // Showroom floor: dark fade, turntable and soft contact shadow
   const floor = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshBasicMaterial({ map: fadeTexture('rgba(16,24,40,1)', 'rgba(16,24,40,0)'), transparent: true, depthWrite: false }));
@@ -1451,7 +1470,7 @@ export function initTintStudio() {
   $$('[data-ts-view]').forEach(b => b.addEventListener('click', () => goToView(b.dataset.tsView)));
   $$('[data-ts-paint]').forEach(b => b.addEventListener('click', () => {
     paintMat.color.set(b.dataset.tsPaint);
-    paintMat.metalness = b.dataset.tsPaint === '#0c0d10' ? 0.25 : 0.45;
+    paintMat.metalness = b.dataset.tsPaint === '#0c0d10' ? 0.2 : 0.35;
     $$('[data-ts-paint]').forEach(o => { o.dataset.active = String(o === b); });
   }));
   $$('[data-ts-zone]').forEach(b => b.addEventListener('click', () => {
